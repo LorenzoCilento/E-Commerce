@@ -8,12 +8,12 @@
 </head>
 <body>
 
-<jsp:useBean id="user" class="bean.UserBean" scope="session"></jsp:useBean>
+<jsp:useBean id="user" class="model.bean.User" scope="session"></jsp:useBean>
 <jsp:setProperty property="*" name="user"/>
 
 Record:<br>
-<jsp:getProperty property="name" name="user"/>
-<jsp:getProperty property="email" name="user"/>
+<jsp:getProperty property="username" name="user"/>
+<jsp:getProperty property="password" name="user"/>
 
 welcome, ${param.name }
 

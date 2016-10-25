@@ -8,11 +8,11 @@
 </head>
 <body>
 
-<jsp:useBean id="user" class="bean.UserBean" scope="session"></jsp:useBean>
+<jsp:useBean id="user" class="model.bean.User" scope="session"></jsp:useBean>
 
 Prova:<br>
 
-<jsp:getProperty property="name" name="user"/>
+<jsp:getProperty property="username" name="user"/>
 
 </body>
 </html>

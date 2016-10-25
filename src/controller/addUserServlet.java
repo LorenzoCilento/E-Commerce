@@ -3,61 +3,62 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.bean.LoginBean;
+import connection.UserDAO;
+import model.bean.AbstractFactoryUser;
+import model.bean.FactoryUserCreator;
+import model.bean.User;
+import util.Factories;
+import util.UserType;
 
 /**
- * Servlet implementation class ControllerServlet
+ * Servlet implementation class addUserServlet
  */
-@WebServlet("/ControllerServlet")
-public class ControllerServlet extends HttpServlet {
+@WebServlet("/addUserServlet")
+public class addUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-   
+    public addUserServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
+		
+		response.setContentType("text/html");
+		
+		PrintWriter out=response.getWriter();  
+        
+        String username=request.getParameter("username");  
+        String password=request.getParameter("password");  
+        
+        User user = Factories.getInstance().makeUser();
+        
+        user.setUsername(username);
+        user.setPassword(password);
+        
+        new UserDAO().addUser(user);
+        out.print("Username" +username);
+        
+        out.close();
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html");
-		
-		PrintWriter out = response.getWriter();
-		
-		String name = request.getParameter("name");
-		String password = request.getParameter("password");
-		
-		LoginBean bean = new LoginBean();
-		
-		bean.setName(name);
-		bean.setPassword(password);
-		
-		boolean status = bean.validate();
-		
-		if(status){
-			RequestDispatcher rd = request.getRequestDispatcher("loginSuccess.jsp");
-			rd.forward(request, response);
-		}
-		else {
-			RequestDispatcher rd = request.getRequestDispatcher("loginError.jsp");
-			rd.forward(request, response);
-		}
-		
 		doGet(request, response);
 	}
 
