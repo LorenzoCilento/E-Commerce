@@ -1,49 +1,17 @@
-<!DOCTYPE html>
-<html lang="it">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<title>E-Commerce</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <script src="jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="bootstrap/js/modernizr.custom.js"></script>
-<style>
-/* Remove the navbar's default margin-bottom and rounded borders */
-.navbar {
-	margin-bottom: 0;
-	border-radius: 0;
-}
-
-/* Add a gray background color and some padding to the footer */
-footer {
-	background-color: #8C8C8C;
-	padding: 25px;
-	margin-top: 5px;
-}
-
-.carousel-inner img {
-	width: 100%; /* Set width to 100% */
-	margin: auto;
-	min-height: 200px;
-}
-
-.jumbotron {
-	background-color: #32CD32;
-	color: white;
-	margin-bottom: 0;
-}
-
-
-
-/* Hide the carousel text when the screen is less than 600 pixels wide */
-@media ( max-width : 600px) {
-	.carousel-caption {
-		display: none;
-	}
-}
-</style>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
+	media="all">
+<title>Registration</title>
+</head>
 </head>
 <body>
 	<header>
@@ -91,14 +59,14 @@ footer {
 	</header>
 
 	<div class="container well">
-		<form class="form horizontal" role="form">
+		<form action ="process.jsp" class="form horizontal" role="form" method="post">
 			<div class="well" id="registration" style="text-align: center;">
 				<h2>Registrazione</h2>
 			</div>
 			<div class="form group">
 				<label for="name" class="col-sm-3 control-label">Nome</label>
 				<div class="col-sm-9">
-					<input type="text" id="name" placeholder="Nome"
+					<input type="text" name="name" id="name" placeholder="Nome"
 						class="form-control" autofocus> <span class="help-block">Es.
 						Francesco Rossi</span>
 				</div>
@@ -106,7 +74,7 @@ footer {
 			<div class="form group">
 				<label for="e-mail" class="col-sm-3 control-label">E-mail</label>
 				<div class="col-sm-9">
-					<input type="text" id="e-mail" placeholder="E-mail"
+					<input type="text" name="email" id="e-mail" placeholder="E-mail"
 						class="form-control" autofocus> <span class="help-block">Es.
 						francescorossi@e-commerce.it</span>
 				</div>
@@ -127,7 +95,7 @@ footer {
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="country" class="col-sm-3 control-label">Paese</label>
+				<label for="country" id="country" class="col-sm-3 control-label">Paese</label>
 				<div class="col-sm-9">
 					<select id="country" class="form-control">
 						<option>Afghanistan</option>
@@ -172,7 +140,7 @@ footer {
 			<!-- /.form-group -->
 			<div class="form-group">
 				<div class="col-sm-9 col-sm-offset-3">
-					<button type="submit" class="btn btn-primary btn-block">Register</button>
+					<button type="submit" value="register" class="btn btn-primary btn-block">Register</button>
 				</div>
 			</div>
 		</form>

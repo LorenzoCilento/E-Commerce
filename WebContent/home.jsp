@@ -1,21 +1,49 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-<title>E-Commerce</title>
-<meta charset="utf-8">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<title>Home</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
-	media="all">
 <script src="jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="bootstrap/js/modernizr.custom.js"></script>
 <style>
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+	margin-bottom: 0;
+	border-radius: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+	background-color: #8C8C8C;
+	padding: 25px;
+}
+
+.carousel-inner img {
+	width: 100%; /* Set width to 100% */
+	margin: auto;
+	min-height: 200px;
+}
+
+.jumbotron {
+	background-color: #32CD32;
+	color: white;
+	margin-bottom: 0;
+}
+
+/* Hide the carousel text when the screen is less than 600 pixels wide */
+@media ( max-width : 600px) {
+	.carousel-caption {
+		display: none;
+	}
+}
 </style>
 </head>
 <body>
-	<header>
+	<div>
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="container-fluid">
 				<div class="navbar-header">
@@ -38,11 +66,11 @@
 					</ul>
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="userRegistration.jsp"><span
+						<li><a href="userRegistration.html"><span
 								class="glyphicon glyphicon-user"></span> 
 								Registrati</a></li>
 
-						<li><a href="loginPage.html"><span class="glyphicon glyphicon-log-in"></span>
+						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
 								Accedi</a></li>
 					</ul>
 
@@ -59,7 +87,7 @@
 				</div>
 			</div>
 		</nav>
-	</header>
+	</div>
 
 
 	<div class="jumbotron text-center">
@@ -123,3 +151,4 @@
 	</footer>
 
 </body>
+</html>
