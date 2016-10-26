@@ -58,7 +58,7 @@
 	</header>
 	
 	<div class = "container well">
-		<form action ="addUserServlet" class="form horizontal" role="form" method="get">
+		<form action ="ViewUsersServlet" class="form horizontal" role="form" method="get">
 			<div class="well" id="registration" style="text-align: center;">
 				<h2>Accedi</h2>
 			</div>
