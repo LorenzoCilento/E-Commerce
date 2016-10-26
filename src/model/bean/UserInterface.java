@@ -1,7 +1,8 @@
 package model.bean;
 
+import util.UserType;
 
 public interface UserInterface {
 	
-	public UserInterface getUser();
+	public UserType getUser();
 }
