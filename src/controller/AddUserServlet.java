@@ -19,45 +19,47 @@ import util.Factories;
 @WebServlet("/AddUserServlet")
 public class AddUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddUserServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	public AddUserServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 		response.setContentType("text/html");
-		
-		PrintWriter out=response.getWriter();  
-        
-        String username=request.getParameter("username");  
-        String password=request.getParameter("password");  
-        
-        
-        
-        User user = Factories.getInstance().makeUser();
-        
-        user.setUsername(username);
-        user.setPassword(password);
-        
-        new UserDAO().addUser(user);
-        out.print("Username" +username);
-        
-        out.close();
+
+		PrintWriter out = response.getWriter();
+
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+
+		User user = Factories.getInstance().makeUser();
+
+		user.setUsername(username);
+		user.setPassword(password);
+
+		new UserDAO().addUser(user);
+		out.print("Username" + username);
+
+		out.close();
 
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
