@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import="model.bean.User" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,13 +37,25 @@
 							</ul></li>
 					</ul>
 
+				<% if(session.getAttribute("user") == null) { %>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						<li><a href="userRegistration.jsp"><span class="glyphicon glyphicon-user"></span>
 								Registrati</a></li>
 
 						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
 								Accedi</a></li>
 					</ul>
+				<%} else { %>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><span
+								class="glyphicon glyphicon-user"></span> 
+								<%=((User)session.getAttribute("user")).getUsername() %><b class="caret"></b></a>
+								<ul class="dropdown-menu">
+								<li><a href="LogoutController">Logout</a></li>
+							</ul></li>
+								</ul>
+				<%} %>
 
 					<form class="navbar-form" role="search">
 						<div class="form-group" style="display: inline">
@@ -59,14 +72,14 @@
 	</header>
 
 	<div class="container well">
-		<form action ="process.jsp" class="form horizontal" role="form" method="post">
+		<form action ="AddUserServlet" class="form horizontal" role="form" method="post">
 			<div class="well" id="registration" style="text-align: center;">
 				<h2>Registrazione</h2>
 			</div>
 			<div class="form group">
 				<label for="name" class="col-sm-3 control-label">Nome</label>
 				<div class="col-sm-9">
-					<input type="text" name="name" id="name" placeholder="Nome"
+					<input type="text" name="username" id="username" placeholder="Nome"
 						class="form-control" autofocus> <span class="help-block">Es.
 						Francesco Rossi</span>
 				</div>
@@ -82,7 +95,7 @@
 			<div class="form-group">
 				<label for="password" class="col-sm-3 control-label">Password</label>
 				<div class="col-sm-9">
-					<input type="password" id="password" placeholder="Password"
+					<input type="password" name ="password" id="password" placeholder="Password"
 						class="form-control"> <span class="help-block"></span>
 				</div>
 			</div>

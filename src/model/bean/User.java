@@ -34,11 +34,10 @@ public class User implements UserInterface {
 		this.password = password;
 	}
 
-
-
 	@Override
-	public UserType getUser() {
+	public UserType getType() {
 		return UserType.USER;
 	}
+
 
 }

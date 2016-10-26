@@ -12,7 +12,6 @@ public class Admin implements UserInterface {
 	}
 
 
-
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -30,9 +29,8 @@ public class Admin implements UserInterface {
 	}
 
 
-
 	@Override
-	public UserType getUser() {
+	public UserType getType() {
 		return UserType.ADMIN;
 	}
 

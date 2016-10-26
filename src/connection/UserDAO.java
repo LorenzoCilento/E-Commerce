@@ -76,10 +76,18 @@ public class UserDAO extends ConnectionDAO {
 			
 			closeConnection();
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("User non trovato");
 		}
 		
 		return user;
+	}
+	
+	public boolean validate(String username, String password){
+		User user = getUser(username);
+		
+		if(user.getUsername() != null && user.getPassword().equals(password))
+			return true;
+		return false;
 	}
 	
 	public void deleteUser(String username){

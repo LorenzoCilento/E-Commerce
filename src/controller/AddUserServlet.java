@@ -11,18 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import connection.UserDAO;
 import model.bean.User;
+import util.Factories;
 
 /**
- * Servlet implementation class getUserServlet
+ * Servlet implementation class addUserServlet
  */
-@WebServlet("/getUserServlet")
-public class GetUserServlet extends HttpServlet {
+@WebServlet("/AddUserServlet")
+public class AddUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public GetUserServlet() {
+	public AddUserServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,14 +34,24 @@ public class GetUserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("<h1>Get User</h1>");
-		String username = request.getParameter("username");
-		
-		User user = new UserDAO().getUser(username);
 
-		out.print(user.getUsername());
+		response.setContentType("text/html");
+
+		PrintWriter out = response.getWriter();
+
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+
+		User user = Factories.getInstance().makeUser();
+
+		user.setUsername(username);
+		user.setPassword(password);
+
+		new UserDAO().addUser(user);
+		out.print("Username" + username);
+
+		out.close();
+
 	}
 
 	/**
@@ -49,7 +60,6 @@ public class GetUserServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
