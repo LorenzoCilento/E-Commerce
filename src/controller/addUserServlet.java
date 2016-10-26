@@ -43,12 +43,15 @@ public class addUserServlet extends HttpServlet {
         String username=request.getParameter("username");  
         String password=request.getParameter("password");  
         
+        
+        
         User user = Factories.getInstance().makeUser();
         
         user.setUsername(username);
         user.setPassword(password);
         
-        new UserDAO().addUser(user);
+        UserDAO usDao=new UserDAO();
+        usDao.addUser(user);
         out.print("Username" +username);
         
         out.close();

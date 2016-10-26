@@ -2,6 +2,8 @@ package connection;
 
 import java.sql.*;
 
+import javax.swing.JOptionPane;
+
 import model.bean.AbstractFactoryUser;
 import model.bean.FactoryUserCreator;
 
@@ -23,9 +25,10 @@ public class ConnectionDAO {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			//("jdbc:mysql://nomedominio.altervista.org:3306/my_nomedominio", "nomedominio", "password");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "admin", "admin");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_db","root","root");
 		} catch (Exception e) {
 			// TODO: handle exception
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 		return con;
 	}

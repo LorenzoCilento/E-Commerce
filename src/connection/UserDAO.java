@@ -2,6 +2,9 @@ package connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
 
 import model.bean.FactoryUserCreator;
 import model.bean.User;
@@ -17,16 +20,18 @@ public class UserDAO extends ConnectionDAO {
 	public void addUser(final User user){
 		try {
 			PreparedStatement ps = createConnection().prepareStatement(
-					"INSERT into User(username,password) values(?,?");
+					"INSERT into user(username,password) values(?,?)");
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
 			
-			ps.executeUpdate();
-			
+			ps.executeUpdate();			
+	
 			closeConnection();
 			
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			// TODO: handle exception
+			System.out.println("SQLException:" + e.getSQLState());
+			System.out.println("Insert Failed -> duplicated Key!!");
 		}
 	}
 	
@@ -35,7 +40,7 @@ public class UserDAO extends ConnectionDAO {
 		
 		try {
 			PreparedStatement ps = createConnection().prepareStatement(
-					"SELECT * FROM User WHERE username=?");
+					"SELECT * FROM user WHERE username=?");
 			
 			ps.setString(1, username);
 			
