@@ -16,13 +16,13 @@ import model.bean.User;
  * Servlet implementation class getUserServlet
  */
 @WebServlet("/getUserServlet")
-public class getUserServlet extends HttpServlet {
+public class GetUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public getUserServlet() {
+	public GetUserServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

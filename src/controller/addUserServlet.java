@@ -10,23 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import connection.UserDAO;
-import model.bean.AbstractFactoryUser;
-import model.bean.FactoryUserCreator;
 import model.bean.User;
 import util.Factories;
-import util.UserType;
 
 /**
  * Servlet implementation class addUserServlet
  */
-@WebServlet("/addUserServlet")
-public class addUserServlet extends HttpServlet {
+@WebServlet("/AddUserServlet")
+public class AddUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public addUserServlet() {
+    public AddUserServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,8 +47,7 @@ public class addUserServlet extends HttpServlet {
         user.setUsername(username);
         user.setPassword(password);
         
-        UserDAO usDao=new UserDAO();
-        usDao.addUser(user);
+        new UserDAO().addUser(user);
         out.print("Username" +username);
         
         out.close();
