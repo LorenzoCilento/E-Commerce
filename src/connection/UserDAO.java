@@ -4,12 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.JOptionPane;
-
-import model.bean.FactoryUserCreator;
 import model.bean.User;
 import util.Factories;
-import util.UserType;
+
 
 public class UserDAO extends ConnectionDAO {
 

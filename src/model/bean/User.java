@@ -1,5 +1,7 @@
 package model.bean;
 
+import util.UserType;
+
 public class User implements UserInterface {
 
 	private String username, password;
@@ -32,11 +34,10 @@ public class User implements UserInterface {
 		this.password = password;
 	}
 
-
-
 	@Override
-	public UserInterface getUser() {
-		return this;
+	public UserType getType() {
+		return UserType.USER;
 	}
+
 
 }

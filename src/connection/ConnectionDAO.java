@@ -4,9 +4,6 @@ import java.sql.*;
 
 import javax.swing.JOptionPane;
 
-import model.bean.AbstractFactoryUser;
-import model.bean.FactoryUserCreator;
-
 public class ConnectionDAO {
 	
 	private static ConnectionDAO connectionDAO = new ConnectionDAO();
