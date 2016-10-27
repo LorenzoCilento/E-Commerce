@@ -29,7 +29,7 @@ public class LogoutController extends HttpServlet {
 		
 		if(request.getSession().getAttribute("user") != null){
 			request.getSession().setAttribute("user", null);
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("home.jsp");
 		}
 	}
 

@@ -43,7 +43,7 @@ public class LoginController extends HttpServlet {
 			request.getSession().setAttribute("user", user);
 //			RequestDispatcher rd = getServletContext().getRequestDispatcher("login.jsp");
 //			rd.forward(request, response);
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("home.jsp");
 		}
 		else
 			out.print("user NON valido");
