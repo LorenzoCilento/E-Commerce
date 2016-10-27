@@ -12,7 +12,7 @@ import util.Factories;
 
 public class AdminDAO extends ConnectionDAO implements ExecuteQueryAdminInterface {
 
-	public AdminDAO(){
+	private AdminDAO(){
 		super();
 	}
 
@@ -98,7 +98,7 @@ User user = Factories.getInstance().makeUser();
 	}
 
 	@Override
-	public User getAdmin(String username) {
+	public Admin getAdmin(String username) {
 		// TODO Auto-generated method stub
 		return null;
 	}

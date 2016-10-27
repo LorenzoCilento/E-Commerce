@@ -1,26 +1,21 @@
 package connection;
 
 import java.sql.*;
-
 import javax.swing.JOptionPane;
-
-import model.bean.AbstractFactoryUser;
-import model.bean.FactoryUserCreator;
 
 public class ConnectionDAO {
 	
-	private static ConnectionDAO connectionDAO = new ConnectionDAO();
+	private final static ConnectionDAO connectionDAO = new ConnectionDAO();
 	private static Connection con;
 	
 	public ConnectionDAO(){
-		
 	}
 	
-	public static ConnectionDAO getInstanceConnectionDAO(){
+	public static synchronized ConnectionDAO getInstanceConnectionDAO(){
 		return connectionDAO;
 	}
 	
-	public static Connection createConnection() {
+	public Connection createConnection() {
 		con = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -32,7 +27,7 @@ public class ConnectionDAO {
 		return con;
 	}
 	
-	public static void closeConnection() {
+	public void closeConnection() {
 		try {
 			con.close();
 		} catch (Exception e) {
