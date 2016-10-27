@@ -5,7 +5,7 @@ import util.UserType;
 public class User implements UserInterface {
 
 	private String username, password;
-	
+	private static UserType type=UserType.USER;
 	
 	public User() {
 		username = null;
@@ -36,7 +36,7 @@ public class User implements UserInterface {
 
 	@Override
 	public UserType getType() {
-		return UserType.USER;
+		return type;
 	}
 
 

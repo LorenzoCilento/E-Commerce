@@ -37,7 +37,7 @@ public class ViewUsersServlet extends HttpServlet {
 		
 		PrintWriter out=response.getWriter();  
         
-        List<User> users = new UserDAO().getAllUser();
+        List<User> users = new UserDAO().getAllUsers();
          
         out.print("<table border='1' cellpadding='4' width='80%'>");  
         out.print("<tr><th>Id</th><th>Name</th></tr>");

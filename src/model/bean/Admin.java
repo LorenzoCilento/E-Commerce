@@ -5,7 +5,12 @@ import util.UserType;
 public class Admin implements UserInterface {
 
 	private String username, password;
+	private static UserType type=UserType.ADMIN;;
 	
+	public Admin(){
+		this.username=null;
+		this.password=null;		
+	}
 	
 	public String getUsername() {
 		return username;
@@ -31,7 +36,7 @@ public class Admin implements UserInterface {
 
 	@Override
 	public UserType getType() {
-		return UserType.ADMIN;
+		return type;
 	}
 
 }

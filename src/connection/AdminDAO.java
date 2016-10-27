@@ -6,18 +6,18 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.bean.Admin;
 import model.bean.User;
 import util.Factories;
 
+public class AdminDAO extends ConnectionDAO implements ExecuteQueryAdminInterface {
 
-public class UserDAO extends ConnectionDAO implements ExecuteQueryUserInterface {
-
-	public UserDAO() {
+	public AdminDAO(){
 		super();
 	}
-	
+
 	@Override
-	public void addUser(final User user){
+	public void addUser(User user) {
 		try {
 			final String query ="INSERT into user(username,password) values(?,?)";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -33,11 +33,17 @@ public class UserDAO extends ConnectionDAO implements ExecuteQueryUserInterface 
 			// TODO: handle exception
 			System.out.println("SQLException:" + e.getSQLState());
 			System.out.println("Insert Failed -> duplicated Key!!");
-		}
+		}		
 	}
-	
+
 	@Override
-	public List<User> getAllUsers(){
+	public void addAdmin(Admin admin) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<User> getAllUsers() {
 		List<User> users = new ArrayList<>();
 		final String query = "SELECT * FROM user";
 		try {
@@ -58,10 +64,16 @@ public class UserDAO extends ConnectionDAO implements ExecuteQueryUserInterface 
 		
 		return users;
 	}
-	
+
 	@Override
-	public User getUser(final String username){
-		User user = Factories.getInstance().makeUser();
+	public List<Admin> getAllAdmins() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUser(String username) {
+User user = Factories.getInstance().makeUser();
 		
 		try {
 			final String query = "SELECT * FROM user WHERE username=?";
@@ -84,17 +96,15 @@ public class UserDAO extends ConnectionDAO implements ExecuteQueryUserInterface 
 		
 		return user;
 	}
-	
-	public boolean validate(String username, String password){
-		User user = getUser(username);
-		
-		if(user.getUsername() != null && user.getPassword().equals(password))
-			return true;
-		return false;
-	}
-	
+
 	@Override
-	public void deleteUser(String username){
+	public User getAdmin(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteUser(String username) {
 		try {
 			final String query = "DELETE FROM my_db.user WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -113,7 +123,13 @@ public class UserDAO extends ConnectionDAO implements ExecuteQueryUserInterface 
 	}
 
 	@Override
-	public void updateUser(final String username, final String password){
+	public void deleteAdmin(String username, String password) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateUser(String username, String password) {
 		try {
 			final String query = "UPDATE my_db.user SET username=?,password=? WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -132,5 +148,13 @@ public class UserDAO extends ConnectionDAO implements ExecuteQueryUserInterface 
 			System.out.println("Impossible to update the user: " + username);
 		}
 	}
+
+	@Override
+	public void updateAdmin(String username, String password) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 }
