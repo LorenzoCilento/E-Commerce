@@ -23,12 +23,12 @@
 						<span class="src-only"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span> <span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html">E-Commerce</a>
+					<a class="navbar-brand" href="home.jsp">E-Commerce</a>
 				</div>
 
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="index.html"> Home</a></li>
+						<li class="active"><a href="home.jsp"> Home</a></li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> Menu<b class="caret"></b></a>
 							<ul class="dropdown-menu">
@@ -50,16 +50,23 @@
 								class="glyphicon glyphicon-user"></span> 
 								<%=((User)session.getAttribute("user")).getUsername() %><b class="caret"></b></a>
 								<ul class="dropdown-menu">
-								<li><a href="LogoutController">Logout</a></li>
+								<li><a id="logout">Logout</a></li>
 							</ul></li>
 								</ul>
+								<script> 
+									$("#logout").click(
+											function() {
+												window.location.href = "LogoutController";
+											}
+									);
+								</script>
 				<%} %>
 			
 
 					<form class="navbar-form" role="search">
 						<div class="form-group" style="display: inline">
 							<div class="input-group">
-								<input type="text" class="form-control" size="80%"
+								<input type="text" class="form-control" size="50%"
 									placeholder="Cerca"> <span class="input-group-addon"><span
 									class="glyphicon glyphicon-search"> </span></span>
 							</div>
@@ -85,10 +92,10 @@
 			</div>
 			
 			<div class="form group">
-				<label for="name" class="col-sm-3 control-label">Password</label>
+				<label for="password" class="col-sm-3 control-label">Password</label>
 				<div class="col-sm-9">
 					<input type="password" name="password" id="password" placeholder="Password"
-						class="form-control" autofocus> 
+						class="form-control" > 
 				</div>
 			</div>
 			
