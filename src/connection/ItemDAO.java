@@ -10,7 +10,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 import model.bean.Item;
 
-class ItemDAO extends ConnectionDAO implements QueryItemInterface {
+public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 
 	public ItemDAO() {
 		super();
@@ -48,7 +48,7 @@ class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 		JSONObject json = new JSONObject();
 		JSONArray items = new JSONArray();
 		try {
-			final String query = "select * from my_db.dish order by (my_db.dish.type)desc;";
+			final String query = "select * from my_db.item order by (my_db.item.name)desc;";
 			final PreparedStatement ps = createConnection().prepareStatement(
 					query);
 			final ResultSet mResultSet = ps.executeQuery();
@@ -76,9 +76,29 @@ class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 	}
 
 	@Override
-	public JSONObject getItem() {
-		// TODO Auto-generated method stub
-		return null;
+	public JSONObject getItem(int id) {
+		
+		JSONObject json = new JSONObject();
+		try {
+		final String query = "select * from my_db.item as i where i.id=?;";
+		final PreparedStatement ps = createConnection().prepareStatement(
+				query);
+		ps.setString(1, "id");
+		ResultSet mResultSet = ps.executeQuery();
+		json.put("id", mResultSet.getString("id"));
+		json.put("name", mResultSet.getString("type"));
+		json.put("category", mResultSet.getString("point"));
+		json.put("price", mResultSet.getString("vote"));
+		json.put("vote", mResultSet.getString("path"));
+		json.put("description", mResultSet.getString("description"));
+		json.put("duration", mResultSet.getString("day_of_week"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return json;
+		
 	}
 
 	@Override

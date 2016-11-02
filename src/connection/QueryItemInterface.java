@@ -12,7 +12,7 @@ interface QueryItemInterface {
 	
 	public JSONObject getAllItems();
 	
-	public JSONObject getItem();
+	public JSONObject getItem(int id);
 	
 	public void modifyItem();
 	
