@@ -16,6 +16,8 @@ $(document)
 									+item.vote
 									+"|"
 									+item.description
+									+"|"
+									+item.description
 									+ "</div>");
 					}
 				});
