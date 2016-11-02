@@ -32,7 +32,7 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> Menu<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="#">Link 1</a></li>
+								<li><a href="LoadItemController">Prodotti</a></li>
 							</ul></li>
 					</ul>
 

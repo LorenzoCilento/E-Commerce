@@ -48,19 +48,21 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 		JSONObject json = new JSONObject();
 		JSONArray items = new JSONArray();
 		try {
-			final String query = "select * from my_db.item order by (my_db.item.name)desc;";
+
+			final String query = "select * from my_db.item ;";
 			final PreparedStatement ps = createConnection().prepareStatement(
 					query);
 			final ResultSet mResultSet = ps.executeQuery();
 			while (mResultSet.next()) {
 				JSONObject item = new JSONObject();
 				item.put("id", mResultSet.getString("id"));
-				item.put("name", mResultSet.getString("type"));
-				item.put("category", mResultSet.getString("point"));
-				item.put("price", mResultSet.getString("vote"));
-				item.put("vote", mResultSet.getString("path"));
+				item.put("name", mResultSet.getString("name"));
+				item.put("category", mResultSet.getString("category"));
+				item.put("price", mResultSet.getString("price"));
+				item.put("vote", mResultSet.getString("vote"));
 				item.put("description", mResultSet.getString("description"));
-				item.put("duration", mResultSet.getString("day_of_week"));
+				item.put("duration", mResultSet.getString("duration"));
+				item.put("path", mResultSet.getString("path"));
 				
 				items.put(item);
 			}
