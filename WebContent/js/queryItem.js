@@ -18,6 +18,8 @@ $(document)
 									+item.description
 									+"|"
 									+item.description
+									+"|"
+									+item.description
 									+ "</div>");
 					}
 				});
