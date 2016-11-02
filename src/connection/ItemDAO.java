@@ -61,6 +61,7 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 				item.put("vote", mResultSet.getString("vote"));
 				item.put("description", mResultSet.getString("description"));
 				item.put("duration", mResultSet.getString("duration"));
+				item.put("path", mResultSet.getString("path"));
 				
 				items.put(item);
 			}
