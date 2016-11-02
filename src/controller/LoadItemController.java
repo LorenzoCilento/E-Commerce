@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jettison.json.JSONObject;
 
+import connection.ItemDAO;
+
 /**
  * Servlet implementation class LoadItemController
  */
@@ -28,8 +30,7 @@ public class LoadItemController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		JSONObject items = new JSONObject();
+		JSONObject items = new ItemDAO().getAllItems();
 		request.getSession().setAttribute("items", items);
 		response.sendRedirect("item.jsp");
 	}

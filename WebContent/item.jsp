@@ -12,13 +12,16 @@
 <script src="jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="bootstrap/js/modernizr.custom.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <title>E-Commerce</title>
 </head>
 <script type="text/javascript">
 	var jsonItems =
-<%=session.getAttribute("items")%>
+	<%=session.getAttribute("items")%>
 	;
 </script>
+<script src="js/queryItem.js"></script>
 <body>
 <header>
 		<nav class="navbar navbar-inverse" role="navigation">
