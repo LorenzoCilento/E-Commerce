@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.bean.User;
 
-public interface ExecuteQueryUserInterface {
+public interface QueryUserInterface {
 
 	public void addUser(final User user);
 	public List<User> getAllUsers();

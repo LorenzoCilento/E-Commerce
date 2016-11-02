@@ -17,7 +17,7 @@ public class Item {
 	public Item(){
 	}
 
-	public Item(int id, String name, String category, double price, int vote, String description, int duration,	Date startDate, Bid bestBid) {
+	public Item(int id, String name, String category, double price, int vote, String description, int duration,	Date startDate) {
 
 		this.id = id;
 		this.name = name;
@@ -27,7 +27,7 @@ public class Item {
 		this.description = description;
 		this.duration = duration;
 		this.startDate = startDate;
-		this.bestBid=bestBid;
+		this.bestBid=null;
 		
 	}
 
