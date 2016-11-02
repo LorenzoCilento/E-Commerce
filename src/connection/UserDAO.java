@@ -10,7 +10,7 @@ import model.bean.User;
 import util.Factories;
 
 
-public class UserDAO extends ConnectionDAO implements ExecuteQueryUserInterface {
+public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 
 	public UserDAO() {
 		super();

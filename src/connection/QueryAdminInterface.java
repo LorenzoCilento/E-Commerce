@@ -5,7 +5,7 @@ import java.util.List;
 import model.bean.Admin;
 import model.bean.User;
 
-public interface ExecuteQueryAdminInterface {
+public interface QueryAdminInterface {
 
 	public void addUser(final User user);
 	public void addAdmin(final Admin admin);

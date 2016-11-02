@@ -10,7 +10,7 @@ import model.bean.Admin;
 import model.bean.User;
 import util.Factories;
 
-public class AdminDAO extends ConnectionDAO implements ExecuteQueryAdminInterface {
+public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 
 	private AdminDAO(){
 		super();
