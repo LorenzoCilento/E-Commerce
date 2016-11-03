@@ -16,32 +16,31 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 	public ItemDAO() {
 		super();
 	}
-	
+
 	@Override
 	public void addItem(Item item) {
 		try {
-			final String query ="INSERT into item(id,name,category,price,vote,description,duration,startDate) values(?,?,?,?,?,?,?,?)";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
-//			ps.setString(1, user.getUsername());
-//			ps.setString(2, user.getPassword());
-			
-			ps.executeUpdate();			
-	
+			final String query = "INSERT into item(id,name,category,price,vote,description,duration,startDate) values(?,?,?,?,?,?,?,?)";
+			PreparedStatement ps = createConnection().prepareStatement(query);
+			// ps.setString(1, user.getUsername());
+			// ps.setString(2, user.getPassword());
+
+			ps.executeUpdate();
+
 			closeConnection();
-			
+
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("SQLException:" + e.getSQLState());
 			System.out.println("Insert Failed -> duplicated Key!!");
 		}
-		
+
 	}
 
 	@Override
 	public void removeItem(Item item) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -51,8 +50,7 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 		try {
 
 			final String query = "select * from my_db.item ;";
-			final PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final PreparedStatement ps = createConnection().prepareStatement(query);
 			final ResultSet mResultSet = ps.executeQuery();
 			while (mResultSet.next()) {
 				JSONObject item = new JSONObject();
@@ -64,7 +62,7 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 				item.put("description", mResultSet.getString("description"));
 				item.put("duration", mResultSet.getString("duration"));
 				item.put("path", mResultSet.getString("path"));
-				
+
 				items.put(item);
 			}
 			json.put("items", items);
@@ -80,42 +78,39 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 
 	@Override
 	public JSONObject getItem(int id) {
-		
+
 		JSONObject json = new JSONObject();
 		try {
-		final String query = "select * from my_db.item as i where i.id=?;";
-		final PreparedStatement ps = createConnection().prepareStatement(
-				query);
-		ps.setString(1, "id");
-		ResultSet mResultSet = ps.executeQuery();
-		json.put("id", mResultSet.getString("id"));
-		json.put("name", mResultSet.getString("name"));
-		json.put("category", mResultSet.getString("category"));
-		json.put("price", mResultSet.getString("price"));
-		json.put("vote", mResultSet.getString("vote"));
-		json.put("description", mResultSet.getString("description"));
-		json.put("duration", mResultSet.getString("duration"));
+			final String query = "select * from my_db.item as i where i.id=?;";
+			final PreparedStatement ps = createConnection().prepareStatement(query);
+			ps.setString(1, "id");
+			ResultSet mResultSet = ps.executeQuery();
+			json.put("id", mResultSet.getString("id"));
+			json.put("name", mResultSet.getString("name"));
+			json.put("category", mResultSet.getString("category"));
+			json.put("price", mResultSet.getString("price"));
+			json.put("vote", mResultSet.getString("vote"));
+			json.put("description", mResultSet.getString("description"));
+			json.put("duration", mResultSet.getString("duration"));
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return json;
-		
+
 	}
 
 	@Override
 	public void modifyItem() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void getLastItems() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	
-	
 }
