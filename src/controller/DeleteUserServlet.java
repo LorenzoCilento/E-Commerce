@@ -41,7 +41,7 @@ public class DeleteUserServlet extends HttpServlet {
         
         User user = Factories.getInstance().makeUser();
                 
-        new UserDAO().deleteUser(username);
+        new UserDAO().removeUser(username);
         out.print("Username" +username);
         
         out.close();

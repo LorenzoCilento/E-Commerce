@@ -94,7 +94,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 	}
 	
 	@Override
-	public void deleteUser(String username){
+	public void removeUser(String username){
 		try {
 			final String query = "DELETE FROM my_db.user WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(

@@ -104,7 +104,7 @@ User user = Factories.getInstance().makeUser();
 	}
 
 	@Override
-	public void deleteUser(String username) {
+	public void removeUser(String username) {
 		try {
 			final String query = "DELETE FROM my_db.user WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -123,7 +123,7 @@ User user = Factories.getInstance().makeUser();
 	}
 
 	@Override
-	public void deleteAdmin(String username, String password) {
+	public void removeAdmin(String username, String password) {
 		// TODO Auto-generated method stub
 		
 	}

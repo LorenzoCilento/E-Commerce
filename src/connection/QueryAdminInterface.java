@@ -16,8 +16,8 @@ public interface QueryAdminInterface {
 	public User getUser(final String username);
 	public Admin getAdmin(final String username);
 	
-	public void deleteUser(String username);
-	public void deleteAdmin(final String username, final String password);
+	public void removeUser(String username);
+	public void removeAdmin(final String username, final String password);
 	
 	public void updateUser(final String username, final String password);
 	public void updateAdmin(final String username, final String password);
