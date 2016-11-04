@@ -1,5 +1,8 @@
 /connection/
 /controller/
-/util/
 /model/
+<<<<<<< HEAD
 /db.properties
+=======
+/util/
+>>>>>>> refs/remotes/origin/Lorenzo

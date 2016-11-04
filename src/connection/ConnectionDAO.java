@@ -6,9 +6,10 @@ import java.util.Properties;
 
 
 public class ConnectionDAO {
-	
+
 	private final static ConnectionDAO connectionDAO = new ConnectionDAO();
 	private static Connection con;
+<<<<<<< HEAD
 	
 	private static String dbPassword;
 
@@ -46,22 +47,35 @@ public class ConnectionDAO {
 		dbUsername = properties.getProperty("db.username");
 		dbPassword = properties.getProperty("db.password");
 		loadDriver(dbDriver);
+=======
+
+	public ConnectionDAO() {
+>>>>>>> refs/remotes/origin/Lorenzo
 	}
-	
-	public static synchronized ConnectionDAO getInstanceConnectionDAO(){
+
+	public static synchronized ConnectionDAO getInstanceConnectionDAO() {
 		return connectionDAO;
 	}
-	
+
 	public Connection createConnection() {
 		con = null;
 		try {
+<<<<<<< HEAD
 			con= DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 		} catch (final SQLException e) {
 			throw new RuntimeException("Cannot create the connection", e);
+=======
+			Class.forName("com.mysql.jdbc.Driver");
+			// ("jdbc:mysql://nomedominio.altervista.org:3306/my_nomedominio",
+			// "nomedominio", "password");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_db", "root", "root");
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+>>>>>>> refs/remotes/origin/Lorenzo
 		}
 		return con;
 	}
-	
+
 	public void closeConnection() {
 		try {
 			con.close();

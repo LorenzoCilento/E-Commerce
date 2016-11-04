@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet" type="text/css">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <script src="jquery-3.1.1.js"></script>
@@ -87,20 +89,13 @@
 	</header>
 
 
-	<!-- content -->
-	<div class="content">
-		<div class="container">
-			<h2>Ultimi Prodotti Inseriti</h2>
-			<div class="load_more">
-				<ul id="myList">
-					<li>
-						<div class="l_g"></div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+
 	<!-- container -->
+	<div class="container">
+		 <div class="row text-center">
+		 	<div class="l_g"></div>
+		 </div>
+	</div>
 
 	<footer class="container-fluid text-center">
 		<p>Footer Text</p>

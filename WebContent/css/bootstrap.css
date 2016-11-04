@@ -1,3 +1,5 @@
+@CHARSET "UTF-8";
+
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
@@ -13,7 +15,7 @@ footer {
 
 .carousel-inner img {
 	width: 100%; /* Set width to 100% */
-	margin: auto;
+	margin: 0;
 	min-height: 200px;
 }
 
@@ -21,6 +23,7 @@ footer {
 	background-color: #32CD32;
 	color: white;
 	margin-bottom: 0;
+	padding: 10px,10px,10px,10px;
 }
 
 /* Hide the carousel text when the screen is less than 600 pixels wide */
@@ -28,4 +31,46 @@ footer {
 	.carousel-caption {
 		display: none;
 	}
+}
+
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+}
+
+.ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
 }
