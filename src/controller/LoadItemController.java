@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,9 +33,11 @@ public class LoadItemController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		JSONObject items = new ItemDAO().getAllItems();
-		request.getSession().setAttribute("items", items);
-		response.sendRedirect("item.jsp");
+		JSONObject item = new ItemDAO().getItem(Integer.parseInt(request.getParameter("id")));
+		if (item != null) {
+			request.getSession().setAttribute("item", item);
+			response.sendRedirect("item.jsp");
+		}
 	}
 
 	/**

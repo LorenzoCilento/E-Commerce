@@ -28,12 +28,7 @@
     <script src = "js/html5shiv.js"></script>
 	<script src = "js/respond.js"></script>
  	<!--  [endif]  -->
-<script type="text/javascript">
-var jsonItem =
-	<%=session.getAttribute("item")%>
-		;
-</script>
-<script type="text/javascript" src="js/queryItem.js"></script>
+<script type="text/javascript" src="js/queryAllItem.js"></script>
 
 </head>
 

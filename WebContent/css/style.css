@@ -6,11 +6,15 @@
     padding-right: 30px;
     padding-bottom: 50px;
     padding-left: 80px;
+    overflow:auto;
 }
 .thumbnail{
+	padding:0;
 	border: medium;
+	overflow:auto;
 }
 .thumbnail > img {
-  	width: 200px; 
+  	width: 300px; 
 	height: auto;
 }
+

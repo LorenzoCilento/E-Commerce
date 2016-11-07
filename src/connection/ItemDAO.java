@@ -78,25 +78,36 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 
 	@Override
 	public JSONObject getItem(int id) {
-
+		
 		JSONObject json = new JSONObject();
+		JSONArray items = new JSONArray();
 		try {
-			final String query = "select * from my_db.item as i where i.id=?;";
+			final String query = "select * from my_db.item where id=?";
 			final PreparedStatement ps = createConnection().prepareStatement(query);
-			ps.setString(1, "id");
+			ps.setString(1, ""+id);
 			ResultSet mResultSet = ps.executeQuery();
-			json.put("id", mResultSet.getString("id"));
-			json.put("name", mResultSet.getString("name"));
-			json.put("category", mResultSet.getString("category"));
-			json.put("price", mResultSet.getString("price"));
-			json.put("vote", mResultSet.getString("vote"));
-			json.put("description", mResultSet.getString("description"));
-			json.put("duration", mResultSet.getString("duration"));
+			
+			while (mResultSet.next()) {
+				JSONObject item = new JSONObject();
+				item.put("id", mResultSet.getString("id"));
+				item.put("name", mResultSet.getString("name"));
+				item.put("category", mResultSet.getString("category"));
+				item.put("price", mResultSet.getString("price"));
+				item.put("vote", mResultSet.getString("vote"));
+				item.put("description", mResultSet.getString("description"));
+				item.put("duration", mResultSet.getString("duration"));
+				item.put("path", mResultSet.getString("path"));
+
+				items.put(item);
+			}
+			json.put("item",items);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	
 		return json;
 
 	}
