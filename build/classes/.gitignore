@@ -1,8 +1,4 @@
+/model/
+/util/
 /connection/
 /controller/
-/model/
-<<<<<<< HEAD
-/db.properties
-=======
-/util/
->>>>>>> refs/remotes/origin/Lorenzo

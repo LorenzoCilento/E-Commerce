@@ -38,7 +38,6 @@ import model.bean.Item;
 	}
 
 	@Override
-<<<<<<< HEAD
 	public void removeItem(String id) {
 		try {
 			final String query = "DELETE FROM my_db.item WHERE id=?";
@@ -54,10 +53,10 @@ import model.bean.Item;
 			// TODO: handle exception
 			System.out.println("Impossible to delete the item: " + id);
 		}
-=======
+	}
+
 	public void removeItem(Item item) {
 		// TODO Auto-generated method stub
->>>>>>> refs/remotes/origin/Lorenzo
 
 	}
 
@@ -122,19 +121,13 @@ import model.bean.Item;
 	@Override
 	public void updateBidItem(Item item, Bid bid) {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/Lorenzo
 	}
 
 	@Override
 	public void getLastItems() {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/Lorenzo
 	}
 
 }

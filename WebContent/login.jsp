@@ -78,7 +78,7 @@
 	</header>
 	
 	<div class = "container well">
-		<form action ="LoginController" class="form horizontal" role="form" method="get">
+		<form action ="LoginController" class="form horizontal" method="get">
 			<div class="well" id="registration" style="text-align: center;">
 				<h2>Accedi</h2>
 			</div>
@@ -86,15 +86,14 @@
 			<div class="form group">
 				<label for="name" class="col-sm-3 control-label">Username</label>
 				<div class="col-sm-9">
-					<input type="text" name="username" id="username" placeholder="Username"
-						class="form-control" autofocus> 
+					<input type="text" name="username" id="username" placeholder="USERNAME"> 
 				</div>
 			</div>
 			
 			<div class="form group">
 				<label for="password" class="col-sm-3 control-label">Password</label>
 				<div class="col-sm-9">
-					<input type="password" name="password" id="password" placeholder="Password"
+					<input type="password" name="password" id="password" placeholder="PASSWORD"
 						class="form-control" > 
 				</div>
 			</div>
