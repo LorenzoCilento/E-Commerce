@@ -85,19 +85,6 @@ ul.message-dropdown {
     overflow-y: auto;
 }
 
-li.message-preview {
-    width: 275px;
-    border-bottom: 1px solid rgba(0,0,0,.15);
-}
-
-li.message-preview>a {
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
-li.message-footer {
-    margin: 5px 0;
-}
 
 ul.alert-dropdown {
     width: 200px;
