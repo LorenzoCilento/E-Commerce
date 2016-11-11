@@ -10,12 +10,12 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
+import model.bean.Bid;
 import model.bean.Item;
 
-public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
-
-	public ItemDAO() {
-		super();
+	public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
+		public ItemDAO() {
+			super();
 	}
 
 	@Override
@@ -39,6 +39,23 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 	}
 
 	@Override
+	public void removeItem(String id) {
+		try {
+			final String query = "DELETE FROM my_db.item WHERE id=?";
+			PreparedStatement ps = createConnection().prepareStatement(query);
+
+			ps.setString(1, id);
+
+			ps.execute();
+
+			closeConnection();
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Impossible to delete the item: " + id);
+		}
+	}
+
 	public void removeItem(Item item) {
 		// TODO Auto-generated method stub
 
@@ -165,7 +182,7 @@ public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 	}
 
 	@Override
-	public void modifyItem() {
+	public void updateBidItem(Item item, Bid bid) {
 		// TODO Auto-generated method stub
 
 	}

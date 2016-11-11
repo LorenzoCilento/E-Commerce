@@ -2,13 +2,14 @@ package connection;
 
 import org.codehaus.jettison.json.JSONObject;
 
+import model.bean.Bid;
 import model.bean.Item;
 
 interface QueryItemInterface {
 
 	public void addItem(Item item);
 	
-	public void removeItem(Item item);
+	public void removeItem(String id);
 	
 	public JSONObject getAllItems();
 	
@@ -16,7 +17,7 @@ interface QueryItemInterface {
 	
 	public JSONObject getItem(int id);
 	
-	public void modifyItem();
+	public void updateBidItem(Item item, Bid bid);
 	
 	public void getLastItems();
 	

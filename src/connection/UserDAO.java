@@ -28,11 +28,11 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 			ps.executeUpdate();			
 	
 			closeConnection();
-			
+			System.out.println("USer inserito");
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("SQLException:" + e.getSQLState());
-			System.out.println("Insert Failed -> duplicated Key!!");
+			System.out.println("Impossible to add new User!!");
 		}
 	}
 	
@@ -79,7 +79,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 			
 			closeConnection();
 		} catch (Exception e) {
-			System.out.println("User non trovato");
+			System.out.println("User non presente nel DataBase!!!");
 		}
 		
 		return user;
@@ -94,7 +94,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 	}
 	
 	@Override
-	public void deleteUser(String username){
+	public void removeUser(String username){
 		try {
 			final String query = "DELETE FROM my_db.user WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(

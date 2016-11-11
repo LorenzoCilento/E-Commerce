@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,19 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import connection.UserDAO;
 import model.bean.User;
-import util.Factories;
+import util.Validate;
 
 /**
- * Servlet implementation class removeUserServlet
+ * Servlet implementation class CheckUserController
  */
-@WebServlet("/DeleteUserServlet")
-public class DeleteUserServlet extends HttpServlet {
+@WebServlet("/CheckUserController")
+public class CheckUserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteUserServlet() {
+    public CheckUserController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,27 +30,27 @@ public class DeleteUserServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.setContentType("text/html");
-		
-		PrintWriter out=response.getWriter();  
-        
-        String username=request.getParameter("username");          
-        
-        User user = Factories.getInstance().makeUser();
-                
-        new UserDAO().removeUser(username);
-        out.print("Username" +username);
-        
-        out.close();
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username = request.getParameter("username");
+		if (new Validate().validateParameters(username)){
+			User mUser = new UserDAO().getUser(username);
+		
+			if (mUser.getUsername() == (null))
+				response.getWriter().write("success");
+			else 
+				response.getWriter().write("error");
+			
+		}
+		else{
+			response.getWriter().write("warning");
+		}
+
 	}
 
 }
