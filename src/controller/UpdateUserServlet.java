@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import connection.UserDAO;
-import model.bean.User;
-import util.Factories;
 
 /**
  * Servlet implementation class UpdateUserServlet

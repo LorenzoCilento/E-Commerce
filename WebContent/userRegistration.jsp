@@ -1,34 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="model.bean.User"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
-<style>
-label>span {
-	font-family: Georgia;
-	font-size: 11px !important;
-	font-weight: bold;
-	color: #DD3D36;
-	margin-bottom: 5px;
-}
-
-#submitForm {
-	background-color: #4CAF50;
-}
-</style>
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<<<<<<< HEAD
 <script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/js/modernizr.custom.js"></script>
-=======
-<script src="jquery-3.1.1.js"></script>
 <!-- Bootstrap Core CSS -->
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
->>>>>>> Rocco
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <title>Registration</title>
@@ -45,18 +25,6 @@ label>span {
 			</button>
 			<a class="navbar-brand" href="home.jsp">E-Commerce</a>
 		</div>
-
-<<<<<<< HEAD
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="home.jsp"> Home</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"> Menu<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="items.jsp">Prodotti</a></li>
-							</ul></li>
-					</ul>
-=======
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-left">
 				<li class="active"><a href="home.jsp"> Home</a></li>
@@ -66,8 +34,6 @@ label>span {
 						<li><a href="items.jsp">Prodotti</a></li>
 					</ul></li>
 			</ul>
->>>>>>> Rocco
-
 			<%
 				if (session.getAttribute("user") == null) {
 			%>
@@ -256,9 +222,19 @@ label>span {
 	</div>
 
 
-	<footer class="container-fluid text-center">
-	<p>Footer Text</p>
-	</footer>
+	
+		<div class="containerFooter">
+		<hr>
+		<!-- Footer -->
+		<footer class="container-fluid text-center">
+			<div class="row">
+				<div class="col-lg-12">
+					<p>Copyright by Rocco_Lorenzo &copy; 2016</p>
+				</div>
+			</div>
+		</footer>
+		</div>
+		<!-- /.containerFooter -->
 
 	<script type="text/javascript">
 	function checkUsername(username){

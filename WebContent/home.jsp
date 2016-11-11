@@ -1,35 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="model.bean.User"%>
 <!DOCTYPE html>
 <html lang="it">
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ page import="model.bean.User"%>
-
 <head>
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
-<<<<<<< HEAD
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-=======
-<script src="jquery-3.1.1.js"></script>
->>>>>>> Rocco
 
 <title>BuyDream Homepage - Your best E-Commerce</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<!-- <link href="css/shop-homepage.css" rel="stylesheet">-->
-
-<!-- [if lt IE 9 ]  -->
-<!--<script src="js/html5shiv.js"></script>
-<script src="js/respond.js"></script>-->
-<!--  [endif]  -->
 <script type="text/javascript" src="js/queryAllItem.js"></script>
 <script type="text/javascript" src="js/queryAllCategories.js"></script>
 <script type="text/javascript">
@@ -196,7 +182,6 @@
 	<!-- /.container -->
 
 	<div class="containerFooter">
-
 		<hr>
 
 		<!-- Footer -->
@@ -207,10 +192,7 @@
 				</div>
 			</div>
 		</footer>
-
 	</div>
 	<!-- /.containerFooter -->
-
 </body>
-
 </html>

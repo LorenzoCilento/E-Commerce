@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@page import="model.bean.User"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="it">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 <script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/js/modernizr.custom.js"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <title>Login</title>
@@ -32,7 +31,7 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> Menu<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="LoadItemController">Prodotti</a></li>
+								<li><a href="items.jsp">Prodotti</a></li>
 							</ul></li>
 					</ul>
 			<% if(session.getAttribute("user") == null) { %>

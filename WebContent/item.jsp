@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="model.bean.User"%>
+
+<!DOCTYPE html>
+<html lang="it">
 
 <head>
 
@@ -19,14 +19,6 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom CSS -->
-<!-- <link href="css/shop-homepage.css" rel="stylesheet">-->
-
-<!-- [if lt IE 9 ]  -->
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.js"></script>
-<!--  [endif]  -->
 <script type="text/javascript">
 	var jsonItem =
 <%=session.getAttribute("item")%>
