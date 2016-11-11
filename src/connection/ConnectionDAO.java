@@ -9,6 +9,7 @@ public class ConnectionDAO {
 	private static Connection con;
 
 	public ConnectionDAO() {
+		
 	}
 
 	public static synchronized ConnectionDAO getInstanceConnectionDAO() {
@@ -21,7 +22,7 @@ public class ConnectionDAO {
 			Class.forName("com.mysql.jdbc.Driver");
 			// ("jdbc:mysql://nomedominio.altervista.org:3306/my_nomedominio",
 			// "nomedominio", "password");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_db", "root", "root");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/my_db?autoReconnect=true&&useSSL=false", "root", "root");
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
@@ -29,10 +30,12 @@ public class ConnectionDAO {
 	}
 
 	public void closeConnection() {
-		try {
-			con.close();
-		} catch (Exception e) {
-			// TODO: handle exception
+//		if (con != null) {
+			try {
+				con.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 		}
-	}
+//	}
 }

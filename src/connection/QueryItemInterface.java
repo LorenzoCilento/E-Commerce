@@ -12,6 +12,8 @@ interface QueryItemInterface {
 	
 	public JSONObject getAllItems();
 	
+	public JSONObject getAllItemsByCategory(String category);
+	
 	public JSONObject getItem(int id);
 	
 	public void modifyItem();

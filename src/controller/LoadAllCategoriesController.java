@@ -1,8 +1,6 @@
 package controller;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,19 +9,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jettison.json.JSONObject;
 
-import connection.ItemDAO;
+import connection.CategoryDAO;
 
 /**
- * Servlet implementation class LoadAllItemController
+ * Servlet implementation class LoadAllCategories
  */
-@WebServlet("/LoadAllItemController")
-public class LoadAllItemController extends HttpServlet {
+@WebServlet("/LoadAllCategoriesController")
+public class LoadAllCategoriesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoadAllItemController() {
+    public LoadAllCategoriesController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,9 +30,9 @@ public class LoadAllItemController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JSONObject items = new ItemDAO().getAllItems();
+		JSONObject categories = new CategoryDAO().getAllCategory();
 		response.setContentType("application/json");
-		response.getWriter().write(items.toString());
+		response.getWriter().write(categories.toString());
 	}
 
 	/**

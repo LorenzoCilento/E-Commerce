@@ -15,4 +15,46 @@ id="WebApp_ID" version="3.0">
 <url-pattern>/AddUserServelet</url-pattern> 
 </servlet-mapping>
 
+<servlet> 
+<servlet-name>DeleteUserServelet</servlet-name> 
+<servlet-class>controller.DeleteUserServelet</servlet-class> 
+</servlet>
+<servlet-mapping> 
+<servlet-name>DeleteUserServelet</servlet-name> 
+<url-pattern>/DeleteUserServelet</url-pattern> 
+</servlet-mapping>
+
+<servlet> 
+<servlet-name>GetUserServelet</servlet-name> 
+<servlet-class>controller.GetUserServelet</servlet-class> 
+</servlet>
+<servlet-mapping> 
+<servlet-name>GetUserServelet</servlet-name> 
+<url-pattern>/GetUserServelet</url-pattern> 
+</servlet-mapping>
+
+<servlet> 
+<servlet-name>LoadAllCategoriesController</servlet-name> 
+<servlet-class>controller.LoadAllCategoriesController</servlet-class> 
+</servlet>
+<servlet-mapping> 
+<servlet-name>LoadAllCategoriesController</servlet-name> 
+<url-pattern>/LoadAllCategoriesController</url-pattern> 
+</servlet-mapping>
+
+<servlet> 
+<servlet-name>LoadAllItemController</servlet-name> 
+<servlet-class>controller.LoadAllItemController</servlet-class> 
+</servlet>
+<servlet-mapping> 
+<servlet-name>LoadAllItemController</servlet-name> 
+<url-pattern>/LoadAllItemController</url-pattern> 
+</servlet-mapping>
+
+<welcome-file-list>
+        <welcome-file>home.jsp</welcome-file>
+    </welcome-file-list>
+
+
+
 </web-app>  

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<script src="jquery-3.1.1.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="bootstrap/js/modernizr.custom.js"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
@@ -33,7 +33,7 @@
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> Menu<b class="caret"></b></a>
 							<ul class="dropdown-menu">
-								<li><a href="LoadItemController">Prodotti</a></li>
+								<li><a href="items.jsp">Prodotti</a></li>
 							</ul></li>
 					</ul>
 

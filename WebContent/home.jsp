@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -12,7 +12,7 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
-<script src="jquery-3.1.1.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
 <title>BuyDream Homepage - Your best E-Commerce</title>
@@ -24,83 +24,91 @@
 <!-- <link href="css/shop-homepage.css" rel="stylesheet">-->
 
 <!-- [if lt IE 9 ]  -->
-<script src="js/html5shiv.js"></script>
-<script src="js/respond.js"></script>
+<!--<script src="js/html5shiv.js"></script>
+<script src="js/respond.js"></script>-->
 <!--  [endif]  -->
 <script type="text/javascript" src="js/queryAllItem.js"></script>
+<script type="text/javascript" src="js/queryAllCategories.js"></script>
+<script type="text/javascript">
+	function clicked(obj) {
+		var cat = obj.text;
+		
+}
+</script>
 </head>
 
 <body>
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-inverse" role="navigation">
-		<div class="container-fluid">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#myNavBar" aria-expanded="false">
-					<span class="src-only"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="home.jsp">BuyDream</a>
-			</div>
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse" id="myNavBar">
-				<ul class="nav navbar-nav navbar-left">
-					<li class="active"><a href="home.jsp">Home</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> Menu<b class="caret"></b>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="items.jsp">Prodotti</a></li>
-						</ul></li>
-				</ul>
-				<%
-					if (session.getAttribute("user") == null) {
-				%>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="userRegistration.jsp"> <span
-							class="glyphicon glyphicon-user"></span> Registrati
-					</a></li>
+	<nav class="navbar" role="navigation">
+		<div class=navbar-inner>
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target="#myNavBar" aria-expanded="false">
+						<span class="src-only"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="home.jsp">BuyDream</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="myNavBar">
+					<ul class="nav navbar-nav navbar-left">
+						<li class="active"><a href="home.jsp">Home</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"> Menu<b class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a href="items.jsp">Prodotti</a></li>
+							</ul></li>
+					</ul>
+					<%
+						if (session.getAttribute("user") == null) {
+					%>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="userRegistration.jsp"> <span
+								class="glyphicon glyphicon-user"></span> Registrati
+						</a></li>
 
-					<li><a href="login.jsp"> <span
-							class="glyphicon glyphicon-log-in"></span> Accedi
-					</a></li>
-				</ul>
-				<%
-					} else {
-				%>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown"> <span class="glyphicon glyphicon-user"></span>
-							<%=((User) session.getAttribute("user")).getUsername()%><b
-							class="caret"></b>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a id="logout">Logout</a></li>
-						</ul></li>
-				</ul>
-				<script>
-					$("#logout").click(function() {
-						window.location.href = "LogoutController";
-					});
-				</script>
-				<%
-					}
-				%>
-				<form class="navbar-form" role="search">
-					<div class="form-group" style="display: inline">
-						<div class="input-group">
-							<input type="text" class="form-control" size="50%"
-								placeholder="Cerca"> <span class="input-group-addon">
-								<span class="glyphicon glyphicon-search"> </span>
-							</span>
+						<li><a href="login.jsp"> <span
+								class="glyphicon glyphicon-log-in"></span> Accedi
+						</a></li>
+					</ul>
+					<%
+						} else {
+					%>
+					<ul class="nav navbar-nav navbar-right">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"> <span
+								class="glyphicon glyphicon-user"></span> <%=((User) session.getAttribute("user")).getUsername()%><b
+								class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a id="logout">Logout</a></li>
+							</ul></li>
+					</ul>
+					<script>
+						$("#logout").click(function() {
+							window.location.href = "LogoutController";
+						});
+					</script>
+					<%
+						}
+					%>
+					<form class="navbar-form" role="search">
+						<div class="form-group" style="display: inline">
+							<div class="input-group">
+								<input type="text" class="form-control" size="50%"
+									placeholder="Cerca"> <span class="input-group-addon">
+									<span class="glyphicon glyphicon-search"> </span>
+								</span>
+							</div>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
+				<!-- /.navbar-collapse -->
 			</div>
-			<!-- /.navbar-collapse -->
-
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
@@ -112,11 +120,7 @@
 		<div class="row">
 			<div class="col-md-3">
 				<h1 class="lead">Categorie</h1>
-				<div class="list-group">
-					<a href="#" class="list-group-item">Abigliamento</a> <a href="#"
-						class="list-group-item">Elettronica</a> <a href="#"
-						class="list-group-item">Fai da te</a>
-				</div>
+				<div class="list-group" id="listCategories"></div>
 			</div>
 
 			<div class="col-md-9">
