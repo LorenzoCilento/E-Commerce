@@ -30,6 +30,7 @@ public class CheckUserController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doPost(request, response);
 	}
 
 	/**
@@ -39,12 +40,15 @@ public class CheckUserController extends HttpServlet {
 		String username = request.getParameter("username");
 		if (new Validate().validateParameters(username)){
 			User mUser = new UserDAO().getUser(username);
-			if (mUser == null) {
-				response.getWriter().write("false");
-			} else {
-				response.getWriter().write("true");
-			}
+		
+			if (mUser.getUsername() == (null))
+				response.getWriter().write("success");
+			else 
+				response.getWriter().write("error");
 			
+		}
+		else{
+			response.getWriter().write("warning");
 		}
 
 	}
