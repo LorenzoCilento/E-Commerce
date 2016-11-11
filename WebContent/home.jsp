@@ -11,12 +11,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
-<<<<<<< HEAD
+
 <script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
-=======
+
 <script src="jquery-3.1.1.js"></script>
->>>>>>> Rocco
+
 
 <title>BuyDream Homepage - Your best E-Commerce</title>
 
