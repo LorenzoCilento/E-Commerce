@@ -20,9 +20,15 @@ label>span {
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<<<<<<< HEAD
+<script src="js/jquery-3.1.1.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="bootstrap/js/modernizr.custom.js"></script>
+=======
 <script src="jquery-3.1.1.js"></script>
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+>>>>>>> Rocco
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <title>Registration</title>
@@ -40,6 +46,17 @@ label>span {
 			<a class="navbar-brand" href="home.jsp">E-Commerce</a>
 		</div>
 
+<<<<<<< HEAD
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-left">
+						<li class="active"><a href="home.jsp"> Home</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"> Menu<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="items.jsp">Prodotti</a></li>
+							</ul></li>
+					</ul>
+=======
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-left">
 				<li class="active"><a href="home.jsp"> Home</a></li>
@@ -49,6 +66,7 @@ label>span {
 						<li><a href="items.jsp">Prodotti</a></li>
 					</ul></li>
 			</ul>
+>>>>>>> Rocco
 
 			<%
 				if (session.getAttribute("user") == null) {

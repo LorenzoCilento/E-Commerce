@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<script src="jquery-3.1.1.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script src="bootstrap/js/modernizr.custom.js"></script>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"

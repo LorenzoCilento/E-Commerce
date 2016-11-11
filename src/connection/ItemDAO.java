@@ -1,6 +1,7 @@
 
 package connection;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -64,11 +65,60 @@ import model.bean.Item;
 	public JSONObject getAllItems() {
 		JSONObject json = new JSONObject();
 		JSONArray items = new JSONArray();
+		final String query = "select * from my_db.item ;";
+		PreparedStatement ps = null;
+		ResultSet mResultSet = null;
 		try {
+			ps = createConnection().prepareStatement(query);
+			mResultSet = ps.executeQuery();
+			
+			if(mResultSet != null) {
+				while (mResultSet.next()) {
+					JSONObject item = new JSONObject();
+					item.put("id", mResultSet.getString("id"));
+					item.put("name", mResultSet.getString("name"));
+					item.put("category", mResultSet.getString("category"));
+					item.put("price", mResultSet.getString("price"));
+					item.put("vote", mResultSet.getString("vote"));
+					item.put("description", mResultSet.getString("description"));
+					item.put("duration", mResultSet.getString("duration"));
+					item.put("path", mResultSet.getString("path"));
+	
+					items.put(item);
+				}
+			}
+			json.put("items", items);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				
+				ps.close();
+				mResultSet.close();
+				closeConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
-			final String query = "select * from my_db.item ;";
+		return json;
+	}
+
+	@Override
+	public JSONObject getItem(int id) {
+
+		JSONObject json = new JSONObject();
+		JSONArray items = new JSONArray();
+		try {
+			final String query = "select * from my_db.item where id=?";
 			final PreparedStatement ps = createConnection().prepareStatement(query);
-			final ResultSet mResultSet = ps.executeQuery();
+			ps.setString(1, "" + id);
+			ResultSet mResultSet = ps.executeQuery();
+
 			while (mResultSet.next()) {
 				JSONObject item = new JSONObject();
 				item.put("id", mResultSet.getString("id"));
@@ -82,8 +132,10 @@ import model.bean.Item;
 
 				items.put(item);
 			}
-			json.put("items", items);
+			json.put("item", items);
+
 			closeConnection();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
@@ -92,18 +144,17 @@ import model.bean.Item;
 
 		return json;
 	}
-
+	
 	@Override
-	public JSONObject getItem(int id) {
-		
+	public JSONObject getAllItemsByCategory(String category) {
 		JSONObject json = new JSONObject();
 		JSONArray items = new JSONArray();
 		try {
-			final String query = "select * from my_db.item where id=?";
+			final String query = "select * from my_db.item where category=?";
 			final PreparedStatement ps = createConnection().prepareStatement(query);
-			ps.setString(1, ""+id);
+			ps.setString(1, category);
 			ResultSet mResultSet = ps.executeQuery();
-			
+
 			while (mResultSet.next()) {
 				JSONObject item = new JSONObject();
 				item.put("id", mResultSet.getString("id"));
@@ -117,16 +168,17 @@ import model.bean.Item;
 
 				items.put(item);
 			}
-			json.put("item",items);
-			
+			json.put("item", items);
+
+			closeConnection();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-	
-		return json;
 
+		return json;
 	}
 
 	@Override
@@ -140,5 +192,6 @@ import model.bean.Item;
 		// TODO Auto-generated method stub
 
 	}
+
 
 }

@@ -31,8 +31,11 @@
 	var jsonItem =
 <%=session.getAttribute("item")%>
 	;
+	alert(jsonItem);
 </script>
-<script type="text/javascript" src="js/queryItem.js"></script>
+<script type="text/javascript" >
+
+</script>
 
 </head>
 

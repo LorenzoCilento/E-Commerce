@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -13,7 +13,7 @@
 	media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css"
 	media="all">
-<script src="jquery-3.1.1.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <title>BuyDream Homepage - You best E-Commerce</title>
@@ -29,6 +29,7 @@
 	<script src = "js/respond.js"></script>
  	<!--  [endif]  -->
 <script type="text/javascript" src="js/queryAllItem.js"></script>
+<script type="text/javascript" src="js/queryAllCategories.js"></script>
 
 </head>
 
@@ -123,14 +124,12 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-3">
-                <h1 class="lead">Categorie</h1>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">Abigliamento</a>
-                    <a href="#" class="list-group-item">Elettronica</a>
-                    <a href="#" class="list-group-item">Fai da te</a>
-                </div>
-          </div>
+          <div class="col-md-3">
+				<h1 class="lead">Categorie</h1>
+				<div class="list-group" id="listCategories">
+					
+				</div>
+			</div>
 
             <div class="col-md-9">
 
