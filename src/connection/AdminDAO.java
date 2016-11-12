@@ -3,9 +3,9 @@ package connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+
 import java.util.Date;
-import java.util.List;
+
 
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
@@ -14,7 +14,7 @@ import model.bean.Admin;
 import model.bean.Comment;
 import model.bean.Item;
 import model.bean.User;
-import util.Factories;
+
 
 public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 
@@ -23,7 +23,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	}
 
 	@Override
-	public void addUser(User user) {
+	public void addUser(final User user) {
 		try {
 			final String query ="INSERT into user(username,password) values(?,?)";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -42,7 +42,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	}
 
 	@Override
-	public void addAdmin(Admin admin) {
+	public void addAdmin(final Admin admin) {
 		try {
 			final String query ="INSERT into admin(username,password) values(?,?)";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -117,7 +117,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 	
-	@Override
+	
 	public JSONObject getAllComments(){
 		JSONObject json = new JSONObject();
 		JSONArray comments = new JSONArray();
@@ -147,7 +147,6 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 	
-	@Override
 	public JSONObject getAllOffers(){
 		JSONObject json = new JSONObject();
 		JSONArray offers = new JSONArray();
@@ -177,8 +176,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 	
-	@Override
-	public JSONObject getUser(String username) {
+	public JSONObject getUser(final String username) {
 		
 		JSONObject json = new JSONObject();
 		JSONArray user = new JSONArray();
@@ -208,8 +206,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 
-	@Override
-	public JSONObject getAdmin(String username) {
+	public JSONObject getAdmin(final String username) {
 		JSONObject json = new JSONObject();
 		JSONArray admin = new JSONArray();
 		try {
@@ -238,7 +235,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 
-	@Override
+
 	public JSONObject getCommentsOfUser(final String username){
 		JSONObject json = new JSONObject();
 		JSONArray comments = new JSONArray();
@@ -270,7 +267,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 	
-	@Override
+
 	public JSONObject getBidsOfUser(final String username){
 		JSONObject json = new JSONObject();
 		JSONArray bids = new JSONArray();
@@ -303,7 +300,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	}
 	
 	@Override
-	public void removeUser(String username) {
+	public void removeUser(final String username) {
 		try {
 			final String query = "DELETE FROM my_db.user WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -321,8 +318,8 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		}
 	}
 
-	@Override
-	public void removeAdmin(String username) {
+
+	public void removeAdmin(final String username) {
 		try {
 			final String query = "DELETE FROM my_db.admin WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -341,7 +338,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	}
 
 	@Override
-	public void updateUser(String username, String password) {
+	public void updateUser(final String username,final String password) {
 		try {
 			final String query = "UPDATE my_db.user SET username=?,password=? WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -362,7 +359,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	}
 
 	@Override
-	public void updateAdmin(String username, String password) {
+	public void updateAdmin(final String username,final String password) {
 		try {
 			final String query = "UPDATE my_db.admin SET username=?,password=? WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -382,38 +379,34 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		}
 	}
 
-	@Override
+
 	public boolean removeAllCommentsUser(String user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
+	
 	public boolean removeCommentsItem(String item) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
 	public boolean removeCommentsUserItem(String username, String item) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
-	public void addCommentItem(Comment comment, String itemId) {
+	public void addCommentItem(final Comment comment,final String itemId) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void addItem(Item item) {
+	public void addItem(final Item item) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public void addBid(Item item, User user, double price, Date date) {
+	public void addBid(final Item item,final User user,final double price,final Date date) {
 		// TODO Auto-generated method stub
 		
 	}

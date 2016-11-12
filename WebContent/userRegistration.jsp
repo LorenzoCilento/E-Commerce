@@ -6,11 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-<<<<<<< HEAD
+
 <script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootstrap Core CSS -->
-=======
+
 
 <script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -20,7 +20,6 @@
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
->>>>>>> Rocco
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <title>Registration</title>
@@ -37,8 +36,7 @@
 			</button>
 			<a class="navbar-brand" href="home.jsp">E-Commerce</a>
 		</div>
-<<<<<<< HEAD
-=======
+
 
 
 				<div class="collapse navbar-collapse" id="myNavbar">
@@ -50,7 +48,7 @@
 								<li><a href="items.jsp">Prodotti</a></li>
 							</ul></li>
 					</ul>
->>>>>>> Rocco
+
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-left">
 				<li class="active"><a href="home.jsp"> Home</a></li>
@@ -60,10 +58,7 @@
 						<li><a href="items.jsp">Prodotti</a></li>
 					</ul></li>
 			</ul>
-<<<<<<< HEAD
-=======
 
->>>>>>> Rocco
 			<%
 				if (session.getAttribute("user") == null) {
 			%>
