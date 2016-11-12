@@ -46,6 +46,10 @@ public class ConnectionDAO {
 		dbUsername = properties.getProperty("db.username");
 		dbPassword = properties.getProperty("db.password");
 		loadDriver(dbDriver);
+<<<<<<< HEAD
+=======
+
+>>>>>>> Rocco
 	}
 
 	public static synchronized ConnectionDAO getInstanceConnectionDAO() {
@@ -62,9 +66,12 @@ public class ConnectionDAO {
 			// Class.forName("com.mysql.jdbc.Driver");
 			// ("jdbc:mysql://nomedominio.altervista.org:3306/my_nomedominio",
 			// "nomedominio", "password");
+<<<<<<< HEAD
 			// con =
 			// DriverManager.getConnection("jdbc:mysql://localhost:3306/my_db",
 			// "root", "root");
+=======
+>>>>>>> Rocco
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
@@ -73,10 +80,26 @@ public class ConnectionDAO {
 	}
 
 	public void closeConnection() {
+<<<<<<< HEAD
 		try {
 			con.close();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 	}
+=======
+//		if (con != null) {
+			try {
+				con.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+	}
+
+//	}
+
+	
+	
+
+>>>>>>> Rocco
 }
