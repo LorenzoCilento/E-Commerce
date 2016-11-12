@@ -37,7 +37,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 	}
 	
 	@Override
-	public List<User> getAllUsers(){
+	public List<User> getAllUser(){
 		List<User> users = new ArrayList<>();
 		final String query = "SELECT * FROM user";
 		try {
