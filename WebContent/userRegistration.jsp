@@ -6,9 +6,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<<<<<<< HEAD
 <script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootstrap Core CSS -->
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> origin/Lorenzo
 
 <script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -17,13 +22,103 @@
 <script src="jquery-3.1.1.js"></script>
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<<<<<<< HEAD
+=======
+
+>>>>>>> Rocco
+>>>>>>> origin/Lorenzo
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <title>Registration</title>
 </head>
 
 <body>
+<<<<<<< HEAD
 	<jsp:include page="navBar.jsp"></jsp:include>
+=======
+	<nav class="navbar navbar-inverse" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target="#myNavbar" aria-expanded="false">
+				<span class="src-only"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="home.jsp">E-Commerce</a>
+		</div>
+<<<<<<< HEAD
+=======
+
+
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-left">
+						<li class="active"><a href="home.jsp"> Home</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"> Menu<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="items.jsp">Prodotti</a></li>
+							</ul></li>
+					</ul>
+>>>>>>> Rocco
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav navbar-left">
+				<li class="active"><a href="home.jsp"> Home</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"> Menu<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="items.jsp">Prodotti</a></li>
+					</ul></li>
+			</ul>
+<<<<<<< HEAD
+=======
+
+>>>>>>> Rocco
+			<%
+				if (session.getAttribute("user") == null) {
+			%>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="userRegistration.jsp"><span
+						class="glyphicon glyphicon-user"></span> Registrati</a></li>
+
+				<li><a href="login.jsp"><span
+						class="glyphicon glyphicon-log-in"></span> Accedi</a></li>
+			</ul>
+			<%
+				} else {
+			%>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
+						<%=((User) session.getAttribute("user")).getUsername()%><b
+						class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a id="logout">Logout</a></li>
+					</ul></li>
+			</ul>
+			<script> 
+									$("#logout").click(
+											function() {
+												window.location.href = "LogoutController";
+											}
+									);
+								</script>
+			<%
+				}
+			%>
+
+			<form class="navbar-form" role="search">
+				<div class="form-group" style="display: inline">
+					<div class="input-group">
+						<input type="text" class="form-control" size="50%"
+							placeholder="Cerca"> <span class="input-group-addon"><span
+							class="glyphicon glyphicon-search"> </span></span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	</nav>
+>>>>>>> origin/Lorenzo
 
 
 	<div class="container well">

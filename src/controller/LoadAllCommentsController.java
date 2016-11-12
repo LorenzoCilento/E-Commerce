@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.codehaus.jettison.json.JSONObject;
 
 import connection.AdminDAO;
+<<<<<<< HEAD
+=======
+import util.Factories;
+>>>>>>> origin/Lorenzo
 
 /**
  * Servlet implementation class LoadAllComments
