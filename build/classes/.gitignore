@@ -1,2 +1,6 @@
+/.DS_Store
 /connection/
 /controller/
+/db.properties
+/model/
+/util/

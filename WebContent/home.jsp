@@ -16,13 +16,12 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript" src="js/queryAllItem.js"></script>
+<script type="text/javascript" src="js/queryAllItems.js"></script>
 <script type="text/javascript" src="js/queryAllCategories.js"></script>
 <script type="text/javascript">
-	function clicked(obj) {
-		var cat = obj.text;
-		
-}
+$(document).ready(function(){
+	getAllItems("all");
+});
 </script>
 </head>
 
@@ -49,7 +48,7 @@
 							data-toggle="dropdown"> Menu<b class="caret"></b>
 						</a>
 							<ul class="dropdown-menu">
-								<li><a href="items.jsp">Prodotti</a></li>
+								<li><a href="items.jsp?cat=all">Prodotti</a></li>
 							</ul></li>
 					</ul>
 					<%
@@ -174,7 +173,6 @@
 				</div>
 				<!-- /Section items -->
 			</div>
-
 		</div>
 
 	</div>

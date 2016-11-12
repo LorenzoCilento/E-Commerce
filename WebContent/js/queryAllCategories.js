@@ -9,8 +9,7 @@ $.ajax({
 				var category = categories[i];
 				var cont = 0;
 				$("#listCategories").append(
-						"<a href='items2.jsp' onclick='clicked(this)' id='categoryButton' class='list-group-item'>"
-						+category.name+"</a>")
+						"<a href='items.jsp?cat="+category.name+"' id='categoryButton' class='list-group-item'>"+category.name+"</a>")
 			}
         }
 	});

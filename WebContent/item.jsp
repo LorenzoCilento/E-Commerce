@@ -19,12 +19,14 @@
 
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script type="text/javascript">
-	var jsonItem =
-<%=session.getAttribute("item")%>
-	;
-</script>
 <script type="text/javascript" src="js/queryItem.js"></script>
+<script type="text/javascript" src="js/getParameterFromURL.js"></script>
+<script type="text/javascript">
+	var id = $.urlParams('id');
+	$(document).ready(function(){
+		getItem(id);
+	});
+</script>
 
 </head>
 

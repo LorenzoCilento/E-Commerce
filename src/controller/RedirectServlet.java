@@ -1,27 +1,25 @@
 package controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.codehaus.jettison.json.JSONObject;
-
-import connection.ItemDAO;
-
 /**
- * Servlet implementation class LoadAllItemByCategory
+ * Servlet implementation class RedirectServlet
  */
-@WebServlet("/LoadAllItemByCategory")
-public class LoadAllItemByCategory extends HttpServlet {
+@WebServlet("/RedirectServlet")
+public class RedirectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoadAllItemByCategory() {
+    public RedirectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,10 +28,11 @@ public class LoadAllItemByCategory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String category = request.getParameter("category");
-		JSONObject items = new ItemDAO().getAllItemsByCategory(category);
-		response.setContentType("application/json");
-		response.getWriter().write(items.toString());
+		System.out.println("ciccio "+category);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher("items2.jsp");
+//		dispatcher.forward(request, response);
 	}
 
 	/**
