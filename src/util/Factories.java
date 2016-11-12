@@ -19,14 +19,14 @@ public class Factories {
 	}
 	
 	public User makeUser() {
-		abstractFactoryUser = creator.getFatory(UserType.USER);
+		abstractFactoryUser = creator.getFactory(UserType.USER);
 		User user = abstractFactoryUser.getUser();
 		
 		return user;
 	}
 	
 	public Admin makeAdmin() {
-		abstractFactoryUser = creator.getFatory(UserType.USER);
+		abstractFactoryUser = creator.getFactory(UserType.USER);
 		Admin admin = abstractFactoryUser.getAdmin();
 		
 		return admin;

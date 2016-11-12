@@ -4,32 +4,32 @@ import java.util.Date;
 
 public class Bid {
 
-	private User user;
-	private Item item;
+	private String username;
+	private String itemId;
 	private double price;
 	private Date bidDate;
 	
-	public Bid(User user, Item item, double price) {
+	public Bid(String username, String item, double price) {
 		super();
-		this.user = user;
-		this.item = item;
+		this.username = username;
+		this.itemId = item;
 		this.price = price;
 	}
 
-	public User getUser() {
-		return user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUsername(String user) {
+		this.username = user;
 	}
 
-	public Item getItem() {
-		return item;
+	public String getItem() {
+		return itemId;
 	}
 
-	public void setItem(Item item) {
-		this.item = item;
+	public void setItem(String item) {
+		this.itemId = item;
 	}
 
 	public double getPrice() {

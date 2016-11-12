@@ -56,10 +56,6 @@ import model.bean.Item;
 		}
 	}
 
-	public void removeItem(Item item) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public JSONObject getAllItems() {

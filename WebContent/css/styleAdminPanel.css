@@ -1,7 +1,7 @@
 
 body {
     margin-top: 100px;
-    background-color: #222;
+    background-color: #f5f5ef;
 }
 
 @media(min-width:768px) {
@@ -17,7 +17,7 @@ body {
 #page-wrapper {
     width: 100%;
     padding: 0;
-    background-color: #fff;
+    background-color: #e1e1d0;
 }
 
 .huge {
@@ -134,17 +134,7 @@ ul.alert-dropdown {
     color: #fff;
 }
 
-/* Flot Chart Containers */
-
-.flot-chart {
-    display: block;
-    height: 400px;
-}
-
-.flot-chart-content {
-    width: 100%;
-    height: 100%;
-}
+.navbar-brand
 
 /* Custom Colored Panels */
 
@@ -188,20 +178,20 @@ ul.alert-dropdown {
     color: #b52b27;
 }
 
-.panel-yellow {
+.panel-orange {
     border-color: #f0ad4e;
 }
 
-.panel-yellow > .panel-heading {
+.panel-orange > .panel-heading {
     border-color: #f0ad4e;
     color: #fff;
     background-color: #f0ad4e;
 }
 
-.panel-yellow > a {
+.panel-orange > a {
     color: #f0ad4e;
 }
 
-.panel-yellow > a:hover {
+.panel-orange > a:hover {
     color: #df8a13;
 }
