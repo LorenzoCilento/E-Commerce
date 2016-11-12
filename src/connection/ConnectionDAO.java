@@ -6,33 +6,31 @@ import java.util.Properties;
 
 import javax.swing.JOptionPane;
 
-
 public class ConnectionDAO {
 
 	private final static ConnectionDAO connectionDAO = new ConnectionDAO();
 	private static Connection con;
-	
+
 	private static String dbPassword;
 
 	private static String dbUrl;
 
 	private static String dbUsername;
-	
-	protected ConnectionDAO(){
+
+	protected ConnectionDAO() {
 		loadDBProperties();
 	}
-	
+
 	private static Properties getProperties() {
 		final Properties properties = new Properties();
 		try {
-			properties.load(ConnectionDAO.class.getClassLoader()
-					.getResourceAsStream("db.properties"));
+			properties.load(ConnectionDAO.class.getClassLoader().getResourceAsStream("db.properties"));
 		} catch (final IOException e) {
 			throw new RuntimeException("Cannot load db properties file", e);
 		}
 		return properties;
 	}
-	
+
 	private static void loadDriver(final String dbDriver) {
 		try {
 			Class.forName(dbDriver);
@@ -40,7 +38,7 @@ public class ConnectionDAO {
 			throw new RuntimeException("Cannot load the driver class", e);
 		}
 	}
-	
+
 	protected static void loadDBProperties() {
 		final Properties properties = getProperties();
 		final String dbDriver = properties.getProperty("db.driver");
@@ -48,7 +46,10 @@ public class ConnectionDAO {
 		dbUsername = properties.getProperty("db.username");
 		dbPassword = properties.getProperty("db.password");
 		loadDriver(dbDriver);
+<<<<<<< HEAD
+=======
 
+>>>>>>> Rocco
 	}
 
 	public static synchronized ConnectionDAO getInstanceConnectionDAO() {
@@ -58,13 +59,19 @@ public class ConnectionDAO {
 	public Connection createConnection() {
 		con = null;
 		try {
-			con= DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+			con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 		} catch (final SQLException e) {
 			throw new RuntimeException("Cannot create the connection", e);
 
-//			Class.forName("com.mysql.jdbc.Driver");
+			// Class.forName("com.mysql.jdbc.Driver");
 			// ("jdbc:mysql://nomedominio.altervista.org:3306/my_nomedominio",
 			// "nomedominio", "password");
+<<<<<<< HEAD
+			// con =
+			// DriverManager.getConnection("jdbc:mysql://localhost:3306/my_db",
+			// "root", "root");
+=======
+>>>>>>> Rocco
 
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
@@ -73,6 +80,14 @@ public class ConnectionDAO {
 	}
 
 	public void closeConnection() {
+<<<<<<< HEAD
+		try {
+			con.close();
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+=======
 //		if (con != null) {
 			try {
 				con.close();
@@ -86,4 +101,5 @@ public class ConnectionDAO {
 	
 	
 
+>>>>>>> Rocco
 }

@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="it">
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import ="model.bean.User" %>
-
+<!DOCTYPE html>
+<html lang="it">
 <head>
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,17 +17,17 @@
     <title>BuyDream Homepage - You best E-Commerce</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <!-- <link href="css/shop-homepage.css" rel="stylesheet">-->
-    
-    <!-- [if lt IE 9 ]  -->
-    <script src = "js/html5shiv.js"></script>
-	<script src = "js/respond.js"></script>
- 	<!--  [endif]  -->
-<script type="text/javascript" src="js/queryAllItem.js"></script>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/queryAllCategories.js"></script>
+<script type="text/javascript" src="js/queryAllItems.js"></script>
+<script type="text/javascript" src="js/getParameterFromURL.js"></script>
+<script type="text/javascript">
+
+var category = $.urlParams('cat');
+$(document).ready(function(){
+	getAllItems(category);
+});
+</script>
 
 </head>
 

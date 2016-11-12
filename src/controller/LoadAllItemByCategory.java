@@ -30,7 +30,8 @@ public class LoadAllItemByCategory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		JSONObject items = new ItemDAO().getAllItemsByCategory(request.getParameter("category"));
+		String category = request.getParameter("category");
+		JSONObject items = new ItemDAO().getAllItemsByCategory(category);
 		response.setContentType("application/json");
 		response.getWriter().write(items.toString());
 	}

@@ -33,18 +33,10 @@ public class LoadItemController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		JSONObject item = new ItemDAO().getItem(Integer.parseInt(request.getParameter("id")));
-		System.out.println("il parametro passato " + Integer.parseInt(request.getParameter("id")));
-		if (item != null) {
-			request.getSession().setAttribute("item", item);
-			response.sendRedirect("item.jsp");
-		}
-		
-//		JSONObject item = new ItemDAO().getItem(Integer.parseInt(request.getParameter("id")));
-//		System.out.println("il parametro passato " + Integer.parseInt(request.getParameter("id")));
-//		System.out.println("IL PARAMETRO è "+ request.getParameter("id"));
-//		response.setContentType("application/json");
-//		response.getWriter().write(item.toString());
+		int id = Integer.parseInt(request.getParameter("id"));
+		JSONObject item = new ItemDAO().getItem(id);
+		response.setContentType("application/json");
+		response.getWriter().write(item.toString());
 	}
 
 	/**

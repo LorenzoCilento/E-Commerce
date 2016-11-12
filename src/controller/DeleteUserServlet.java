@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import connection.UserDAO;
-import model.bean.User;
-import util.Factories;
 
 /**
  * Servlet implementation class removeUserServlet
@@ -38,8 +36,6 @@ public class DeleteUserServlet extends HttpServlet {
 		PrintWriter out=response.getWriter();  
         
         String username=request.getParameter("username");          
-        
-        User user = Factories.getInstance().makeUser();
                 
         new UserDAO().removeUser(username);
         out.print("Username" +username);

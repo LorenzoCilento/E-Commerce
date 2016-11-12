@@ -21,6 +21,17 @@
 	width: 500;
 	height: auto;
 }
+label>span {
+	font-family: Georgia;
+	font-size: 11px !important;
+	font-weight: bold;
+	color: #DD3D36;
+	margin-bottom: 5px;
+}
+
+#submitForm {
+	background-color: #4CAF50;
+}
 
 
 
