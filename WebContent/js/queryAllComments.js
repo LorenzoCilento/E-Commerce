@@ -10,40 +10,40 @@ function getAllComments(){
 	    	var comments=data.comments;
 	    	
 	    	if(comments!=null){
-	    		$(".all-comments").empty();
+	    		var cont=0;
+	    		$(".page-struct").empty();
 	    		for (var i = 0; i < comments.length; ++i) {
 					var comment = comments[i];
-					cont=1;
+					cont++;
 					if(i==0)
-					$(".all-comments").append(
-						"<div class='col-sm-4 col-lg-4 col-md-4'>" 
-						+ "<div class='container'> <h2>Table</h2> "
-						+ "  <div class='table-responsive'>"
-						+ "  <table class='table'> "
-						+ "   <thead>"
-						+      "<tr>"
-						+      "<th>#</th>"
-						+      "<th>Date</th>"
-						+      "<th>Username</th>"
-						+       "<th>ItemId</th>"
-						+       "<th>Text</th>"
-						+     "</tr>"
-						+   "</thead>"
-						+   "<tbody class='tbody'>"
-						+   "</tbody>"
-						+ "</table>"
-						+ "</div>"
+					$(".page-struct").append(
+						"<div class='col-xs-12 text-center'>"
+						+	"<div class='table-responsive'>"
+						+   	"<table class='table table-hover table-striped'  id='div-table'>"
+	                    +			"<thead class='headTable'>"
+						+     			"<tr>"
+						+					"<th>#</th>"
+						+					"<th>Date</th>"
+						+					"<th>Username</th>"
+						+					"<th>ItemId</th>"
+						+					"<th>Text</th>"
+						+				"</tr>"
+						+			"</thead>"
+						+			"<tbody class='tbody'>"
+						+			"</tbody>"
+						+		"</table>"
+						+	"</div>"
 						+"</div>"
-					+" </div>"
+												
 					)	
 					$(".tbody").append(
-							     "<tr>"
-							+       "<td>"+cont+"</td>"
-							+       "<td>"+ comment.date +"</td>"
-							+       "<td>"+ comment.username +"</td>"
-							+       "<td>"+ comment.itemId +"</td>"
-							+		"<td>"+ comment.text +"</td>"
-							+     "</tr>"
+							 "<tr>"
+							+	"<th>"+ cont +"</th>"
+							+	"<th>"+ comment.date +"</th>"
+							+	"<th>"+ comment.username +"</th>"
+							+	"<th>"+ comment.itemId +"</th>"
+							+	"<th>"+ comment.text +"</th>"
+							+ "</tr>"
 					)
 							
 	    		}

@@ -12,6 +12,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 import connection.ItemDAO;
 
+
 /**
  * Servlet implementation class LoadAllItemController
  */
@@ -28,6 +29,7 @@ public class LoadAllItemController extends HttpServlet {
     }
 
 	/**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,7 +37,6 @@ public class LoadAllItemController extends HttpServlet {
 		response.setContentType("application/json");
 		response.getWriter().write(items.toString());
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -43,5 +44,4 @@ public class LoadAllItemController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

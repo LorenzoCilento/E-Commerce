@@ -11,6 +11,7 @@ import connection.UserDAO;
 import model.bean.User;
 import util.Validate;
 
+
 /**
  * Servlet implementation class CheckUserController
  */
@@ -27,12 +28,12 @@ public class CheckUserController extends HttpServlet {
     }
 
 	/**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -52,5 +53,4 @@ public class CheckUserController extends HttpServlet {
 		}
 
 	}
-
 }

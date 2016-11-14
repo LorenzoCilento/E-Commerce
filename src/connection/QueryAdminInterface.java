@@ -8,6 +8,7 @@ import model.bean.Comment;
 import model.bean.Item;
 import model.bean.User;
 
+
 public interface QueryAdminInterface {
 
 	public void addUser(final User user);
@@ -19,7 +20,7 @@ public interface QueryAdminInterface {
 	public JSONObject getAllUsers();
 	public JSONObject getAllAdmins();
 	public JSONObject getAllComments();
-	public JSONObject getAllOffers();
+	public JSONObject getAllBids();
 	
 	public JSONObject getUser(final String username);
 	public JSONObject getAdmin(final String username);

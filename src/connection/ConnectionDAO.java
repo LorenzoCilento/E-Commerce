@@ -70,10 +70,12 @@ public class ConnectionDAO {
 	}
 
 	public void closeConnection() {
-		try {
-			con.close();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+
+			try {
+				con.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 	}
+
 }

@@ -8,7 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
 
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+<link href="bootstrap.css" rel="stylesheet" type="text/css" media="all">
+
 <script src="js/jquery-3.1.1.js"></script>
 
 <title>BuyDream Homepage - Your best E-Commerce</title>
@@ -18,6 +19,7 @@
 <script type="text/javascript" src="js/queryAllCategories.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+	
 	getAllItems("all");
 });
 </script>

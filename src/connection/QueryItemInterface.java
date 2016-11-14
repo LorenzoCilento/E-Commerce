@@ -5,6 +5,7 @@ import org.codehaus.jettison.json.JSONObject;
 import model.bean.Bid;
 import model.bean.Item;
 
+
 interface QueryItemInterface {
 
 	public void addItem(Item item);

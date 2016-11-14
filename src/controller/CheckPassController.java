@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import util.Validate;
 
+
 /**
  * Servlet implementation class CheckPassController
  */
@@ -25,6 +26,7 @@ public class CheckPassController extends HttpServlet {
 	}
 
 	/**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -32,7 +34,6 @@ public class CheckPassController extends HttpServlet {
 			throws ServletException, IOException {
 		doPost(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -48,5 +49,4 @@ public class CheckPassController extends HttpServlet {
 			response.getWriter().write("warning");
 
 	}
-
 }

@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.codehaus.jettison.json.JSONObject;
 
-import connection.ItemDAO;
-
+import connection.AdminDAO;
+import connection.UserDAO;
 
 /**
- * Servlet implementation class LoadAllItemByCategory
+ * Servlet implementation class LoadAllUsersController
  */
-@WebServlet("/LoadAllItemByCategory")
-public class LoadAllItemByCategory extends HttpServlet {
+@WebServlet("/LoadAllUsersController")
+public class LoadAllUsersController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoadAllItemByCategory() {
+    public LoadAllUsersController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,17 +31,15 @@ public class LoadAllItemByCategory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String category = request.getParameter("category");
-		JSONObject items = new ItemDAO().getAllItemsByCategory(category);
+		JSONObject users=new AdminDAO().getAllUsers();
 		response.setContentType("application/json");
-		response.getWriter().write(items.toString());
+		response.getWriter().write(users.toString());
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

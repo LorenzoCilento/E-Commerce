@@ -6,20 +6,23 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
 <script src="js/jquery-3.1.1.js"></script>
+<script src="js/validateInput.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootstrap Core CSS -->
-
-<script src="jquery-3.1.1.js"></script>
-<!-- Bootstrap Core CSS -->
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <title>Registration</title>
+<script type="text/javascript">
+
+</script>
 </head>
 
 <body>
+
 	<jsp:include page="navBar.jsp"></jsp:include>
+
 
 	<div class="container well">
 		<form action="AddUserServlet" class="form horizontal" role="form"
@@ -33,7 +36,7 @@
 				</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control" name="name"
-						id="inputName" placeholder="Name" required> <span
+						id="inputName" placeholder="Name" onblur="validateUsername(this.value)" required> <span
 						id="glyphiconFormName"> </span> <span class="help-block">Es.
 						Francesco</span>
 					<div id="errName"></div>
@@ -54,7 +57,7 @@
 						(Required)</span></label>
 				<div class="col-sm-9">
 					<input type="text" name="email" id="e-mail" placeholder="E-mail"
-						class="form-control" required> <span class="help-block">Es.
+						class="form-control" onblur="validateEmail(this.value)" required> <span class="help-block">Es.
 						francescorossi@e-commerce.it</span>
 				</div>
 			</div>
@@ -91,64 +94,7 @@
 					<div id="errRepeatPassword"></div>
 				</div>
 			</div>
-			<!-- 	<div class="form-group" id="birthdateForm">
-				<label for="birthDate" class="col-sm-3 control-label">Birthdate <span> (Required)</span></label>
-				<div class="col-sm-9">
-					<input type="date" id="birthDate" class="form-control"> <span
-						class="help-block" required>es. 01/01/2016</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="codiceFiscale" class="col-sm-3 control-label">Codice Fiscale <span> (Required)</span></label>
-				<div class="col-sm-9">
-					<input type="date" id="codiceFiscale" class="form-control"> <span
-						class="help-block" required></span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="country" id="country" class="col-sm-3 control-label">Paese</label>
-				<div class="col-sm-9">
-					<select id="country" class="form-control">
-						<option>Afghanistan</option>
-						<option>Bahamas</option>
-						<option>Cambodia</option>
-						<option>Denmark</option>
-						<option>Ecuador</option>
-						<option>Fiji</option>
-						<option>Gabon</option>
-						<option>Haiti</option>
-						<option>Italia</option>
-					</select>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="control-label col-sm-3">Sesso</label>
-				<div class="col-sm-6">
-					<div class="row">
-						<div class="col-sm-4">
-							<label class="radio-inline"> <input type="radio"
-								id="femaleRadio" value="Female">Female
-							</label>
-						</div>
-						<div class="col-sm-4">
-							<label class="radio-inline"> <input type="radio"
-								id="maleRadio" value="Male">Male
-							</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-9 col-sm-offset-3">
-					<div class="checkbox">
-						<label> <input type="checkbox">I accept <a
-							href="#">terms</a>
-						</label>
-					</div>
-				</div>
-			</div>
-	-->
+		
 			<div class="form-group">
 				<div class="col-sm-9 col-sm-offset-3">
 					<button type="submit" id="submitForm" value="register"

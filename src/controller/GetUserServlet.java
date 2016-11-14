@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import connection.UserDAO;
 import model.bean.User;
 
+
 /**
  * Servlet implementation class getUserServlet
  */
@@ -28,6 +29,7 @@ public class GetUserServlet extends HttpServlet {
 	}
 
 	/**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -42,7 +44,6 @@ public class GetUserServlet extends HttpServlet {
 
 		out.print(user.getUsername());
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -52,5 +53,4 @@ public class GetUserServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
