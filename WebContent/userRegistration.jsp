@@ -8,102 +8,20 @@
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
 <script src="js/jquery-3.1.1.js"></script>
+<script src="js/validateInput.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- Bootstrap Core CSS -->
-
-
-<script src="js/jquery-3.1.1.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/js/modernizr.custom.js"></script>
-
-<script src="jquery-3.1.1.js"></script>
-<!-- Bootstrap Core CSS -->
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <title>Registration</title>
+<script type="text/javascript">
+
+</script>
 </head>
 
 <body>
-	<nav class="navbar navbar-inverse" role="navigation">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse"
-				data-target="#myNavbar" aria-expanded="false">
-				<span class="src-only"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="home.jsp">E-Commerce</a>
-		</div>
 
-
-
-				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav navbar-left">
-						<li class="active"><a href="home.jsp"> Home</a></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown"> Menu<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="items.jsp">Prodotti</a></li>
-							</ul></li>
-					</ul>
-
-		<div class="collapse navbar-collapse" id="myNavbar">
-			<ul class="nav navbar-nav navbar-left">
-				<li class="active"><a href="home.jsp"> Home</a></li>
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"> Menu<b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="items.jsp">Prodotti</a></li>
-					</ul></li>
-			</ul>
-
-			<%
-				if (session.getAttribute("user") == null) {
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="userRegistration.jsp"><span
-						class="glyphicon glyphicon-user"></span> Registrati</a></li>
-
-				<li><a href="login.jsp"><span
-						class="glyphicon glyphicon-log-in"></span> Accedi</a></li>
-			</ul>
-			<%
-				} else {
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
-						<%=((User) session.getAttribute("user")).getUsername()%><b
-						class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a id="logout">Logout</a></li>
-					</ul></li>
-			</ul>
-			<script> 
-									$("#logout").click(
-											function() {
-												window.location.href = "LogoutController";
-											}
-									);
-								</script>
-			<%
-				}
-			%>
-
-			<form class="navbar-form" role="search">
-				<div class="form-group" style="display: inline">
-					<div class="input-group">
-						<input type="text" class="form-control" size="50%"
-							placeholder="Cerca"> <span class="input-group-addon"><span
-							class="glyphicon glyphicon-search"> </span></span>
-					</div>
-				</div>
-			</form>
-		</div>
-	</div>
-	</nav>
+	<jsp:include page="navBar.jsp"></jsp:include>
 
 
 	<div class="container well">
@@ -118,7 +36,7 @@
 				</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control" name="name"
-						id="inputName" placeholder="Name" required> <span
+						id="inputName" placeholder="Name" onblur="validateUsername(this.value)" required> <span
 						id="glyphiconFormName"> </span> <span class="help-block">Es.
 						Francesco</span>
 					<div id="errName"></div>
@@ -139,7 +57,7 @@
 						(Required)</span></label>
 				<div class="col-sm-9">
 					<input type="text" name="email" id="e-mail" placeholder="E-mail"
-						class="form-control" required> <span class="help-block">Es.
+						class="form-control" onblur="validateEmail(this.value)" required> <span class="help-block">Es.
 						francescorossi@e-commerce.it</span>
 				</div>
 			</div>
@@ -176,64 +94,7 @@
 					<div id="errRepeatPassword"></div>
 				</div>
 			</div>
-			<!-- 	<div class="form-group" id="birthdateForm">
-				<label for="birthDate" class="col-sm-3 control-label">Birthdate <span> (Required)</span></label>
-				<div class="col-sm-9">
-					<input type="date" id="birthDate" class="form-control"> <span
-						class="help-block" required>es. 01/01/2016</span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="codiceFiscale" class="col-sm-3 control-label">Codice Fiscale <span> (Required)</span></label>
-				<div class="col-sm-9">
-					<input type="date" id="codiceFiscale" class="form-control"> <span
-						class="help-block" required></span>
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="country" id="country" class="col-sm-3 control-label">Paese</label>
-				<div class="col-sm-9">
-					<select id="country" class="form-control">
-						<option>Afghanistan</option>
-						<option>Bahamas</option>
-						<option>Cambodia</option>
-						<option>Denmark</option>
-						<option>Ecuador</option>
-						<option>Fiji</option>
-						<option>Gabon</option>
-						<option>Haiti</option>
-						<option>Italia</option>
-					</select>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<label class="control-label col-sm-3">Sesso</label>
-				<div class="col-sm-6">
-					<div class="row">
-						<div class="col-sm-4">
-							<label class="radio-inline"> <input type="radio"
-								id="femaleRadio" value="Female">Female
-							</label>
-						</div>
-						<div class="col-sm-4">
-							<label class="radio-inline"> <input type="radio"
-								id="maleRadio" value="Male">Male
-							</label>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-sm-9 col-sm-offset-3">
-					<div class="checkbox">
-						<label> <input type="checkbox">I accept <a
-							href="#">terms</a>
-						</label>
-					</div>
-				</div>
-			</div>
-	-->
+		
 			<div class="form-group">
 				<div class="col-sm-9 col-sm-offset-3">
 					<button type="submit" id="submitForm" value="register"

@@ -11,6 +11,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 import connection.CategoryDAO;
 
+
 /**
  * Servlet implementation class LoadAllCategories
  */
@@ -27,6 +28,7 @@ public class LoadAllCategoriesController extends HttpServlet {
     }
 
 	/**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,7 +36,6 @@ public class LoadAllCategoriesController extends HttpServlet {
 		response.setContentType("application/json");
 		response.getWriter().write(categories.toString());
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -42,5 +43,4 @@ public class LoadAllCategoriesController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

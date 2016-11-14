@@ -12,6 +12,7 @@ import org.codehaus.jettison.json.JSONObject;
 import model.bean.Bid;
 import model.bean.Item;
 
+
 	public class ItemDAO extends ConnectionDAO implements QueryItemInterface {
 		public ItemDAO() {
 			super();

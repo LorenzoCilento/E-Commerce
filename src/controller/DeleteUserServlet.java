@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import connection.UserDAO;
 
+
 /**
  * Servlet implementation class removeUserServlet
  */
@@ -27,6 +28,7 @@ public class DeleteUserServlet extends HttpServlet {
     }
 
 	/**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,11 +40,9 @@ public class DeleteUserServlet extends HttpServlet {
         String username=request.getParameter("username");          
                 
         new UserDAO().removeUser(username);
-        out.print("Username" +username);
         
         out.close();
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -50,5 +50,4 @@ public class DeleteUserServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

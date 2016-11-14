@@ -71,17 +71,11 @@ public class ConnectionDAO {
 
 	public void closeConnection() {
 
-//		if (con != null) {
 			try {
 				con.close();
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
 	}
-
-//	}
-
-	
-	
 
 }

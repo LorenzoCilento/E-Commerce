@@ -1,3 +1,4 @@
+$(document).ready(function(){
 $.ajax({
 		url:"LoadAllCategoriesController",
 		type:"GET",
@@ -13,3 +14,4 @@ $.ajax({
 			}
         }
 	});
+});

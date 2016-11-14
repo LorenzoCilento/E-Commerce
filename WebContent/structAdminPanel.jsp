@@ -32,10 +32,6 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-
-
-
-
 	<script type="text/javascript">
 		$(document).ready(function(){
 			getAllComments();				
@@ -45,7 +41,8 @@
 </head>
 
 <body>
-	 <div id="wrapper">
+
+    <div id="wrapper">
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -80,7 +77,7 @@
                     </ul>
                 </li>
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
@@ -105,19 +102,19 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-            
+            	
             	<!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            All Comments...
+                            Offers win...
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-hashtag"></i>  <a href="AdminPanel.jsp">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-comments"></i> All Comments...
+                                <i class="fa fa-trophy"></i> Offers win...
                             </li>
                         </ol>
                     </div>
@@ -129,21 +126,21 @@
                			</div>
                 	</div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 col-xs-12">
-                    	<label>Choose the line number (under the column #), which you want to delete: </label>
-                    	<input type="text" class="input-choose">
-            			<button type="button" class="submit-button">Delete</button>
-            		</div>
-            	</div>
             </div>
             <!-- /.container-fluid -->
+
 
         </div>
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery-3.1.1.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
 
 

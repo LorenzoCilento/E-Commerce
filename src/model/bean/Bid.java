@@ -7,10 +7,9 @@ public class Bid {
 	private String username;
 	private String itemId;
 	private double price;
-	private Date bidDate;
+	Date bidDate;
 	
 	public Bid(String username, String item, double price) {
-		super();
 		this.username = username;
 		this.itemId = item;
 		this.price = price;

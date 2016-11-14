@@ -2,6 +2,7 @@ package model.bean;
 
 import util.UserType;
 
+
 public class FactoryUserCreator {
 
 	public AbstractFactoryUser getFactory(UserType type){

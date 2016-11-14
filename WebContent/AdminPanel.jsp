@@ -59,7 +59,7 @@
                             <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="#"><i class="fa fa-gear"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -72,17 +72,16 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="#"><i class="fa fa-sitemap"></i> Dashboard</a>
+                        <a href="AdminPanel.jsp"><i class="fa fa-sitemap"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-cart-plus"></i> Offer new product</a>
-                    </li>
-                    
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Settings <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-gears"></i> Settings <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#">Remove comments</a>
+                                <a href="allUsersAdmin.jsp?param=getAllUsers"><i class=" fa fa-user-times"></i> Remove user</a>
+                            </li>
+                             <li>
+                                <a href="#"><i class="fa fa-user-plus"></i> Add new Admin</a>
                             </li>
                         </ul>
                     </li>
@@ -103,7 +102,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa fa-hashtag"></i> Dashboard
+                                <i class="fa fa-hashtag"></i> Dashboard
                             </li>
                         </ol>
                     </div>
@@ -112,7 +111,7 @@
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <div class="panel panel-primary">
+                        <div class="panel panel-blue">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -120,17 +119,17 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">26</div>
-                                        <div>Your Comments!</div>
+                                        <div>All Comments!</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="comments.jsp?param=getAllComments">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
+	                            <div class="panel-footer">
+	                            	<a href="comments.jsp?param=getAllComments">
+	                                    <span class="pull-left">View Details</span>
+	                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+	                                    <div class="clearfix"></div>
+	                            	</a>
+	                            </div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -142,19 +141,20 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">12</div>
-                                        <div>Offers win!</div>
+                                        <div>All offers win!</div>
                                     </div>
                                 </div>
                             </div>
                             
-                                <div class="panel-footer">
-                                <a href="#">
                                 
+                                <a href="#">
+                                	<div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
-                                    </a>
-                                </div>
+                                    </div>
+                                </a>
+                                
                             
                         </div>
                     </div>
@@ -167,7 +167,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">124</div>
-                                        <div>Your current offers!</div>
+                                        <div>All current offers!</div>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +189,7 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">13</div>
-                                        <div>Your products offers!</div>
+                                        <div>All products offers!</div>
                                     </div>
                                 </div>
                             </div>

@@ -2,14 +2,23 @@ package model.bean;
 
 import util.UserType;
 
-public class User implements UserInterface {
+public class User {
 
 	private String username, password;
 	private static UserType type = UserType.USER;
+	private String name;
+	private String surname;
+	private String email;
 
 	public User() {
-		username = null;
-		password = null;
+	}
+
+	public User(String username, String password, String name, String surname, String email) {
+		this.username = username;
+		this.password = password;
+		this.name = name;
+		this.surname = surname;
+		this.email = email;
 	}
 
 	public String getUsername() {
@@ -28,8 +37,31 @@ public class User implements UserInterface {
 		this.password = password;
 	}
 
-	@Override
-	public UserType getType() {
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getSurname() {
+		return surname;
+	}
+
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public static UserType getType() {
 		return type;
 	}
 

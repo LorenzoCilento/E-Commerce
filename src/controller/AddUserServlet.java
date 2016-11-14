@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import connection.UserDAO;
 import model.bean.User;
 import util.Factories;
+
 
 /**
  * Servlet implementation class addUserServlet
@@ -29,6 +31,7 @@ public class AddUserServlet extends HttpServlet {
 	}
 
 	/**
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -41,19 +44,22 @@ public class AddUserServlet extends HttpServlet {
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-
+		String name = request.getParameter("name");
+		String surname = request.getParameter("surname");
+		String email = request.getParameter("email");
+		
 		User user = Factories.getInstance().makeUser();
 
 		user.setUsername(username);
 		user.setPassword(password);
+		user.setName(name);
+		user.setSurname(surname);
+		user.setEmail(email);
 
 		new UserDAO().addUser(user);
-		out.print("Username" + username);
-
 		out.close();
 
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -62,5 +68,4 @@ public class AddUserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		doGet(request, response);
 	}
-
 }

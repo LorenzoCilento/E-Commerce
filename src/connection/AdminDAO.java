@@ -3,9 +3,7 @@ package connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import java.util.Date;
-
 
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONObject;
@@ -15,7 +13,6 @@ import model.bean.Comment;
 import model.bean.Item;
 import model.bean.User;
 
-
 public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 
 	public AdminDAO(){
@@ -23,32 +20,39 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	}
 
 	@Override
-	public void addUser(final User user) {
+	public void addUser(final User user){
 		try {
-			final String query ="INSERT into user(username,password) values(?,?)";
+			final String query ="INSERT into user(username,password,name,surname,email) values(?,?,?,?,?)";
 			PreparedStatement ps = createConnection().prepareStatement(
 					query);
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
+			ps.setString(3, user.getName());
+			ps.setString(4, user.getSurname());
+			ps.setString(5, user.getEmail());
 			
 			ps.executeUpdate();			
 	
 			closeConnection();
-			
+			System.out.println("User inserito");
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.println("Impossible to add new User in AdminDAO.java!!");
-		}		
+			System.out.println("SQLException:" + e.getSQLState());
+			System.out.println("Impossible to add new User in AdminDAO!!");
+		}
 	}
 
 	@Override
 	public void addAdmin(final Admin admin) {
 		try {
-			final String query ="INSERT into admin(username,password) values(?,?)";
+			final String query ="INSERT into admin(username,password,name,surname,email) values(?,?,?,?,?)";
 			PreparedStatement ps = createConnection().prepareStatement(
 					query);
 			ps.setString(1, admin.getUsername());
 			ps.setString(2, admin.getPassword());
+			ps.setString(3, admin.getName());
+			ps.setString(4, admin.getSurname());
+			ps.setString(5, admin.getEmail());
 			
 			ps.executeUpdate();			
 	
@@ -78,13 +82,18 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 					JSONObject user = new JSONObject();
 					user.put("username", mResultSet.getString("username"));
 					user.put("password", mResultSet.getString("password"));
+					user.put("name", mResultSet.getString("name"));
+					user.put("surname", mResultSet.getString("surname"));
+					user.put("email", mResultSet.getString("email"));
 					users.put(user);
 				}
 			}
 			
 			json.put("users", users);
 			closeConnection();
-		}catch(Exception e){}
+		}catch(Exception e){
+			System.out.println("Impossible to get All users in AdminDAO.java -> getAllUsers()!!");
+		}
 		
 		return json;
 	}
@@ -106,18 +115,23 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 					JSONObject admin = new JSONObject();
 					admin.put("username", mResultSet.getString("username"));
 					admin.put("password", mResultSet.getString("password"));
+					admin.put("name", mResultSet.getString("name"));
+					admin.put("surname", mResultSet.getString("surname"));
+					admin.put("email", mResultSet.getString("email"));
 					admins.put(admin);
 				}
 			}
 			
 			json.put("admins", admins);
 			closeConnection();
-		}catch(Exception e){}
+		}catch(Exception e){
+			System.out.println("Impossible to get All Admins in AdminDAO.java -> getAllAdmins()!!");
+		}
 		
 		return json;
 	}
 	
-	
+	@Override
 	public JSONObject getAllComments(){
 		JSONObject json = new JSONObject();
 		JSONArray comments = new JSONArray();
@@ -142,15 +156,18 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 			json.put("comments", comments);
 			closeConnection();
-		}catch(Exception e){}
+		}catch(Exception e){
+			System.out.println("Impossible to get All Comments in AdminDAO.java -> getAllComments()!!");
+		}
 		
 		return json;
 	}
 	
-	public JSONObject getAllOffers(){
+	@Override
+	public JSONObject getAllBids(){
 		JSONObject json = new JSONObject();
 		JSONArray offers = new JSONArray();
-		final String query = "select * from my_db.bid ;";
+		final String query = "select * from my_db.bid;";
 
 		try {
 			PreparedStatement ps = null;
@@ -171,11 +188,14 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 			json.put("offers", offers);
 			closeConnection();
-		}catch(Exception e){}
+		}catch(Exception e){
+			System.out.println("Impossible to get All Bids in AdminDAO.java -> getAllBids()!!");
+		}
 		
 		return json;
 	}
 	
+	@Override
 	public JSONObject getUser(final String username) {
 		
 		JSONObject json = new JSONObject();
@@ -191,9 +211,11 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 			while (rs.next()) {
 				JSONObject us = new JSONObject();
-				us.put("id", rs.getString("id"));
+				us.put("username", rs.getString("username"));
+				us.put("password", rs.getString("password"));
 				us.put("name", rs.getString("name"));
-
+				us.put("surname", rs.getString("surname"));
+				us.put("email", rs.getString("email"));
 				user.put(us);
 			}
 			json.put("user", user);
@@ -206,6 +228,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 
+	@Override
 	public JSONObject getAdmin(final String username) {
 		JSONObject json = new JSONObject();
 		JSONArray admin = new JSONArray();
@@ -220,9 +243,11 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 			while (rs.next()) {
 				JSONObject ad = new JSONObject();
-				ad.put("id", rs.getString("id"));
+				ad.put("username", rs.getString("username"));
+				ad.put("password", rs.getString("password"));
 				ad.put("name", rs.getString("name"));
-
+				ad.put("surname", rs.getString("surname"));
+				ad.put("email", rs.getString("email"));
 				admin.put(ad);
 			}
 			json.put("admin", admin);
@@ -235,7 +260,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 
-
+	@Override
 	public JSONObject getCommentsOfUser(final String username){
 		JSONObject json = new JSONObject();
 		JSONArray comments = new JSONArray();
@@ -267,7 +292,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		return json;
 	}
 	
-
+	@Override
 	public JSONObject getBidsOfUser(final String username){
 		JSONObject json = new JSONObject();
 		JSONArray bids = new JSONArray();
@@ -318,7 +343,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		}
 	}
 
-
+	@Override
 	public void removeAdmin(final String username) {
 		try {
 			final String query = "DELETE FROM my_db.admin WHERE username=?";
@@ -354,7 +379,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Impossible to update the user: " + username);
+			System.out.println("Impossible to update the user in AdminDAO -> updateUser(user,pass): " + username);
 		}
 	}
 
@@ -375,42 +400,44 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Impossible to update the admin: " + username);
+			System.out.println("Impossible to update the admin in AdminDAO -> updateAdmin(user,pass): " + username);
 		}
 	}
 
-
+	@Override
 	public boolean removeAllCommentsUser(String user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	
+	@Override
 	public boolean removeCommentsItem(String item) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	@Override
 	public boolean removeCommentsUserItem(String username, String item) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	@Override
 	public void addCommentItem(final Comment comment,final String itemId) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void addItem(final Item item) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void addBid(final Item item,final User user,final double price,final Date date) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
-	
+		
 }

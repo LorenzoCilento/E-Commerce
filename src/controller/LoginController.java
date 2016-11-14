@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import connection.UserDAO;
 import model.bean.User;
 
+
 /**
  * Servlet implementation class LoginController
  */
@@ -27,6 +28,7 @@ public class LoginController extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+	/**
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -49,7 +51,6 @@ public class LoginController extends HttpServlet {
 		
 		out.close();
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -57,5 +58,4 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }
