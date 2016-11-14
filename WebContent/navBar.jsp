@@ -16,7 +16,7 @@
 </head>
 <body>
 	<!-- Navigation -->
-    <nav class="navbar navbar-inverse" role="navigation">
+    <nav class="navbar" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -80,18 +80,6 @@
 								);
 							</script>
 					<%} %>
-            <form class="navbar-form" role="search">
-            	<div class="form-group" style="display: inline">
-            		<div class="input-group">
-            			<input type="text" class="form-control" size="50%"
-							placeholder="Cerca">
-									<span class="input-group-addon">
-										<span class="glyphicon glyphicon-search"> 
-										</span>
-									</span>
-            		</div>
-            	</div>
-            </form>
             </div>
             <!-- /.navbar-collapse -->
             
