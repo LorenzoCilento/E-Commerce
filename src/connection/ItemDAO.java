@@ -21,19 +21,23 @@ import model.bean.Item;
 	@Override
 	public void addItem(Item item) {
 		try {
-			final String query = "INSERT into item(id,name,category,price,vote,description,duration,startDate) values(?,?,?,?,?,?,?,?)";
+			final String query = "INSERT into item(id,name,category,price,vote,description,path,startDate) values(?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = createConnection().prepareStatement(query);
-			// ps.setString(1, user.getUsername());
-			// ps.setString(2, user.getPassword());
-
+			ps.setInt(1, item.getId());
+			ps.setString(2, item.getName());
+			ps.setString(3, item.getCategory());
+			ps.setDouble(4, item.getPrice());
+			ps.setInt(5, item.getVote());
+			ps.setString(6, item.getDescription());
+			ps.setString(7, item.getPath());
+			ps.setDate(8, item.getStartDate());
 			ps.executeUpdate();
 
 			closeConnection();
 
 		} catch (SQLException e) {
 			// TODO: handle exception
-			System.out.println("SQLException:" + e.getSQLState());
-			System.out.println("Insert Failed -> duplicated Key!!");
+			System.out.println("Insert Item Failed!!!");
 		}
 
 	}
@@ -45,14 +49,13 @@ import model.bean.Item;
 			PreparedStatement ps = createConnection().prepareStatement(query);
 
 			ps.setString(1, id);
-
 			ps.execute();
 
 			closeConnection();
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.out.println("Impossible to delete the item: " + id);
+			System.out.println("Impossible to delete the item:" + id);
 		}
 	}
 
@@ -108,7 +111,7 @@ import model.bean.Item;
 	public JSONObject getItem(int id) {
 
 		JSONObject json = new JSONObject();
-		JSONArray items = new JSONArray();
+		JSONArray item = new JSONArray();
 		try {
 			final String query = "select * from my_db.item where id=?";
 			final PreparedStatement ps = createConnection().prepareStatement(query);
@@ -116,19 +119,19 @@ import model.bean.Item;
 			ResultSet mResultSet = ps.executeQuery();
 
 			while (mResultSet.next()) {
-				JSONObject item = new JSONObject();
-				item.put("id", mResultSet.getString("id"));
-				item.put("name", mResultSet.getString("name"));
-				item.put("category", mResultSet.getString("category"));
-				item.put("price", mResultSet.getString("price"));
-				item.put("vote", mResultSet.getString("vote"));
-				item.put("description", mResultSet.getString("description"));
-				item.put("duration", mResultSet.getString("duration"));
-				item.put("path", mResultSet.getString("path"));
+				JSONObject it = new JSONObject();
+				it.put("id", mResultSet.getString("id"));
+				it.put("name", mResultSet.getString("name"));
+				it.put("category", mResultSet.getString("category"));
+				it.put("price", mResultSet.getString("price"));
+				it.put("vote", mResultSet.getString("vote"));
+				it.put("description", mResultSet.getString("description"));
+				it.put("duration", mResultSet.getString("duration"));
+				it.put("path", mResultSet.getString("path"));
 
-				items.put(item);
+				item.put(it);
 			}
-			json.put("item", items);
+			json.put("item", item);
 
 			closeConnection();
 

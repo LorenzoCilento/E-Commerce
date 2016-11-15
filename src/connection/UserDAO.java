@@ -35,7 +35,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 			ps.executeUpdate();			
 	
 			closeConnection();
-			System.out.println("User inserito");
+			System.out.println("User inserted");
 		} catch (SQLException e) {
 			// TODO: handle exception
 			System.out.println("SQLException:" + e.getSQLState());
