@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 
-/* Remove the navbar's default margin-bottom and rounded borders */
 .navbar {
 	margin-bottom: 0;
-	border-radius: 0;
+	border-color : #c6c6c6;
+	
 }
 
 /* Add a gray background color and some padding to the footer */
@@ -59,12 +59,6 @@ footer {
     padding-right: 5px;
   
     color: #d17581;
-}
-
-
-.thumbnail .caption-full {
-    padding: 9px;
-    color: #333;
 }
 
 

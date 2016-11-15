@@ -1,15 +1,15 @@
 package model.bean;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Bid {
 
 	private String username;
-	private String itemId;
+	private int itemId;
 	private double price;
-	Date bidDate;
+	private Date bidDate;
 	
-	public Bid(String username, String item, double price) {
+	public Bid(String username, int item, double price) {
 		this.username = username;
 		this.itemId = item;
 		this.price = price;
@@ -23,11 +23,11 @@ public class Bid {
 		this.username = user;
 	}
 
-	public String getItem() {
+	public int getItem() {
 		return itemId;
 	}
 
-	public void setItem(String item) {
+	public void setItem(int item) {
 		this.itemId = item;
 	}
 

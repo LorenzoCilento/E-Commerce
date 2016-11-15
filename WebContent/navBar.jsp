@@ -11,8 +11,8 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<script src="js/jquery-3.1.1.js"></script>
 <script src="bootstrap/js//bootstrap.min.js"></script>
+<script src="js/jquery-3.1.1.js"></script>
 </head>
 <body>
 	<!-- Navigation -->
@@ -22,10 +22,7 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse"
                  data-target="#myNavBar" aria-expanded="false">
-                    <span class="src-only"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span class="glyphicon glyphicon-option-vertical"></span>
                 </button>
                 <a class="navbar-brand" href="home.jsp">BuyDream</a>
             </div>
@@ -54,7 +51,7 @@
 								</li>
 
 								<li>
-									<a href="login.jsp">
+									<a href="login.jsp" >
 										<span class="glyphicon glyphicon-log-in"></span>
 											Accedi
 									</a>
@@ -68,6 +65,7 @@
 										<%=((User)session.getAttribute("user")).getUsername() %><b class="caret"></b>
 									</a>
 									<ul class="dropdown-menu">
+										<li><a href="userPanel.jsp" >Profilo</a></li>
 										<li><a id="logout" >Logout</a></li>
 									</ul>
 								</li>
@@ -87,5 +85,6 @@
         <!-- /.container-fluid -->
     </nav>
 	<!-- /Navigation -->
+	
 </body>
 </html>

@@ -19,7 +19,6 @@
 <script type="text/javascript" src="js/queryAllCategories.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-	
 	getAllItems("all");
 });
 </script>
@@ -93,10 +92,8 @@ $(document).ready(function(){
 				</div>
 
 				<!-- Section items -->
-				<div class="row">
+				<div class="row" id="myThumbnail">
 					<h1>Ultimi Prodotti</h1>
-					<div class="l_g" id="ciccio"></div>
-
 				</div>
 				<!-- /Section items -->
 			</div>
@@ -113,7 +110,7 @@ $(document).ready(function(){
 		<footer class="container-fluid text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<p>Copyright by Rocco_Lorenzo &copy; 2016</p>
+					<p>Copyright by Rocco_Lorenzo&copy; 2016</p>
 				</div>
 			</div>
 		</footer>
