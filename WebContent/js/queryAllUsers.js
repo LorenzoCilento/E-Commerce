@@ -39,7 +39,7 @@ function getAllUsers(){
 	    				)
 	    			}
     				$(".tbody").append(
-						 "<tr>"
+						 "<tr class=''"+cont +">"
 						+	"<th>"+ cont +"</th>"
 						+	"<th>"+ user.username +"</th>"
 						+	"<th>"+ user.password+"</th>"

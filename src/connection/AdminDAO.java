@@ -150,6 +150,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 					comment.put("username", mResultSet.getString("username"));
 					comment.put("itemId", mResultSet.getString("itemId"));
 					comment.put("text", mResultSet.getString("text"));
+					comment.put("vote", mResultSet.getInt("vote"));
 					comments.put(comment);
 				}
 			}
@@ -199,7 +200,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public JSONObject getUser(final String username) {
 		
 		JSONObject json = new JSONObject();
-		JSONArray user = new JSONArray();
+		JSONArray users = new JSONArray();
 		try {
 			final String query = "SELECT * FROM user WHERE username=?";
 			PreparedStatement ps = createConnection().prepareStatement(
@@ -210,15 +211,15 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
-				JSONObject us = new JSONObject();
-				us.put("username", rs.getString("username"));
-				us.put("password", rs.getString("password"));
-				us.put("name", rs.getString("name"));
-				us.put("surname", rs.getString("surname"));
-				us.put("email", rs.getString("email"));
-				user.put(us);
+				JSONObject user = new JSONObject();
+				user.put("username", rs.getString("username"));
+				user.put("password", rs.getString("password"));
+				user.put("name", rs.getString("name"));
+				user.put("surname", rs.getString("surname"));
+				user.put("email", rs.getString("email"));
+				users.put(user);
 			}
-			json.put("user", user);
+			json.put("user", users);
 			
 			closeConnection();
 		} catch (Exception e) {
@@ -279,6 +280,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 				comment.put("username", rs.getString("username"));
 				comment.put("itemId", rs.getString("itemId"));
 				comment.put("text", rs.getString("text"));
+				comment.put("vote", rs.getInt("vote"));
 
 				comments.put(comment);
 			}

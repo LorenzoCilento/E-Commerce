@@ -53,16 +53,6 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user-circle"></i> Irenuccia <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-gear"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
                             <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
@@ -78,10 +68,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-gears"></i> Settings <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="allUsersAdmin.jsp?param=getAllUsers"><i class=" fa fa-user-times"></i> Remove user</a>
-                            </li>
-                             <li>
-                                <a href="#"><i class="fa fa-user-plus"></i> Add new Admin</a>
+                                <a href="removeUserByAdmin.jsp?param=getAllUsers"><i class=" fa fa-user-times"></i> Remove user</a>
                             </li>
                         </ul>
                     </li>
@@ -147,13 +134,13 @@
                             </div>
                             
                                 
-                                <a href="#">
-                                	<div class="panel-footer">
+                               	<div class="panel-footer">
+	                                <a href="#">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
-                                    </div>
-                                </a>
+	                                </a>
+                                </div>
                                 
                             
                         </div>

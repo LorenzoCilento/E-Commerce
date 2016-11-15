@@ -1,6 +1,6 @@
 package model.bean;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Item {
 
@@ -10,14 +10,14 @@ public class Item {
 	private double price;
 	private int vote;
 	private String description;
-	private int duration;
+	private String path;
 	private Date startDate;
-	private Bid bestBid;
 	
-	public Item(){
+
+	public Item() {
 	}
 
-	public Item(int id, String name, String category, double price, int vote, String description, int duration,	Date startDate) {
+	public Item(int id, String name, String category, double price, int vote, String description,String path, Date startDate) {
 
 		this.id = id;
 		this.name = name;
@@ -25,10 +25,9 @@ public class Item {
 		this.price = price;
 		this.vote = vote;
 		this.description = description;
-		this.duration = duration;
+		this.path = path;
 		this.startDate = startDate;
-		this.bestBid=null;
-		
+
 	}
 
 	public int getId() {
@@ -79,14 +78,6 @@ public class Item {
 		this.description = description;
 	}
 
-	public int getDuration() {
-		return duration;
-	}
-
-	public void setDuration(int duration) {
-		this.duration = duration;
-	}
-
 	public Date getStartDate() {
 		return startDate;
 	}
@@ -95,12 +86,12 @@ public class Item {
 		this.startDate = startDate;
 	}
 
-	public Bid getBestBid() {
-		return bestBid;
+	public String getPath() {
+		return path;
 	}
 
-	public void setBestBid(Bid bestBid) {
-		this.bestBid = bestBid;
-	}	
-	
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 }
