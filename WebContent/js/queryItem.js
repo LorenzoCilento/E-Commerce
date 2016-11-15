@@ -7,15 +7,48 @@ function getItem(param){
 		dataType: "json",
 		success: function (data){
 			var item = data.item;
-			$("#img").append(
-					"<img id='myImg' src="+item[0].path+" >"
-                )
-             $("#title").append(
-            		 "<h1 class='page-header'>"
-            		 +item[0].name
-                  +"   <small>ciccio</small>"
-                 +"</h1>"
-                )
+            var img = document.getElementById("myImg");
+				img.setAttribute("src",item[0].path);
+			$("#title").text(item[0].name)
+				
+               $("#description").append(
+               "<p>"+item[0].description+"</p>"
+               )
+               $("#btnBuyNow").text("Compralo Subito a "+item[0].price+" €");
+		}
+	});
+}
+
+function getBid(param){
+	$.ajax({
+		url: "LoadBidByItem",
+		type:"GET",
+		contentType: "application/json; charset=utf-8",
+		data: {id : param},
+		dataType: "json",
+		success: function (data){
+			var bid = data.bids;
+            
+			$("#bidValue").text("L'utima offerta è di "+bid[0].price+" €")
+				
+              
+		}
+	});
+}
+
+function addBid(param){
+	$.ajax({
+		url: "LoadBidByItem",
+		type:"GET",
+		contentType: "application/json; charset=utf-8",
+		data: {id : param},
+		dataType: "json",
+		success: function (data){
+			var bid = data.bids;
+            
+			$("#bidValue").text("L'utima offerta è di "+bid[0].price+" €")
+				
+              
 		}
 	});
 }

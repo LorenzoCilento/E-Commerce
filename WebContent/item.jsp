@@ -13,7 +13,6 @@
 	media="all">
 <link href="css/style.css" rel="stylesheet" type="text/css">
 <script src="js/jquery-3.1.1.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
 
 <title>BuyDream Homepage - You best E-Commerce</title>
 
@@ -25,6 +24,7 @@
 	var id = $.urlParams('id');
 	$(document).ready(function(){
 		getItem(id);
+		getBid(id);
 	});
 </script>
 
@@ -33,49 +33,46 @@
 <body>
 
 	<jsp:include page="navBar.jsp"></jsp:include>
+	
 	<!-- Page Content -->
 	<div class="container">
         <!-- Portfolio Item Heading -->
         <div class="row">
-            <div class="col-lg-12" id="title" >
-                
+            <div class="col-lg-12 col-md-12" >
+              <h1 class="page-header" id="title"></h1>  
             </div>
         </div>
         <!-- /.row -->
-		<!-- Portfolio Item Row -->
+        
         <div class="row">
-
-            <div class="col-md-8" id="img">
-                
+        	<div class="thumbnail col-lg-4 col-md-4">
+				<img id="myImg">
+			</div>
+			<div class="col-lg-8">
+				<h1>Descrizione</h1>
+				<p id="description"></p>        
+			</div>
+        </div>
+        <div class="row">
+        	<div class="col-lg-4 col-md-4" >
+        		<h3 id="bidValue"></h3>
+            	<h4 >Fai un offerta superiore </h4>
+        	    <input type="text" id="bidText">
+        	    <button class="btn btn-primary" id="btnBid">Piazza offerta</button>
+        	    <h4 >Oppure </h4>
+        	    <button class="btn btn-success" id="btnBuyNow"></button>
             </div>
-
-            <div class="col-md-4">
-                <h3>Project Description</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <h3>Project Details</h3>
-                <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
-                </ul>
-            </div>
-
+        
         </div>
         <!-- /.row -->
 
 
-		<div class="row">
-			<div class="col-md-5" id="img">
-				<div class="col-md-9">
-					<h1 id="title"></h1>
-				</div>
-			</div>
 
 			<div class="col-md-9">
 
 				<!-- Section items -->
 				<div class="row">
+					<h1>Altri Prodotti</h1>
 					<div class="l_g"></div>
 
 				</div>
@@ -86,8 +83,6 @@
 
 
 
-
-	</div>
 
 	<!-- /.container -->
 

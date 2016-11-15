@@ -8,33 +8,27 @@ function getAllItems(param) {
 		    dataType: "json", 
 		    success: function (data,status) {
 		    	var items = data.item;
-				for (var i = 0; i < items.length; ++i) {
+		    	for (var i = 0; i < items.length; ++i) {
 					var item = items[i];
-					var cont = 0;
-					$(".l_g").append(
-							"<div class='col-sm-4 col-lg-4 col-md-4'>"
-		                    +   " <div class='thumbnail'>"
-		                          +" <img src="+ item.path +" class='img-responsive' alt=''>"
-		                          +" <div class='caption'>"
-		                          +" <h4 class='pull-right'>€ " +item.price +"</h4>"
-		                          +"  <h4><a href='item.jsp?id="+item.id+"'>"+item.name+"</a>"
-		                              +"  </h4>"
-		                           +" <p>"
-		                           +"  <a href='#' class='btn btn-primary'>Piazza un'offerta</a>"
-		                           +"  </p>" 
-		                           +"   <div class='ratings'>"
-		                           +"   	<p>"
-			                        +"   	<span class='glyphicon glyphicon-star'></span>"
-			                        +"    	 <span class='glyphicon glyphicon-star'></span>"
-			                        +"     	 <span class='glyphicon glyphicon-star'></span>"
-			                        +"       <span class='glyphicon glyphicon-star'></span>"
-			                        +"       <span class='glyphicon glyphicon-star-empty'></span>"	
-			                        +"       <span class='pull-right'>15 recensioni</span>"	
-			                        +"     </p>"
-		                           +" </div>"
-		                            +"</div>"
-		                        +"</div>"
-		                        +"</div>")
+					$("#myThumbnail").append(               
+							"<div class='thumbnail col-sm-4 col-lg-4 col-md-4'>"
+								+" <img src="+ item.path +" class='img-responsive' alt=''>"
+	                          +" <div class='caption'>"
+	                          +" <h4 class='pull-right'>€ " +item.price +"</h4>"
+	                          +"  <h4><a href='item.jsp?id="+item.id+"'>"+item.name+"</a>"
+	                              +"  </h4>"
+	                           +" <p>"
+	                           +"  <a href='#' class='btn btn-primary'>Piazza un'offerta</a>"
+	                           +"  <a href='#' class='btn btn-success'>Compralo subito</a>"
+	                           +"  </p>" 
+	                           + "   <div class='ratings'>"
+	                           	+		"<p>"+item.vote+" recensioni</p>"
+	                           +"</div>"
+	                            +"</div>"
+	                            +"</div>" )
+	                           
+	                            
+	                           
 				}
 		    }
 		});
@@ -49,31 +43,23 @@ function getAllItems(param) {
 	        	var items = data.items;
 				for (var i = 0; i < items.length; ++i) {
 					var item = items[i];
-					var cont = 0;
-					$(".l_g").append(
-							"<div class='col-sm-4 col-lg-4 col-md-4'>"
-		                    +   " <div class='thumbnail'>"
-		                          +" <img src="+ item.path +" class='img-responsive' alt=''>"
-		                          +" <div class='caption'>"
-		                          +" <h4 class='pull-right'>€ " +item.price +"</h4>"
-		                          +"  <h4><a href='item.jsp?id="+item.id+"'>"+item.name+"</a>"
-		                              +"  </h4>"
-		                           +" <p>"
-		                           +"  <a href='#' class='btn btn-primary'>Piazza un'offerta</a>"
-		                           +"  </p>" 
-		                           +"   <div class='ratings'>"
-		                           +"   	<p>"
-			                        +"   	<span class='glyphicon glyphicon-star'></span>"
-			                        +"    	 <span class='glyphicon glyphicon-star'></span>"
-			                        +"     	 <span class='glyphicon glyphicon-star'></span>"
-			                        +"       <span class='glyphicon glyphicon-star'></span>"
-			                        +"       <span class='glyphicon glyphicon-star-empty'></span>"	
-			                        +"       <span class='pull-right'>15 recensioni</span>"	
-			                        +"     </p>"
-		                           +" </div>"
-		                            +"</div>"
-		                        +"</div>"
-		                        +"</div>")
+					$("#myThumbnail").append(               
+							"<div class='thumbnail col-sm-4 col-lg-4 col-md-4'>"
+								+" <img src="+ item.path +" class='img-responsive' alt=''>"
+	                          +" <div class='caption'>"
+	                          +" <h4 class='pull-right'>€ " +item.price +"</h4>"
+	                          +"  <h4><a href='item.jsp?id="+item.id+"'>"+item.name+"</a>"
+	                              +"  </h4>"
+	                           +" <p>"
+	                           +"  <a href='#' class='btn btn-primary'>Piazza un'offerta</a>"
+	                           +"  <a href='#' class='btn btn-success'>Compralo subito</a>"
+	                           +"  </p>" 
+	                           + "   <div class='ratings'>"
+	                           	+		"<p>"+item.vote+" recensioni</p>"
+	                           +"</div>"
+	                            +"</div>"
+	                            +"</div>"    )
+	                             
 				}
 	        }
 		});

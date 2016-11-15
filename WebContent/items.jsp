@@ -49,14 +49,13 @@ $(document).ready(function(){
 
                 
 				
-				<!-- Section items -->
-                <div class="row" >
-                    <div class="l_g">
-                    
-                    </div>
-
-                </div>
+		
+                <!-- Section items -->
+				<div class="row" id="myThumbnail">
+					<h1>Ultimi Prodotti</h1>
+				</div>
 				<!-- /Section items -->
+				
             </div>
 
         </div>

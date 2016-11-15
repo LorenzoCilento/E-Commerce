@@ -147,5 +147,5 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 			System.out.println("Impossible to update the user: " + username);
 		}
 	}
-
+	
 }
