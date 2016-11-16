@@ -1,9 +1,9 @@
 @CHARSET "UTF-8";
 
 .navbar {
-	margin-bottom: 0;
-	border-color : #c6c6c6;
-	
+	border: 1px solid transparent;
+  border-radius: 4px;
+	border-color : #000000;
 }
 
 /* Add a gray background color and some padding to the footer */
@@ -54,10 +54,7 @@ footer {
     white-space: nowrap;
 }
 
-
 .ratings {
-    padding-right: 5px;
-  
     color: #d17581;
 }
 

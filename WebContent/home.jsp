@@ -7,7 +7,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all">
-
 <link href="bootstrap.css" rel="stylesheet" type="text/css" media="all">
 
 <script src="js/jquery-3.1.1.js"></script>
@@ -32,12 +31,12 @@ $(document).ready(function(){
 	<div class="container">
 
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<h1 class="lead">Categorie</h1>
 				<div class="list-group" id="listCategories"></div>
 			</div>
 
-			<div class="col-md-9">
+			<div class="col-md-10">
 
 				<div class="row carousel-holder">
 

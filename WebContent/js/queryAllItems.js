@@ -11,7 +11,8 @@ function getAllItems(param) {
 		    	for (var i = 0; i < items.length; ++i) {
 					var item = items[i];
 					$("#myThumbnail").append(               
-							"<div class='thumbnail col-sm-4 col-lg-4 col-md-4'>"
+							"<div class='col-sm-4 col-lg-4 col-md-4'>"
+							+"<div class='thumbnail' id='bigThumbnail'>"
 								+" <img src="+ item.path +" class='img-responsive' alt=''>"
 	                          +" <div class='caption'>"
 	                          +" <h4 class='pull-right'>€ " +item.price +"</h4>"
@@ -25,6 +26,7 @@ function getAllItems(param) {
 	                           	+		"<p>"+item.vote+" recensioni</p>"
 	                           +"</div>"
 	                            +"</div>"
+	                            +"</div>" 
 	                            +"</div>" )
 	                           
 	                            
@@ -44,8 +46,9 @@ function getAllItems(param) {
 				for (var i = 0; i < items.length; ++i) {
 					var item = items[i];
 					$("#myThumbnail").append(               
-							"<div class='thumbnail col-sm-4 col-lg-4 col-md-4'>"
-								+" <img src="+ item.path +" class='img-responsive' alt=''>"
+							"<div class='col-sm-4 col-lg-4 col-md-4'>"
+							+"<div class='thumbnail' id='bigThumbnail'>"
+								+" <img src="+ item.path +">"
 	                          +" <div class='caption'>"
 	                          +" <h4 class='pull-right'>€ " +item.price +"</h4>"
 	                          +"  <h4><a href='item.jsp?id="+item.id+"'>"+item.name+"</a>"
@@ -55,10 +58,11 @@ function getAllItems(param) {
 	                           +"  <a href='#' class='btn btn-success'>Compralo subito</a>"
 	                           +"  </p>" 
 	                           + "   <div class='ratings'>"
-	                           	+		"<p>"+item.vote+" recensioni</p>"
-	                           +"</div>"
-	                            +"</div>"
-	                            +"</div>"    )
+	                           	  +		"<p>"+item.vote+" recensioni</p>"
+	                                +"</div>"
+	                              +"</div>"
+	                            +"</div>" 
+	                       +"</div>" )
 	                             
 				}
 	        }

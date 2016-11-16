@@ -45,15 +45,15 @@
         <!-- /.row -->
         
         <div class="row">
-        	<div class="thumbnail col-lg-4 col-md-4">
+        	<div class="col-lg-6 col-md-6">
+			<div class="thumbnail">
 				<img id="myImg">
+			</div>				
 			</div>
-			<div class="col-lg-8">
+			<div class="col-lg-6 col-md-6">
 				<h1>Descrizione</h1>
 				<p id="description"></p>        
 			</div>
-        </div>
-        <div class="row">
         	<div class="col-lg-4 col-md-4" >
         		<h3 id="bidValue"></h3>
             	<h4 >Fai un offerta superiore </h4>
@@ -62,6 +62,8 @@
         	    <h4 >Oppure </h4>
         	    <button class="btn btn-success" id="btnBuyNow"></button>
             </div>
+        </div>
+        <div class="row">
         
         </div>
         <!-- /.row -->
@@ -69,19 +71,13 @@
 
 
 			<div class="col-md-9">
-
-				<!-- Section items -->
-				<div class="row">
+			<!-- Section items -->
+				<div class="row" id="myThumbnail">
 					<h1>Altri Prodotti</h1>
-					<div class="l_g"></div>
-
 				</div>
-				<!-- /Section items -->
+				<!-- /Section items -->			
 			</div>
-
 		</div>
-
-
 
 
 	<!-- /.container -->

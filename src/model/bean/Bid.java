@@ -9,10 +9,11 @@ public class Bid {
 	private double price;
 	private Date bidDate;
 	
-	public Bid(String username, int item, double price) {
+	public Bid(String username, int item, double price, Date date) {
 		this.username = username;
 		this.itemId = item;
 		this.price = price;
+		this.bidDate = date;
 	}
 
 	public String getUsername() {
@@ -23,7 +24,7 @@ public class Bid {
 		this.username = user;
 	}
 
-	public int getItem() {
+	public int getItemId() {
 		return itemId;
 	}
 

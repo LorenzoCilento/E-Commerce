@@ -38,18 +38,14 @@ $(document).ready(function(){
     <div class="container">
 
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2">
 				<h1 class="lead">Categorie</h1>
 				<div class="list-group" id="listCategories">
 					
 				</div>
 			</div>
 
-            <div class="col-md-9">
-
-                
-				
-		
+            <div class="col-md-10">
                 <!-- Section items -->
 				<div class="row" id="myThumbnail">
 					<h1>Ultimi Prodotti</h1>

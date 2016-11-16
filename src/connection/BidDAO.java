@@ -14,8 +14,23 @@ import model.bean.Bid;
 public class BidDAO extends ConnectionDAO implements QueryBidInterface {
 
 	@Override
-	public void addBid() {
-		// TODO Auto-generated method stub
+	public void addBid(Bid bid) {
+		final String query ="INSERT INTO bid(username,itemId,price,bidDate) values(?,?,?,?)";
+		try {
+			PreparedStatement ps = createConnection().prepareStatement(query);
+			ps.setString(1, bid.getUsername());
+			ps.setInt(2, bid.getItemId());
+			ps.setDouble(3, bid.getPrice());
+			ps.setDate(4, bid.getBidDate());
+			ps.executeUpdate();
+			
+			closeConnection();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 	}
 

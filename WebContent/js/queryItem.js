@@ -36,19 +36,4 @@ function getBid(param){
 	});
 }
 
-function addBid(param){
-	$.ajax({
-		url: "LoadBidByItem",
-		type:"GET",
-		contentType: "application/json; charset=utf-8",
-		data: {id : param},
-		dataType: "json",
-		success: function (data){
-			var bid = data.bids;
-            
-			$("#bidValue").text("L'utima offerta è di "+bid[0].price+" €")
-				
-              
-		}
-	});
-}
+

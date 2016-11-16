@@ -156,13 +156,12 @@ import model.bean.Item;
 
 			while (mResultSet.next()) {
 				JSONObject item = new JSONObject();
-				item.put("id", mResultSet.getString("id"));
+				item.put("id", mResultSet.getInt("id"));
 				item.put("name", mResultSet.getString("name"));
 				item.put("category", mResultSet.getString("category"));
 				item.put("price", mResultSet.getString("price"));
 				item.put("vote", mResultSet.getString("vote"));
 				item.put("description", mResultSet.getString("description"));
-				item.put("duration", mResultSet.getString("duration"));
 				item.put("path", mResultSet.getString("path"));
 
 				items.put(item);
