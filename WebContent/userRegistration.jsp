@@ -14,9 +14,7 @@
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
 <title>Registration</title>
-<script type="text/javascript">
 
-</script>
 </head>
 
 <body>
@@ -28,7 +26,7 @@
 		<form action="AddUserServlet" class="form horizontal" role="form"
 			method="post">
 			<div class="well" id="registration" style="text-align: center;">
-				<h2>Registrazione</h2>
+				<h2>Registration</h2>
 			</div>
 			<div class="form-group" id="nameForm">
 				<label for="name" class="col-sm-3 control-label" id="name">Name
@@ -36,9 +34,9 @@
 				</label>
 				<div class="col-sm-9">
 					<input type="text" class="form-control" name="name"
-						id="inputName" placeholder="Name" onblur="validateUsername(this.value)" required> <span
+						id="inputName" placeholder="Name" onblur="validateInputString(this.value,this.id)" required> <span
 						id="glyphiconFormName"> </span> <span class="help-block">Es.
-						Francesco</span>
+						Francesco<small>[Minimum 3 and maximum 15 letter]</small></span>
 					<div id="errName"></div>
 				</div>
 			</div>
@@ -47,17 +45,18 @@
 					<span> (Required)</span>
 				</label>
 				<div class="col-sm-9">
-					<input type="text" name="surname" id="surname"
-						placeholder="Surname" class="form-control" required> <span
-						class="help-block">Es. Rossi</span>
+					<input type="text" name="surname" id="inputSurname"
+						placeholder="Surname" onblur="validateInputString(this.value,this.id)" 
+						class="form-control" required> <span class="help-block">
+							Es. Rossi<small>[Minimum 3 and maximum 15 letter]</small></span>
 				</div>
 			</div>
 			<div class="form-group" id="emailForm">
 				<label for="e-mail" class="col-sm-3 control-label">E-mail <span>
 						(Required)</span></label>
 				<div class="col-sm-9">
-					<input type="text" name="email" id="e-mail" placeholder="E-mail"
-						class="form-control" onblur="validateEmail(this.value)" required> <span class="help-block">Es.
+					<input type="text" name="email" id="inputEmail" placeholder="E-mail"
+						class="form-control" onblur="validateEmail(this.value,this.id)" required> <span class="help-block">Es.
 						francescorossi@e-commerce.it</span>
 				</div>
 			</div>
@@ -68,7 +67,7 @@
 				<div class="col-sm-9">
 					<input type="text" class="form-control" name="username"
 						id="inputusername" placeholder="username"
-						onblur="checkUsername(this.value)" required> <span
+						onblur="validateInputString(this.value,this.id),checkUsername(this.value);" required> <span
 						id="glyphiconFormusername"> </span>
 					<div id="errusername"></div>
 				</div>
@@ -78,7 +77,7 @@
 					<span> (Required)</span></label>
 				<div class="col-sm-9">
 					<input type="password" name="password" id="inputPassword"
-						placeholder="Password" class="form-control" onblur="checkPassword()" required> <span
+						placeholder="Password" class="form-control" onblur="validateInputString(this.value,this.id),checkPassword()" required> <span
 						id="glyphiconFormPassword"></span>
 					<div id="errPassword"></div>
 				</div>
@@ -89,7 +88,7 @@
 				<div class="col-sm-9">
 					<input type="password" name="repeatPassword"
 						id="inputRepeatPassword" placeholder="RepeatPassword"
-						class="form-control" onblur="checkPassword()" required> <span
+						class="form-control" onblur="validateInputString(this.value,this.id),checkPassword()" required> <span
 						id="glyphiconFormRepeatPassword"></span>
 					<div id="errRepeatPassword"></div>
 				</div>
@@ -205,8 +204,8 @@
 	function checkPassword(){
 		var passw1=$("#inputRepeatPassword").val();
 		var passw2=$("#inputPassword").val();
+		
 		if( (( passw1 && passw2 ) != ( null)) && ( ( passw1 && passw2 ) != "" ) ){
-			
 			
 			$.ajax({
 				type: "POST",
@@ -227,16 +226,7 @@
                 		$("#glyphiconFormPassword").addClass("glyphicon glyphicon-ok form-control-feedback");
                 		$("#repeatPasswordForm").addClass("form-group has-success has-feedback");
                 		$("#glyphiconFormRepeatPassword").addClass("glyphicon glyphicon-ok form-control-feedback");
-            			$("#errRepeatPassword").append(
-            					"<div id='matchPasswords' class='alert alert-success'>"
-            							+ "<strong>PASSWORDS OK!</strong></div>");
-            			window.setTimeout(function() {
-            				$("#errRepeatPassword").fadeTo(500, 0).slideUp(
-            						500, function() {
-            							$("#errRepeatPassword").empty();
-            							$("#errRepeatPassword").removeAttr("style");
-            						});
-            			}, 3000);
+            			
                 		
                 	}
                 	
@@ -245,6 +235,7 @@
             			    event.preventDefault(); 
             			});
             			$("#submitForm").css("background-color","red");
+            			$("#errSubmitForm").empty();
             			$("#errSubmitForm")
 						.append("<div id='invalidSubmit' class='alert alert-danger'>"
 						+ "<strong>ATTENZIONE!</strong> alcuni dei campi non sono stati riempiti, correggerli per potersi registrare.</div>");
