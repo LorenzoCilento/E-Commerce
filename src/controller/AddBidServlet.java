@@ -38,9 +38,11 @@ public class AddBidServlet extends HttpServlet {
 		
 		java.util.Date utilDate = new java.util.Date();
 	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		String username = ((User)request.getSession().getAttribute("user")).getUsername();
+		
+	    String username = ((User)request.getSession().getAttribute("user")).getUsername();
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 		double price = Double.parseDouble(request.getParameter("price"));
+		
 		Bid bid = new Bid(username, itemId, price,sqlDate);
 	
 		new BidDAO().addBid(bid);

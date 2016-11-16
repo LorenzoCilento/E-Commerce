@@ -25,22 +25,18 @@
 	$(document).ready(function(){
 		getItem(id);
 	});
+	
 	$(document).ready(function(){
 		getBid(id);
 	});
-	function placeBid () {
-		alert("ccc");
-	}
 	
 	function addBid(){		
 		var price = document.bidForm.bidText.value;
+		alert("ciao"+price);
 		$.ajax({
 			url: "AddBidServlet",
 			type:"GET",
-			data:{itemId : id , price : price},
-			success:function(data){
-				alert("ci");
-			}
+			data:{itemId : id , price : price}
 		});
 	}
 </script>
