@@ -5,7 +5,6 @@
 <html lang="it">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/validateInput.js"></script>
 <!-- Bootstrap Core CSS -->
@@ -39,32 +38,18 @@
 				<label for="surname" class="col-sm-3 col-md-3 col-lg-3 control-label" id="surname">Surname
 					<span> (Required)</span>
 				</label>
-<<<<<<< HEAD
 				<div class="col-sm-9 col-md-9 col-lg-9 ">
-					<input type="text" name="surname" id="surname"
+					<input type="text" name="surname" id="surname" onblur="validateInputString(this.value,this.id)" 
 						placeholder="Surname" class="form-control" required> <span
-						class="help-block">Es. Rossi</span>
-=======
-				<div class="col-sm-9">
-					<input type="text" name="surname" id="inputSurname"
-						placeholder="Surname" onblur="validateInputString(this.value,this.id)" 
-						class="form-control" required> <span class="help-block">
-							Es. Rossi<small>[Minimum 3 and maximum 15 letter]</small></span>
->>>>>>> Rocco
+						class="help-block">Es. Rossi<small>[Minimum 3 and maximum 15 letter]</small></span>
 				</div>
 			</div>
 			<div class="form-group" id="emailForm">
 				<label for="e-mail" class="col-sm-3 col-md-3 col-lg-3 control-label">E-mail <span>
 						(Required)</span></label>
-<<<<<<< HEAD
 				<div class="col-sm-9 col-md-9 col-lg-9 ">
 					<input type="text" name="email" id="e-mail" placeholder="E-mail"
-						class="form-control" onblur="validateEmail(this.value)" required> <span class="help-block">Es.
-=======
-				<div class="col-sm-9">
-					<input type="text" name="email" id="inputEmail" placeholder="E-mail"
 						class="form-control" onblur="validateEmail(this.value,this.id)" required> <span class="help-block">Es.
->>>>>>> Rocco
 						francescorossi@e-commerce.it</span>
 				</div>
 			</div>

@@ -1,5 +1,6 @@
 package connection;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,18 +15,15 @@ import util.Factories;
 
 
 
-public class UserDAO extends ConnectionDAO implements QueryUserInterface {
-
-	public UserDAO() {
-		super();
-	}
+public class UserDAO implements QueryUserInterface {
 	
 	@Override
 	public void addUser(final User user){
 		try {
 			final String query ="INSERT into user(username,password,name,surname,email) values(?,?,?,?,?)";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
 			ps.setString(3, user.getName());
@@ -34,7 +32,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 			
 			ps.executeUpdate();			
 	
-			closeConnection();
+			connection.close();
 			System.out.println("User inserted");
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -47,13 +45,12 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 	public JSONObject getAllUsers() {
 		JSONObject json = new JSONObject();
 		JSONArray users = new JSONArray();
-		final String query = "select * from my_db.user ;";
 
 		try {
-			PreparedStatement ps = null;
-			ResultSet mResultSet = null;
-			ps = createConnection().prepareStatement(query);
-			mResultSet = ps.executeQuery();
+			final String query = "select * from my_db.user ;";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			final ResultSet mResultSet = ps.executeQuery();
 			
 			if(mResultSet != null) {
 				while (mResultSet.next()) {
@@ -69,7 +66,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 			}
 			
 			json.put("users", users);
-			closeConnection();
+			connection.close();
 		}catch(Exception e){}
 		
 		return json;
@@ -81,8 +78,8 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 		
 		try {
 			final String query = "SELECT * FROM user WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			
@@ -93,7 +90,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 				user.setPassword(rs.getString(2));
 			}
 			
-			closeConnection();
+			connection.close();
 		} catch (Exception e) {
 			System.out.println("User non presente nel DataBase!!!");
 		}
@@ -112,14 +109,14 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 	public void removeUser(String username){
 		try {
 			final String query = "DELETE FROM my_db.user WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			
 			ps.execute();
 			
-			closeConnection();
+			connection.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -131,8 +128,8 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 	public void updateUser(final String username, final String password){
 		try {
 			final String query = "UPDATE my_db.user SET username=?,password=? WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			ps.setString(2, password);
@@ -140,7 +137,7 @@ public class UserDAO extends ConnectionDAO implements QueryUserInterface {
 			
 			ps.executeUpdate();
 			
-			closeConnection();
+			connection.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception

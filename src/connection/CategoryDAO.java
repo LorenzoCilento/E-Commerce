@@ -1,5 +1,6 @@
 package connection;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,17 +9,18 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-public class CategoryDAO extends ConnectionDAO implements QueryCategoryInterface {
+public class CategoryDAO implements QueryCategoryInterface {
 
 	@Override
 	public void addCategory(String category) {
 		try {
 			final String query = "INSERT into category(name) values(?)";
-			PreparedStatement ps = createConnection().prepareStatement(query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, category);
 			ps.executeUpdate();
 		
-			closeConnection();
+			connection.close();
 
 		} catch (SQLException e) {
 			System.out.println("SQLException:" + e.getSQLState());
@@ -40,7 +42,8 @@ public class CategoryDAO extends ConnectionDAO implements QueryCategoryInterface
 		try {
 
 			final String query = "select * from my_db.category ;";
-			final PreparedStatement ps = createConnection().prepareStatement(query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			final ResultSet mResultSet = ps.executeQuery();
 			while (mResultSet.next()) {
 				JSONObject category = new JSONObject();
@@ -50,7 +53,7 @@ public class CategoryDAO extends ConnectionDAO implements QueryCategoryInterface
 			}
 			json.put("categories", categories);
 			
-			closeConnection();
+			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (JSONException e) {

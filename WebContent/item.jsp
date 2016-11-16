@@ -24,8 +24,25 @@
 	var id = $.urlParams('id');
 	$(document).ready(function(){
 		getItem(id);
+	});
+	$(document).ready(function(){
 		getBid(id);
 	});
+	function placeBid () {
+		alert("ccc");
+	}
+	
+	function addBid(){		
+		var price = document.bidForm.bidText.value;
+		$.ajax({
+			url: "AddBidServlet",
+			type:"GET",
+			data:{itemId : id , price : price},
+			success:function(data){
+				alert("ci");
+			}
+		});
+	}
 </script>
 
 </head>
@@ -55,12 +72,14 @@
 				<p id="description"></p>        
 			</div>
         	<div class="col-lg-4 col-md-4" >
-        		<h3 id="bidValue"></h3>
-            	<h4 >Fai un offerta superiore </h4>
-        	    <input type="text" id="bidText">
-        	    <button class="btn btn-primary" id="btnBid">Piazza offerta</button>
-        	    <h4 >Oppure </h4>
-        	    <button class="btn btn-success" id="btnBuyNow"></button>
+        		<h3 id="bidValue1"></h3>
+            	<h4 id="bidValue2"></h4>
+            	<form method="post" name="bidForm">
+	        	    <input type="text" name="bidText">
+	        	    <button class="btn btn-primary" value="placeBid" id="btnBid" onclick="addBid()" >Piazza offerta</button>
+	        	    <h4 >Oppure </h4>
+	        	    <button class="btn btn-success" id="btnBuyNow"></button>
+        	    </form>
             </div>
         </div>
         <div class="row">

@@ -11,14 +11,15 @@ public class Item {
 	private int vote;
 	private String description;
 	private String path;
-	private Date startDate;
+	private String username;
+	private boolean sold;
 	
 
 	public Item() {
 	}
 
-	public Item(int id, String name, String category, double price, int vote, String description,String path, Date startDate) {
-
+	public Item(int id, String name, String category, double price, int vote, 
+			String description,String path, Date startDate) {
 		this.id = id;
 		this.name = name;
 		this.category = category;
@@ -26,8 +27,6 @@ public class Item {
 		this.vote = vote;
 		this.description = description;
 		this.path = path;
-		this.startDate = startDate;
-
 	}
 
 	public int getId() {
@@ -78,20 +77,28 @@ public class Item {
 		this.description = description;
 	}
 
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
 	public String getPath() {
 		return path;
 	}
 
 	public void setPath(String path) {
 		this.path = path;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public boolean isSold() {
+		return sold;
+	}
+
+	public void setSold(boolean sold) {
+		this.sold = sold;
 	}
 
 }

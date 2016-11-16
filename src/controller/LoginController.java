@@ -42,6 +42,7 @@ public class LoginController extends HttpServlet {
 		if(user.getPassword().equals(password)){
 			out.print("user valido");
 			request.getSession().setAttribute("user", user);
+			request.getSession().setAttribute("username", user.getName());
 			response.sendRedirect("home.jsp");
 		}
 		else

@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.fabric.xmlrpc.base.Data;
+
 import connection.BidDAO;
 import model.bean.Bid;
+import model.bean.User;
 
 /**
  * Servlet implementation class AddBidServlet
@@ -32,13 +35,14 @@ public class AddBidServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Calendar cal = Calendar.getInstance();
-		Date date = (Date) cal.getTime();
-		String username = request.getParameter("username");
+		
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+		String username = ((User)request.getSession().getAttribute("user")).getUsername();
 		int itemId = Integer.parseInt(request.getParameter("itemId"));
 		double price = Double.parseDouble(request.getParameter("price"));
-		Bid bid = new Bid(username, itemId, price, date);
-		
+		Bid bid = new Bid(username, itemId, price,sqlDate);
+	
 		new BidDAO().addBid(bid);
 	}
 

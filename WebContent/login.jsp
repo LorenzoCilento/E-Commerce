@@ -12,13 +12,7 @@
 	<jsp:include page="navBar.jsp"></jsp:include>
 	
 	<div class="container">
-<<<<<<< HEAD
 		<div class="row" id="content">
-=======
-		 <div class="row">
-		  <div class="col-lg-6 col-md-6">
-		<section id="content">
->>>>>>> Rocco
 			<form action="LoginController" method="get">
 				<h1>Accedi</h1>
 				<div>
@@ -37,9 +31,6 @@
 		<!-- content -->
 		
 		</div>
-		</div>
-		
-	</div>
 	<!-- container -->
 	
 	<div class="containerFooter">

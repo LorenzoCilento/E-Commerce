@@ -48,7 +48,7 @@ $(document).ready(function(){
             <div class="col-md-10">
                 <!-- Section items -->
 				<div class="row" id="myThumbnail">
-					<h1>Ultimi Prodotti</h1>
+					
 				</div>
 				<!-- /Section items -->
 				

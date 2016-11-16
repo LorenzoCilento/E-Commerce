@@ -34,8 +34,10 @@ public class LoadAllItemController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		JSONObject items = new ItemDAO().getAllItems();
-		response.setContentType("application/json");
-		response.getWriter().write(items.toString());
+		if(items != null){
+			response.setContentType("application/json");
+			response.getWriter().write(items.toString());
+		}
 	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
