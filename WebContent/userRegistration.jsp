@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/validateInput.js"></script>
-o
 <!-- Bootstrap Core CSS -->
 
 <title>Registration</title>
