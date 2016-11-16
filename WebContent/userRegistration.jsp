@@ -5,22 +5,17 @@
 <html lang="it">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-
 <script src="js/jquery-3.1.1.js"></script>
 <script src="js/validateInput.js"></script>
-
+o
 <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css"
-	media="all">
+
 <title>Registration</title>
 
 </head>
 
 <body>
-
 	<jsp:include page="navBar.jsp"></jsp:include>
-
 
 	<div class="container well">
 		<form action="AddUserServlet" class="form horizontal" role="form"
@@ -29,10 +24,10 @@
 				<h2>Registration</h2>
 			</div>
 			<div class="form-group" id="nameForm">
-				<label for="name" class="col-sm-3 control-label" id="name">Name
+				<label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label" id="name">Name
 					<span> (Required)</span>
 				</label>
-				<div class="col-sm-9">
+				<div class="col-sm-9 col-md-9 col-lg-9">
 					<input type="text" class="form-control" name="name"
 						id="inputName" placeholder="Name" onblur="validateInputString(this.value,this.id)" required> <span
 						id="glyphiconFormName"> </span> <span class="help-block">Es.
@@ -41,30 +36,29 @@
 				</div>
 			</div>
 			<div class="form group">
-				<label for="surname" class="col-sm-3 control-label" id="surname">Surname
+				<label for="surname" class="col-sm-3 col-md-3 col-lg-3 control-label" id="surname">Surname
 					<span> (Required)</span>
 				</label>
-				<div class="col-sm-9">
-					<input type="text" name="surname" id="inputSurname"
-						placeholder="Surname" onblur="validateInputString(this.value,this.id)" 
-						class="form-control" required> <span class="help-block">
-							Es. Rossi<small>[Minimum 3 and maximum 15 letter]</small></span>
+				<div class="col-sm-9 col-md-9 col-lg-9 ">
+					<input type="text" name="surname" id="surname" onblur="validateInputString(this.value,this.id)" 
+						placeholder="Surname" class="form-control" required> <span
+						class="help-block">Es. Rossi<small>[Minimum 3 and maximum 15 letter]</small></span>
 				</div>
 			</div>
 			<div class="form-group" id="emailForm">
-				<label for="e-mail" class="col-sm-3 control-label">E-mail <span>
+				<label for="e-mail" class="col-sm-3 col-md-3 col-lg-3 control-label">E-mail <span>
 						(Required)</span></label>
-				<div class="col-sm-9">
-					<input type="text" name="email" id="inputEmail" placeholder="E-mail"
+				<div class="col-sm-9 col-md-9 col-lg-9 ">
+					<input type="text" name="email" id="e-mail" placeholder="E-mail"
 						class="form-control" onblur="validateEmail(this.value,this.id)" required> <span class="help-block">Es.
 						francescorossi@e-commerce.it</span>
 				</div>
 			</div>
 			<div class="form-group" id="usernameForm">
-				<label for="username" class="col-sm-3 control-label" id="username">Username
+				<label for="username" class="col-sm-3 col-md-3 col-lg-3 control-label" id="username">Username
 					<span> (Required)</span>
 				</label>
-				<div class="col-sm-9">
+				<div class="col-sm-9 col-md-9 col-lg-9 ">
 					<input type="text" class="form-control" name="username"
 						id="inputusername" placeholder="username"
 						onblur="validateInputString(this.value,this.id),checkUsername(this.value);" required> <span
@@ -73,9 +67,9 @@
 				</div>
 			</div>
 			<div class="form-group" id="passwordForm">
-				<label for="password" class="col-sm-3 control-label" id="password">Password
+				<label for="password" class="col-sm-3 col-md-3 col-lg-3 control-label" id="password">Password
 					<span> (Required)</span></label>
-				<div class="col-sm-9">
+				<div class="col-sm-9 col-md-9 col-lg-9 ">
 					<input type="password" name="password" id="inputPassword"
 						placeholder="Password" class="form-control" onblur="validateInputString(this.value,this.id),checkPassword()" required> <span
 						id="glyphiconFormPassword"></span>
@@ -83,9 +77,9 @@
 				</div>
 			</div>
 			<div class="form-group" id="repeatPasswordForm">
-				<label for="repeatPassword" class="col-sm-3 control-label" id="repeatPassword">RepeatPassword 
+				<label for="repeatPassword" class="col-sm-3 col-md-3 col-lg-3 control-label" id="repeatPassword">RepeatPassword 
 					<span> (Required)</span></label>
-				<div class="col-sm-9">
+				<div class="col-sm-9 col-md-9 col-lg-9 ">
 					<input type="password" name="repeatPassword"
 						id="inputRepeatPassword" placeholder="RepeatPassword"
 						class="form-control" onblur="validateInputString(this.value,this.id),checkPassword()" required> <span
@@ -95,7 +89,7 @@
 			</div>
 		
 			<div class="form-group">
-				<div class="col-sm-9 col-sm-offset-3">
+				<div class="col-sm-9 col-md-9 col-lg-9 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
 					<button type="submit" id="submitForm" value="register"
 						class="btn btn-primary btn-block">Register<span
 						id="glyphiconSubmitForm"> </span></button>
@@ -105,7 +99,6 @@
 			<!-- /.form-group -->
 		</form>
 	</div>
-
 
 	
 		<div class="containerFooter">

@@ -1,7 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,47 +10,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import connection.UserDAO;
+import com.mysql.fabric.xmlrpc.base.Data;
+
+import connection.BidDAO;
+import model.bean.Bid;
 import model.bean.User;
 
-
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class AddBidServlet
  */
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/AddBidServlet")
+public class AddBidServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public AddBidServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
 		
-		PrintWriter out = response.getWriter();
-		
-		final User user = new UserDAO().getUser(username);
-		if(user.getPassword().equals(password)){
-			out.print("user valido");
-			request.getSession().setAttribute("user", user);
-			request.getSession().setAttribute("username", user.getName());
-			response.sendRedirect("home.jsp");
-		}
-		else
-			out.print("user NON valido");
-		
-		out.close();
+		java.util.Date utilDate = new java.util.Date();
+	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+		String username = ((User)request.getSession().getAttribute("user")).getUsername();
+		int itemId = Integer.parseInt(request.getParameter("itemId"));
+		double price = Double.parseDouble(request.getParameter("price"));
+		Bid bid = new Bid(username, itemId, price,sqlDate);
+	
+		new BidDAO().addBid(bid);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -57,4 +53,5 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

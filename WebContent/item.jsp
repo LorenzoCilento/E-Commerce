@@ -24,8 +24,25 @@
 	var id = $.urlParams('id');
 	$(document).ready(function(){
 		getItem(id);
+	});
+	$(document).ready(function(){
 		getBid(id);
 	});
+	function placeBid () {
+		alert("ccc");
+	}
+	
+	function addBid(){		
+		var price = document.bidForm.bidText.value;
+		$.ajax({
+			url: "AddBidServlet",
+			type:"GET",
+			data:{itemId : id , price : price},
+			success:function(data){
+				alert("ci");
+			}
+		});
+	}
 </script>
 
 </head>
@@ -45,23 +62,27 @@
         <!-- /.row -->
         
         <div class="row">
-        	<div class="thumbnail col-lg-4 col-md-4">
+        	<div class="col-lg-6 col-md-6">
+			<div class="thumbnail">
 				<img id="myImg">
+			</div>				
 			</div>
-			<div class="col-lg-8">
+			<div class="col-lg-6 col-md-6">
 				<h1>Descrizione</h1>
 				<p id="description"></p>        
 			</div>
+        	<div class="col-lg-4 col-md-4" >
+        		<h3 id="bidValue1"></h3>
+            	<h4 id="bidValue2"></h4>
+            	<form method="post" name="bidForm">
+	        	    <input type="text" name="bidText">
+	        	    <button class="btn btn-primary" value="placeBid" id="btnBid" onclick="addBid()" >Piazza offerta</button>
+	        	    <h4 >Oppure </h4>
+	        	    <button class="btn btn-success" id="btnBuyNow"></button>
+        	    </form>
+            </div>
         </div>
         <div class="row">
-        	<div class="col-lg-4 col-md-4" >
-        		<h3 id="bidValue"></h3>
-            	<h4 >Fai un offerta superiore </h4>
-        	    <input type="text" id="bidText">
-        	    <button class="btn btn-primary" id="btnBid">Piazza offerta</button>
-        	    <h4 >Oppure </h4>
-        	    <button class="btn btn-success" id="btnBuyNow"></button>
-            </div>
         
         </div>
         <!-- /.row -->
@@ -69,19 +90,13 @@
 
 
 			<div class="col-md-9">
-
-				<!-- Section items -->
-				<div class="row">
+			<!-- Section items -->
+				<div class="row" id="myThumbnail">
 					<h1>Altri Prodotti</h1>
-					<div class="l_g"></div>
-
 				</div>
-				<!-- /Section items -->
+				<!-- /Section items -->			
 			</div>
-
 		</div>
-
-
 
 
 	<!-- /.container -->

@@ -1,6 +1,7 @@
 package connection;
 
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,18 +12,15 @@ import org.codehaus.jettison.json.JSONObject;
 import model.bean.Auction;
 
 
-public class AuctionDAO extends ConnectionDAO implements QueryAuctionInterface {
-
-	public AuctionDAO() {
-		super();
-	}
+public class AuctionDAO implements QueryAuctionInterface {
 	
 	@Override
 	public void addAuction(final Auction auction) {
 		try {
 			final String query ="INSERT into auction(itemId,startDate,endDate,state) values(?,?,?,?)";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			
 			ps.setInt(1, auction.getItemId());
 			ps.setDate(2, auction.getStartDate());
 			ps.setDate(3, auction.getEndDate());
@@ -30,7 +28,7 @@ public class AuctionDAO extends ConnectionDAO implements QueryAuctionInterface {
 			
 			ps.executeUpdate();			
 			
-			closeConnection();
+			connection.close();
 			System.out.println("Auction inserted");
 		} catch (SQLException e) {
 			System.out.println("Impossible to add new Auction!!");
@@ -41,14 +39,14 @@ public class AuctionDAO extends ConnectionDAO implements QueryAuctionInterface {
 	public void removeAuction(int id) {
 		try {
 			final String query = "DELETE FROM my_db.auction WHERE itemId=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setInt(1, id);
 			
 			ps.execute();
 			
-			closeConnection();
+			connection.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -60,13 +58,12 @@ public class AuctionDAO extends ConnectionDAO implements QueryAuctionInterface {
 	public JSONObject getAllAuctions() {
 		JSONObject json = new JSONObject();
 		JSONArray auctions = new JSONArray();
-		final String query = "select * from my_db.auction ;";
 
 		try {
-			PreparedStatement ps = null;
-			ResultSet mResultSet = null;
-			ps = createConnection().prepareStatement(query);
-			mResultSet = ps.executeQuery();
+			final String query = "select * from my_db.auction ;";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			final ResultSet mResultSet = ps.executeQuery();
 			
 			if(mResultSet != null) {
 				while (mResultSet.next()) {
@@ -80,7 +77,7 @@ public class AuctionDAO extends ConnectionDAO implements QueryAuctionInterface {
 			}
 			
 			json.put("auctions", auctions);
-			closeConnection();
+			connection.close();
 		}catch(Exception e){
 			System.out.println("Impossible to get All Auctions!!");
 		}
@@ -105,8 +102,8 @@ public class AuctionDAO extends ConnectionDAO implements QueryAuctionInterface {
 		JSONArray auctions = new JSONArray();
 		try {
 			final String query = "SELECT * FROM auction WHERE itemId=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setInt(1, id);
 			
@@ -122,7 +119,7 @@ public class AuctionDAO extends ConnectionDAO implements QueryAuctionInterface {
 			}
 			json.put("auction", auctions);
 			
-			closeConnection();
+			connection.close();
 		} catch (Exception e) {
 			System.out.println("Impossible to get Auction!!");
 		}

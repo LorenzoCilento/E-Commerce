@@ -16,7 +16,7 @@
 </head>
 <body>
 	<!-- Navigation -->
-    <nav class="navbar" role="navigation">
+    <div class="navbar" role="navigation">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -66,7 +66,7 @@
 									</a>
 									<ul class="dropdown-menu">
 										<li><a href="userPanel.jsp" >Profilo</a></li>
-										<li><a id="logout" >Logout</a></li>
+										<li><a href="#" id="logout" >Logout</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -83,7 +83,7 @@
             
         </div>
         <!-- /.container-fluid -->
-    </nav>
+    </div>
 	<!-- /Navigation -->
 	
 </body>

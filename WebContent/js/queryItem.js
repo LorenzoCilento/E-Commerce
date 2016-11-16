@@ -28,27 +28,17 @@ function getBid(param){
 		dataType: "json",
 		success: function (data){
 			var bid = data.bids;
-            
-			$("#bidValue").text("L'utima offerta è di "+bid[0].price+" €")
-				
+			if(bid.length == 0){
+				$("#bidValue1").text("Non ci sono offerte!")
+				$("#bidValue2").text("Fai la prima offerta.")
+			}
+			else {
+				$("#bidValue1").text("L'utima offerta è di "+bid[0].price+" €")
+				$("#bidValue2").text("Fai un offerta superiore:")
+			}
               
 		}
 	});
 }
 
-function addBid(param){
-	$.ajax({
-		url: "LoadBidByItem",
-		type:"GET",
-		contentType: "application/json; charset=utf-8",
-		data: {id : param},
-		dataType: "json",
-		success: function (data){
-			var bid = data.bids;
-            
-			$("#bidValue").text("L'utima offerta è di "+bid[0].price+" €")
-				
-              
-		}
-	});
-}
+

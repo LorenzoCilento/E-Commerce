@@ -1,5 +1,6 @@
 package connection;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,18 +14,15 @@ import model.bean.Comment;
 import model.bean.Item;
 import model.bean.User;
 
-public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
-
-	public AdminDAO(){
-		super();
-	}
+public class AdminDAO implements QueryAdminInterface {
 
 	@Override
 	public void addUser(final User user){
 		try {
 			final String query ="INSERT into user(username,password,name,surname,email) values(?,?,?,?,?)";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			
 			ps.setString(1, user.getUsername());
 			ps.setString(2, user.getPassword());
 			ps.setString(3, user.getName());
@@ -33,7 +31,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 			ps.executeUpdate();			
 	
-			closeConnection();
+			connection.close();
 			System.out.println("User inserito");
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -46,8 +44,8 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public void addAdmin(final Admin admin) {
 		try {
 			final String query ="INSERT into admin(username,password,name,surname,email) values(?,?,?,?,?)";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			ps.setString(1, admin.getUsername());
 			ps.setString(2, admin.getPassword());
 			ps.setString(3, admin.getName());
@@ -56,7 +54,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 			ps.executeUpdate();			
 	
-			closeConnection();
+			connection.close();
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
@@ -69,15 +67,14 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public JSONObject getAllUsers() {
 		JSONObject json = new JSONObject();
 		JSONArray users = new JSONArray();
-		final String query = "select * from my_db.user ;";
 
 		try {
-			PreparedStatement ps = null;
-			ResultSet mResultSet = null;
-			ps = createConnection().prepareStatement(query);
-			mResultSet = ps.executeQuery();
+			final String query = "select * from my_db.user ;";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			final ResultSet mResultSet = ps.executeQuery();
 			
-			if(mResultSet != null) {
+			
 				while (mResultSet.next()) {
 					JSONObject user = new JSONObject();
 					user.put("username", mResultSet.getString("username"));
@@ -87,10 +84,10 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 					user.put("email", mResultSet.getString("email"));
 					users.put(user);
 				}
-			}
+			
 			
 			json.put("users", users);
-			closeConnection();
+			connection.close();
 		}catch(Exception e){
 			System.out.println("Impossible to get All users in AdminDAO.java -> getAllUsers()!!");
 		}
@@ -102,13 +99,12 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public JSONObject getAllAdmins() {
 		JSONObject json = new JSONObject();
 		JSONArray admins = new JSONArray();
-		final String query = "select * from my_db.admin ;";
 
 		try {
-			PreparedStatement ps = null;
-			ResultSet mResultSet = null;
-			ps = createConnection().prepareStatement(query);
-			mResultSet = ps.executeQuery();
+			final String query = "select * from my_db.admin ;";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			final ResultSet mResultSet = ps.executeQuery();
 			
 			if(mResultSet != null) {
 				while (mResultSet.next()) {
@@ -123,7 +119,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			}
 			
 			json.put("admins", admins);
-			closeConnection();
+			connection.close();
 		}catch(Exception e){
 			System.out.println("Impossible to get All Admins in AdminDAO.java -> getAllAdmins()!!");
 		}
@@ -135,13 +131,12 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public JSONObject getAllComments(){
 		JSONObject json = new JSONObject();
 		JSONArray comments = new JSONArray();
-		final String query = "select * from my_db.comment ;";
 
 		try {
-			PreparedStatement ps = null;
-			ResultSet mResultSet = null;
-			ps = createConnection().prepareStatement(query);
-			mResultSet = ps.executeQuery();
+			final String query = "select * from my_db.comment ;";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			final ResultSet mResultSet = ps.executeQuery();
 			
 			if(mResultSet != null) {
 				while (mResultSet.next()) {
@@ -156,7 +151,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			}
 			
 			json.put("comments", comments);
-			closeConnection();
+			connection.close();
 		}catch(Exception e){
 			System.out.println("Impossible to get All Comments in AdminDAO.java -> getAllComments()!!");
 		}
@@ -168,13 +163,12 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public JSONObject getAllBids(){
 		JSONObject json = new JSONObject();
 		JSONArray offers = new JSONArray();
-		final String query = "select * from my_db.bid;";
 
 		try {
-			PreparedStatement ps = null;
-			ResultSet mResultSet = null;
-			ps = createConnection().prepareStatement(query);
-			mResultSet = ps.executeQuery();
+			final String query = "select * from my_db.bid;";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			final ResultSet mResultSet = ps.executeQuery();
 			
 			if(mResultSet != null) {
 				while (mResultSet.next()) {
@@ -188,7 +182,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			}
 			
 			json.put("offers", offers);
-			closeConnection();
+			connection.close();
 		}catch(Exception e){
 			System.out.println("Impossible to get All Bids in AdminDAO.java -> getAllBids()!!");
 		}
@@ -203,12 +197,12 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		JSONArray users = new JSONArray();
 		try {
 			final String query = "SELECT * FROM user WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			
-			ResultSet rs = ps.executeQuery();
+			final ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				JSONObject user = new JSONObject();
@@ -221,7 +215,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			}
 			json.put("user", users);
 			
-			closeConnection();
+			connection.close();
 		} catch (Exception e) {
 			System.out.println("User non trovato in AdminDao -> getUser(username)");
 		}
@@ -235,12 +229,12 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		JSONArray admin = new JSONArray();
 		try {
 			final String query = "SELECT * FROM admin WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			
-			ResultSet rs = ps.executeQuery();
+			final ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				JSONObject ad = new JSONObject();
@@ -253,7 +247,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			}
 			json.put("admin", admin);
 			
-			closeConnection();
+			connection.close();
 		} catch (Exception e) {
 			System.out.println("Admin non trovato in AdminDao -> getAdmin(username)");
 		}
@@ -267,12 +261,12 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		JSONArray comments = new JSONArray();
 		try {
 			final String query = "SELECT * FROM comment WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			
-			ResultSet rs = ps.executeQuery();
+			final ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				JSONObject comment = new JSONObject();
@@ -286,7 +280,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			}
 			json.put("comments", comments);
 			
-			closeConnection();
+			connection.close();
 		} catch (Exception e) {
 			System.out.println("CommentOfUser non trovato in AdminDao -> getCommentsOfUser(username)");
 		}
@@ -300,12 +294,12 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 		JSONArray bids = new JSONArray();
 		try {
 			final String query = "SELECT * FROM comment WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			
-			ResultSet rs = ps.executeQuery();
+			final ResultSet rs = ps.executeQuery();
 			
 			while (rs.next()) {
 				JSONObject bid = new JSONObject();
@@ -318,7 +312,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			}
 			json.put("bids", bids);
 			
-			closeConnection();
+			connection.close();
 		} catch (Exception e) {
 			System.out.println("Bids Of User non trovato in AdminDao -> getBidsOfUser(username)");
 		}
@@ -330,14 +324,14 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public void removeUser(final String username) {
 		try {
 			final String query = "DELETE FROM my_db.user WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			
 			ps.execute();
 			
-			closeConnection();
+			connection.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -349,14 +343,14 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public void removeAdmin(final String username) {
 		try {
 			final String query = "DELETE FROM my_db.admin WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			
 			ps.execute();
 			
-			closeConnection();
+			connection.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -368,8 +362,8 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public void updateUser(final String username,final String password) {
 		try {
 			final String query = "UPDATE my_db.user SET username=?,password=? WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			ps.setString(2, password);
@@ -377,7 +371,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 			ps.executeUpdate();
 			
-			closeConnection();
+			connection.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -389,8 +383,8 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 	public void updateAdmin(final String username,final String password) {
 		try {
 			final String query = "UPDATE my_db.admin SET username=?,password=? WHERE username=?";
-			PreparedStatement ps = createConnection().prepareStatement(
-					query);
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
 			ps.setString(2, password);
@@ -398,7 +392,7 @@ public class AdminDAO extends ConnectionDAO implements QueryAdminInterface {
 			
 			ps.executeUpdate();
 			
-			closeConnection();
+			connection.close();
 			
 		} catch (Exception e) {
 			// TODO: handle exception

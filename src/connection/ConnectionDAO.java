@@ -4,12 +4,9 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
-import javax.swing.JOptionPane;
-
 public class ConnectionDAO {
 
 	private final static ConnectionDAO connectionDAO = new ConnectionDAO();
-	private static Connection con;
 
 	private static String dbPassword;
 
@@ -48,34 +45,16 @@ public class ConnectionDAO {
 		loadDriver(dbDriver);
 	}
 
-	public static synchronized ConnectionDAO getInstanceConnectionDAO() {
+	public static synchronized ConnectionDAO getInstance() {
 		return connectionDAO;
 	}
 
 	public Connection createConnection() {
-		con = null;
 		try {
-			con = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+			return DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
 		} catch (final SQLException e) {
 			throw new RuntimeException("Cannot create the connection", e);
-
-			// Class.forName("com.mysql.jdbc.Driver");
-			// ("jdbc:mysql://nomedominio.altervista.org:3306/my_nomedominio",
-			// "nomedominio", "password");
-
-		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
-		return con;
-	}
-
-	public void closeConnection() {
-
-			try {
-				con.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
 	}
 
 }
