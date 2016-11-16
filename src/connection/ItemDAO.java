@@ -74,14 +74,14 @@ import model.bean.Item;
 			if(mResultSet != null) {
 				while (mResultSet.next()) {
 					JSONObject item = new JSONObject();
-					item.put("id", mResultSet.getString("id"));
+					item.put("id", mResultSet.getInt("id"));
 					item.put("name", mResultSet.getString("name"));
 					item.put("category", mResultSet.getString("category"));
-					item.put("price", mResultSet.getString("price"));
-					item.put("vote", mResultSet.getString("vote"));
+					item.put("price", mResultSet.getDouble("price"));
+					item.put("vote", mResultSet.getInt("vote"));
 					item.put("description", mResultSet.getString("description"));
-					item.put("duration", mResultSet.getString("duration"));
 					item.put("path", mResultSet.getString("path"));
+					item.put("startDate", mResultSet.getDate("startDate"));
 	
 					items.put(item);
 				}
@@ -120,14 +120,14 @@ import model.bean.Item;
 
 			while (mResultSet.next()) {
 				JSONObject it = new JSONObject();
-				it.put("id", mResultSet.getString("id"));
+				it.put("id", mResultSet.getInt("id"));
 				it.put("name", mResultSet.getString("name"));
 				it.put("category", mResultSet.getString("category"));
-				it.put("price", mResultSet.getString("price"));
-				it.put("vote", mResultSet.getString("vote"));
+				it.put("price", mResultSet.getDouble("price"));
+				it.put("vote", mResultSet.getInt("vote"));
 				it.put("description", mResultSet.getString("description"));
-				it.put("duration", mResultSet.getString("duration"));
 				it.put("path", mResultSet.getString("path"));
+				it.put("startDate", mResultSet.getDate("startDate"));
 
 				item.put(it);
 			}
@@ -159,10 +159,11 @@ import model.bean.Item;
 				item.put("id", mResultSet.getInt("id"));
 				item.put("name", mResultSet.getString("name"));
 				item.put("category", mResultSet.getString("category"));
-				item.put("price", mResultSet.getString("price"));
-				item.put("vote", mResultSet.getString("vote"));
+				item.put("price", mResultSet.getDouble("price"));
+				item.put("vote", mResultSet.getInt("vote"));
 				item.put("description", mResultSet.getString("description"));
 				item.put("path", mResultSet.getString("path"));
+				item.put("startDate", mResultSet.getDate("startDate"));
 
 				items.put(item);
 			}
