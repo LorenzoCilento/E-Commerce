@@ -218,8 +218,6 @@
                 		$("#glyphiconFormPassword").addClass("glyphicon glyphicon-ok form-control-feedback");
                 		$("#repeatPasswordForm").addClass("form-group has-success has-feedback");
                 		$("#glyphiconFormRepeatPassword").addClass("glyphicon glyphicon-ok form-control-feedback");
-            			
-                		
                 	}
                 	
                 	else if( result=="warning" ){
