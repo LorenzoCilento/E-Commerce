@@ -74,7 +74,7 @@ public class BidDAO implements QueryBidInterface {
 	@Override
 	public boolean getBid(int itemId,String username) {
 		try {
-			final String query = "SELECT itemId,username FROM my_db.bid WHERE itemId = ?,username = ?;";
+			final String query = "SELECT itemId,username FROM my_db.bid WHERE itemId = ? and username = ?;";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			ps.setInt(1, itemId);
