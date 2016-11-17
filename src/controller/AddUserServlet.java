@@ -57,6 +57,7 @@ public class AddUserServlet extends HttpServlet {
 		user.setEmail(email);
 
 		new UserDAO().addUser(user);
+		response.sendRedirect("home.jsp");
 		out.close();
 
 	}

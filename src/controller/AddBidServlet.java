@@ -45,9 +45,13 @@ public class AddBidServlet extends HttpServlet {
 		double price = Double.parseDouble(request.getParameter("price"));
 
 		Bid bid = new Bid(username, itemId, price, sqlDate);
-
-		new BidDAO().addBid(bid);
-//		response.getWriter().write("ok");
+		double maxPrice = new BidDAO().getMaxPrice(itemId);
+		if(price > maxPrice){
+			new BidDAO().addBid(bid);
+			response.getWriter().write("success");
+		} else {
+			response.getWriter().write("errore");
+		}
 	}
 
 	/**

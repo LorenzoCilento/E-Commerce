@@ -34,7 +34,7 @@ public class LoadBidByItem extends HttpServlet {
 			throws ServletException, IOException {
 		int itemId = Integer.parseInt(request.getParameter("id"));
 	
-		JSONObject bid = new BidDAO().getItemBid(itemId);
+		JSONObject bid = new BidDAO().getJsonMaxBid(itemId);
 		response.getWriter().write(bid.toString());
 	}
 
