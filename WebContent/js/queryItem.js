@@ -11,9 +11,7 @@ function getItem(param){
 				img.setAttribute("src",item[0].path);
 			$("#title").text(item[0].name)
 				
-               $("#description").append(
-               "<p>"+item[0].description+"</p>"
-               )
+               $("#description").text(item[0].description)
                $("#btnBuyNow").text("Compralo Subito a "+item[0].price+" €");
 		}
 	});
@@ -40,5 +38,3 @@ function getBid(param){
 		}
 	});
 }
-
-

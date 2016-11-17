@@ -35,7 +35,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">
+                    <a>
                         Il tuo profilo
                     </a>
                 </li>
@@ -43,22 +43,19 @@
                     <a href="#">Account</a>
                 </li>
                 <li>
-                    <a href="#">Osservati</a>
+                    <a href="#">Aste a cui stai partecipando</a>
                 </li>
                 <li>
                     <a href="#">Acquistati</a>
                 </li>
                 <li>
-                    <a href="#">Events</a>
+                    <a href="addItem.jsp">Inserisci Prodotto</a>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="#">Rimuovi Prodotto</a>
                 </li>
                 <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="#">Contattaci</a>
                 </li>
             </ul>
         </div>

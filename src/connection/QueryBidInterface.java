@@ -11,6 +11,6 @@ public interface QueryBidInterface {
 	public void updateBid(Bid bid);
 	public JSONObject getBid();
 	public JSONObject getItemBid(int itemId);
-	public boolean getBid(int itemId);
+	public boolean getBid(int itemId,String username);
 	
 }

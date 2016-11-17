@@ -19,26 +19,15 @@
 <!-- Bootstrap Core CSS -->
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script type="text/javascript" src="js/queryItem.js"></script>
+<script type="text/javascript" src="js/queryAllItems.js"></script>
 <script type="text/javascript" src="js/getParameterFromURL.js"></script>
 <script type="text/javascript">
-	var id = $.urlParams('id');
+	var itemId = $.urlParams('id');
 	$(document).ready(function(){
-		getItem(id);
+		getItem(itemId);
+		getBid(itemId);
+		getAllItems("all");
 	});
-	
-	$(document).ready(function(){
-		getBid(id);
-	});
-	
-	function addBid(){		
-		var price = document.bidForm.bidText.value;
-		alert("ciao"+price);
-		$.ajax({
-			url: "AddBidServlet",
-			type:"GET",
-			data:{itemId : id , price : price}
-		});
-	}
 </script>
 
 </head>
@@ -69,13 +58,18 @@
 			</div>
         	<div class="col-lg-4 col-md-4" >
         		<h3 id="bidValue1"></h3>
+           <%	if(session.getAttribute("user") != null) { %>
             	<h4 id="bidValue2"></h4>
-            	<form method="post" name="bidForm">
-	        	    <input type="text" name="bidText">
-	        	    <button class="btn btn-primary" value="placeBid" id="btnBid" onclick="addBid()" >Piazza offerta</button>
+            	<div>
+	        	    <input type="text" id="bidText">
+	        	    <button class="btn btn-primary" value="placeBid" id="btnBid" >Piazza offerta</button>
 	        	    <h4 >Oppure </h4>
 	        	    <button class="btn btn-success" id="btnBuyNow"></button>
-        	    </form>
+        	    </div>
+        	    <%} else { %>
+        	    	<h2>Per acquistare il prodotto
+        	    	effettua il login o registrati</h2>
+        	    <%} %>
             </div>
         </div>
         <div class="row">
@@ -88,6 +82,7 @@
 			<div class="col-md-9">
 			<!-- Section items -->
 				<div class="row" id="myThumbnail">
+					<hr>
 					<h1>Altri Prodotti</h1>
 				</div>
 				<!-- /Section items -->			
@@ -112,6 +107,7 @@
 
 	</div>
 	<!-- /.containerFooter -->
+	<script type="text/javascript" src="js/addBid.js"></script>
 
 </body>
 

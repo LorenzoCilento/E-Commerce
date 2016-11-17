@@ -12,7 +12,6 @@ public class Item {
 	private String description;
 	private String path;
 	private String username;
-	private boolean sold;
 	
 
 	public Item() {
@@ -91,14 +90,6 @@ public class Item {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public boolean isSold() {
-		return sold;
-	}
-
-	public void setSold(boolean sold) {
-		this.sold = sold;
 	}
 
 }

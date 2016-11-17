@@ -9,7 +9,7 @@
 <script src="js/validateInput.js"></script>
 <!-- Bootstrap Core CSS -->
 
-<title>Registration</title>
+<title>Registrazione</title>
 
 </head>
 
@@ -20,7 +20,7 @@
 		<form action="AddUserServlet" class="form horizontal" role="form"
 			method="post">
 			<div class="well" id="registration" style="text-align: center;">
-				<h2>Registration</h2>
+				<h2>Registrazione</h2>
 			</div>
 			<div class="form-group" id="nameForm">
 				<label for="name" class="col-sm-3 col-md-3 col-lg-3 control-label" id="name">Name

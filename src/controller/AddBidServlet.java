@@ -22,37 +22,42 @@ import model.bean.User;
 @WebServlet("/AddBidServlet")
 public class AddBidServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddBidServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		java.util.Date utilDate = new java.util.Date();
-	    java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
-		
-	    String username = ((User)request.getSession().getAttribute("user")).getUsername();
-		int itemId = Integer.parseInt(request.getParameter("itemId"));
-		double price = Double.parseDouble(request.getParameter("price"));
-		
-		Bid bid = new Bid(username, itemId, price,sqlDate);
-	
-		new BidDAO().addBid(bid);
+	public AddBidServlet() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		java.util.Date utilDate = new java.util.Date();
+		java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
+		String username = ((User) request.getSession().getAttribute("user")).getUsername();
+		int itemId = Integer.parseInt(request.getParameter("itemId"));
+		double price = Double.parseDouble(request.getParameter("price"));
+
+		Bid bid = new Bid(username, itemId, price, sqlDate);
+
+		new BidDAO().addBid(bid);
+//		response.getWriter().write("ok");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("DO POST");
 		doGet(request, response);
 	}
 
