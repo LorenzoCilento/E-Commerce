@@ -48,7 +48,7 @@ public class BidDAO implements QueryBidInterface {
 		JSONArray bids = new JSONArray();
 		
 		try {
-			final String query = "SELECT * FROM my_db.bid WHERE itemId = ?;";
+			final String query = "SELECT max(b.price) FROM my_db.bid as b WHERE b.itemId = ? GROUP BY b.itemId;";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			ps.setInt(1, itemId);
@@ -57,10 +57,7 @@ public class BidDAO implements QueryBidInterface {
 			
 			while(rs.next()){
 				JSONObject bid = new JSONObject();
-				bid.put("username",rs.getString("username"));
-				bid.put("itemId",rs.getInt("itemID"));
-				bid.put("price",rs.getDouble("price"));
-				bid.put("bidDate",rs.getDate("bidDate"));
+				bid.put("price",rs.getDouble("max(b.price)"));
 				
 				bids.put(bid);
 			}
@@ -75,12 +72,13 @@ public class BidDAO implements QueryBidInterface {
 	}
 
 	@Override
-	public boolean getBid(int itemId) {
+	public boolean getBid(int itemId,String username) {
 		try {
-			final String query = "SELECT * FROM my_db.bid WHERE itemId = ?;";
+			final String query = "SELECT itemId,username FROM my_db.bid WHERE itemId = ?,username = ?;";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			ps.setInt(1, itemId);
+			ps.setString(2, username);
 			
 			final ResultSet rs = ps.executeQuery();
 			
@@ -98,14 +96,16 @@ public class BidDAO implements QueryBidInterface {
 	@Override
 	public void updateBid(Bid bid) {
 		try {			
-			final String query = "UPDATE my_db.bid SET username=?,price=?,bidDate=? WHERE itemId=?;";
+			final String query = "UPDATE my_db.bid SET price=?,bidDate=? WHERE itemId=?,username=?;";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
-			ps.setString(1, bid.getUsername());
-			ps.setDouble(2, bid.getPrice());
-			ps.setDate(3, bid.getBidDate());
-			ps.setInt(4, bid.getItemId());
+			ps.setDouble(1, bid.getPrice());
+			ps.setDate(2, bid.getBidDate());
+			ps.setInt(3, bid.getItemId());
+			ps.setString(4, bid.getUsername());
+			
+			System.out.println("UPDATE BID");
 			ps.executeUpdate();
 			
 			connection.close();
@@ -119,7 +119,7 @@ public class BidDAO implements QueryBidInterface {
 
 	@Override
 	public void addBid(Bid bid) {
-		if(getBid(bid.getItemId()))
+		if(getBid(bid.getItemId(),bid.getUsername()))
 			updateBid(bid);
 		else
 			insertBid(bid);
