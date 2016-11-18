@@ -17,15 +17,14 @@ public class Item {
 	public Item() {
 	}
 
-	public Item(int id, String name, String category, double price, int vote, 
-			String description,String path, Date startDate) {
-		this.id = id;
+	public Item(String name, String category, double price, 
+			String description,String path,String username) {
 		this.name = name;
 		this.category = category;
 		this.price = price;
-		this.vote = vote;
 		this.description = description;
 		this.path = path;
+		this.username = username;
 	}
 
 	public int getId() {

@@ -17,19 +17,18 @@ public class AuctionDAO implements QueryAuctionInterface {
 	@Override
 	public void addAuction(final Auction auction) {
 		try {
-			final String query ="INSERT into auction(itemId,startDate,endDate,state) values(?,?,?,?)";
+			final String query ="INSERT into auction(itemId,startDate,endDate) values(?,?,?)";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setInt(1, auction.getItemId());
 			ps.setDate(2, auction.getStartDate());
 			ps.setDate(3, auction.getEndDate());
-			ps.setString(4, auction.getState());
 			
 			ps.executeUpdate();			
 			
 			connection.close();
-			System.out.println("Auction inserted");
+	
 		} catch (SQLException e) {
 			System.out.println("Impossible to add new Auction!!");
 		}

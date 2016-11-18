@@ -46,13 +46,12 @@ public class AuctionController extends HttpServlet {
 			String itemId = request.getParameter("itemId");
 			String startDate =request.getParameter("startDate");
 			String endDate = request.getParameter("endDate");
-			String state = request.getParameter("state");
 	
 			Date start_date = new DateConverter().convertStringInDateSql(startDate);
 			Date end_date = new DateConverter().convertStringInDateSql(endDate);
 			int item_id = Integer.parseInt(itemId);
 			
-			new AuctionDAO().addAuction(new Auction(item_id,start_date,end_date,state));
+			new AuctionDAO().addAuction(new Auction(item_id,start_date,end_date));
 			
 			out.close();
 //		}
