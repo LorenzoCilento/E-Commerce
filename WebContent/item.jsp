@@ -38,21 +38,7 @@
 
 	<!-- Page Content -->
 	<div class="container">
-<<<<<<< HEAD
-        <!-- Portfolio Item Heading -->
-        <div class="row">
-            <div class="col-lg-12 col-md-12" >
-              <h1 class="page-header" id="title"></h1>  
-            </div>
-        </div>
-        <!-- /.row -->
-        
-        <div class="row">
-        	<div class="col-lg-6 col-md-6 col-sm-12">
-			<div class="thumbnail">
-				<img id="myImg">
-			</div>				
-=======
+
 		<!-- Portfolio Item Heading -->
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
@@ -66,7 +52,6 @@
 				<div class="thumbnail">
 					<img id="myImg">
 				</div>
->>>>>>> refs/remotes/origin/Lorenzo
 			</div>
 			<div class="col-lg-6 col-md-6">
 				<h1>Descrizione</h1>
