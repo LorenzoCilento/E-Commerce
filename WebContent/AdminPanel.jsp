@@ -105,8 +105,8 @@
                                         <i class="fa fa-comments fa-5x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">26</div>
-                                        <div>All Comments!</div>
+                                        <div class="huge"></div>
+                                        <div>All Users!</div>
                                     </div>
                                 </div>
                             </div>
@@ -195,7 +195,7 @@
                
             </div>
             <!-- /.container-fluid -->
-
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/dbNMUVaiXu8" frameborder="0" allowfullscreen></iframe>
         </div>
         <!-- /#page-wrapper -->
 

@@ -13,6 +13,7 @@ import model.bean.Admin;
 import model.bean.Comment;
 import model.bean.Item;
 import model.bean.User;
+import util.PasswordCript;
 
 public class AdminDAO implements QueryAdminInterface {
 
@@ -23,8 +24,10 @@ public class AdminDAO implements QueryAdminInterface {
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
+			final String pass=user.getPassword();
+			
 			ps.setString(1, user.getUsername());
-			ps.setString(2, user.getPassword());
+			ps.setString(2, PasswordCript.encrypt(pass));
 			ps.setString(3, user.getName());
 			ps.setString(4, user.getSurname());
 			ps.setString(5, user.getEmail());
@@ -46,8 +49,11 @@ public class AdminDAO implements QueryAdminInterface {
 			final String query ="INSERT into admin(username,password,name,surname,email) values(?,?,?,?,?)";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
+			
+			final String pass=admin.getPassword();
+			
 			ps.setString(1, admin.getUsername());
-			ps.setString(2, admin.getPassword());
+			ps.setString(2, PasswordCript.encrypt(pass));
 			ps.setString(3, admin.getName());
 			ps.setString(4, admin.getSurname());
 			ps.setString(5, admin.getEmail());
@@ -364,9 +370,9 @@ public class AdminDAO implements QueryAdminInterface {
 			final String query = "UPDATE my_db.user SET username=?,password=? WHERE username=?";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
-			
+						
 			ps.setString(1, username);
-			ps.setString(2, password);
+			ps.setString(2, PasswordCript.encrypt(password));
 			ps.setString(3, username);
 			
 			ps.executeUpdate();
@@ -387,7 +393,7 @@ public class AdminDAO implements QueryAdminInterface {
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
-			ps.setString(2, password);
+			ps.setString(2, PasswordCript.encrypt(password));
 			ps.setString(3, username);
 			
 			ps.executeUpdate();

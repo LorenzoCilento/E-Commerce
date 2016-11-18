@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import connection.UserDAO;
 import model.bean.User;
+import util.PasswordCript;
 
 
 /**
@@ -39,7 +40,7 @@ public class LoginController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		final User user = new UserDAO().getUser(username);
-		if(user.getPassword().equals(password)){
+		if(user.getPassword().equals(PasswordCript.encrypt(password))){
 			out.print("user valido");
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("username", user.getName());

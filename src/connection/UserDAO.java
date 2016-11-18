@@ -12,6 +12,7 @@ import org.codehaus.jettison.json.JSONObject;
 
 import model.bean.User;
 import util.Factories;
+import util.PasswordCript;
 
 
 
@@ -24,8 +25,10 @@ public class UserDAO implements QueryUserInterface {
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
+			final String pass=user.getPassword();
+			
 			ps.setString(1, user.getUsername());
-			ps.setString(2, user.getPassword());
+			ps.setString(2, PasswordCript.encrypt(pass));
 			ps.setString(3, user.getName());
 			ps.setString(4, user.getSurname());
 			ps.setString(5, user.getEmail());
@@ -132,7 +135,7 @@ public class UserDAO implements QueryUserInterface {
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
-			ps.setString(2, password);
+			ps.setString(2, PasswordCript.encrypt(password));
 			ps.setString(3, username);
 			
 			ps.executeUpdate();
