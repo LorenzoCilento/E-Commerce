@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import connection.UserDAO;
 import model.bean.User;
+import util.PasswordCript;
 
 
 /**
@@ -39,14 +40,11 @@ public class LoginController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		final User user = new UserDAO().getUser(username);
-		if(user.getPassword().equals(password)){
-			out.print("user valido");
+		if(user.getPassword().equals(PasswordCript.encrypt(password))){
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("username", user.getName());
 			response.sendRedirect("home.jsp");
 		}
-		else
-			out.print("user NON valido");
 		
 		out.close();
 	}

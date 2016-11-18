@@ -90,10 +90,7 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Settings <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <a href="#"><i class=" fa fa-user-times"></i> Remove user</a>
-                            </li>
-                             <li>
-                                <a href="#"><i class="fa fa-user-plus"></i> Add new Admin</a>
+                                <a href="removeUserByAdmin.jsp?param=getAllUsers"><i class=" fa fa-user-times"></i> Remove user</a>
                             </li>
                         </ul>
                     </li>
@@ -131,9 +128,9 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-xs-12">
-                    	<label>Choose the line number (under the column #), which you want to delete: </label>
-                    	<input type="text" class="input-choose">
-            			<button type="button" class="submit-button">Delete</button>
+                    	<label>Choose the idComment which you want to delete: </label>
+                    	<input type="text" class="input-choose" id="input-choose">
+            			<button type="button" class="submit-button"  id="submit-button">Delete</button>
             		</div>
             	</div>
             </div>
@@ -145,6 +142,25 @@
     </div>
     <!-- /#wrapper -->
 
+<script type="text/javascript">
+
+	$("#submit-button").click(function(){
+		var val= document.getElementById("input-choose").value;
+		$.ajax({
+				url: "DeleteCommentById",
+				type: "POST",
+				data:{idComment:val},
+				success : function(data){
+					if(data=="true"){
+						alert("Comment deleted!!");
+						getAllComments();
+					}
+					else
+						alert("Impossible to delete the comment selected!");
+				}
+		});
+	});
+</script>
 
 
 </body>

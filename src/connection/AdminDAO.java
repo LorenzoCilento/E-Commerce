@@ -13,6 +13,7 @@ import model.bean.Admin;
 import model.bean.Comment;
 import model.bean.Item;
 import model.bean.User;
+import util.PasswordCript;
 
 public class AdminDAO implements QueryAdminInterface {
 
@@ -23,8 +24,10 @@ public class AdminDAO implements QueryAdminInterface {
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
+			final String pass=user.getPassword();
+			
 			ps.setString(1, user.getUsername());
-			ps.setString(2, user.getPassword());
+			ps.setString(2, PasswordCript.encrypt(pass));
 			ps.setString(3, user.getName());
 			ps.setString(4, user.getSurname());
 			ps.setString(5, user.getEmail());
@@ -46,8 +49,11 @@ public class AdminDAO implements QueryAdminInterface {
 			final String query ="INSERT into admin(username,password,name,surname,email) values(?,?,?,?,?)";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
+			
+			final String pass=admin.getPassword();
+			
 			ps.setString(1, admin.getUsername());
-			ps.setString(2, admin.getPassword());
+			ps.setString(2, PasswordCript.encrypt(pass));
 			ps.setString(3, admin.getName());
 			ps.setString(4, admin.getSurname());
 			ps.setString(5, admin.getEmail());
@@ -141,9 +147,10 @@ public class AdminDAO implements QueryAdminInterface {
 			if(mResultSet != null) {
 				while (mResultSet.next()) {
 					JSONObject comment = new JSONObject();
+					comment.put("idComment", mResultSet.getInt("idComment"));
 					comment.put("date", mResultSet.getDate("date"));
 					comment.put("username", mResultSet.getString("username"));
-					comment.put("itemId", mResultSet.getString("itemId"));
+					comment.put("itemId", mResultSet.getInt("itemId"));
 					comment.put("text", mResultSet.getString("text"));
 					comment.put("vote", mResultSet.getInt("vote"));
 					comments.put(comment);
@@ -270,6 +277,7 @@ public class AdminDAO implements QueryAdminInterface {
 			
 			while (rs.next()) {
 				JSONObject comment = new JSONObject();
+				comment.put("idComment", rs.getInt("idComment"));
 				comment.put("date", rs.getDate("date"));
 				comment.put("username", rs.getString("username"));
 				comment.put("itemId", rs.getString("itemId"));
@@ -364,9 +372,9 @@ public class AdminDAO implements QueryAdminInterface {
 			final String query = "UPDATE my_db.user SET username=?,password=? WHERE username=?";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
-			
+						
 			ps.setString(1, username);
-			ps.setString(2, password);
+			ps.setString(2, PasswordCript.encrypt(password));
 			ps.setString(3, username);
 			
 			ps.executeUpdate();
@@ -387,7 +395,7 @@ public class AdminDAO implements QueryAdminInterface {
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
 			ps.setString(1, username);
-			ps.setString(2, password);
+			ps.setString(2, PasswordCript.encrypt(password));
 			ps.setString(3, username);
 			
 			ps.executeUpdate();
@@ -399,7 +407,26 @@ public class AdminDAO implements QueryAdminInterface {
 			System.out.println("Impossible to update the admin in AdminDAO -> updateAdmin(user,pass): " + username);
 		}
 	}
-
+	@Override
+	public void removeCommentById(final int idComment){
+		try {
+			
+			final String query = "DELETE FROM my_db.comment WHERE idComment=?";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			
+			ps.setInt(1, idComment);
+			
+			ps.execute();
+			
+			connection.close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Impossible to delete in AdminDAO -> removeAdmin(username) the admin: " + idComment);
+		}
+	}
+	
 	@Override
 	public boolean removeAllCommentsUser(String user) {
 		// TODO Auto-generated method stub

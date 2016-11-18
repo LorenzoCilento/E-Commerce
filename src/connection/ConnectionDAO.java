@@ -16,6 +16,7 @@ public class ConnectionDAO {
 
 	protected ConnectionDAO() {
 		loadDBProperties();
+		new UpdateDatabase().start();
 	}
 
 	private static Properties getProperties() {
