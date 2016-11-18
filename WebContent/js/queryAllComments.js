@@ -10,11 +10,11 @@ function getAllComments(){
 	    	var comments=data.comments;
 	    	
 	    	if(comments!=null){
-	    		var cont=0;
+	    		
 	    		$(".page-struct").empty();
 	    		for (var i = 0; i < comments.length; ++i) {
 					var comment = comments[i];
-					cont++;
+					
 					if(i==0)
 					$(".page-struct").append(
 						"<div class='col-xs-12 text-center'>"
@@ -22,11 +22,12 @@ function getAllComments(){
 						+   	"<table class='table table-hover table-striped'  id='div-table'>"
 	                    +			"<thead class='headTable'>"
 						+     			"<tr>"
-						+					"<th>#</th>"
+						+					"<th>idComment</th>"
 						+					"<th>Date</th>"
 						+					"<th>Username</th>"
 						+					"<th>ItemId</th>"
 						+					"<th>Text</th>"
+						+					"<th>Vote</th>"
 						+				"</tr>"
 						+			"</thead>"
 						+			"<tbody class='tbody'>"
@@ -38,11 +39,12 @@ function getAllComments(){
 					)	
 					$(".tbody").append(
 							 "<tr>"
-							+	"<th>"+ cont +"</th>"
+							+	"<th>"+ comment.idComment +"</th>"
 							+	"<th>"+ comment.date +"</th>"
 							+	"<th>"+ comment.username +"</th>"
 							+	"<th>"+ comment.itemId +"</th>"
 							+	"<th>"+ comment.text +"</th>"
+							+	"<th>"+ comment.vote +"</th>"
 							+ "</tr>"
 					)
 							

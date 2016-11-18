@@ -34,6 +34,7 @@ public class LoadAllCommentsController extends HttpServlet {
 		JSONObject comments=new AdminDAO().getAllComments();
 		response.setContentType("application/json");
 		response.getWriter().write(comments.toString());
+		
 	}
 	
 	/**

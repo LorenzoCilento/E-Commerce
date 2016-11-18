@@ -147,9 +147,10 @@ public class AdminDAO implements QueryAdminInterface {
 			if(mResultSet != null) {
 				while (mResultSet.next()) {
 					JSONObject comment = new JSONObject();
+					comment.put("idComment", mResultSet.getInt("idComment"));
 					comment.put("date", mResultSet.getDate("date"));
 					comment.put("username", mResultSet.getString("username"));
-					comment.put("itemId", mResultSet.getString("itemId"));
+					comment.put("itemId", mResultSet.getInt("itemId"));
 					comment.put("text", mResultSet.getString("text"));
 					comment.put("vote", mResultSet.getInt("vote"));
 					comments.put(comment);
@@ -276,6 +277,7 @@ public class AdminDAO implements QueryAdminInterface {
 			
 			while (rs.next()) {
 				JSONObject comment = new JSONObject();
+				comment.put("idComment", rs.getInt("idComment"));
 				comment.put("date", rs.getDate("date"));
 				comment.put("username", rs.getString("username"));
 				comment.put("itemId", rs.getString("itemId"));
@@ -405,7 +407,26 @@ public class AdminDAO implements QueryAdminInterface {
 			System.out.println("Impossible to update the admin in AdminDAO -> updateAdmin(user,pass): " + username);
 		}
 	}
-
+	@Override
+	public void removeCommentById(final int idComment){
+		try {
+			
+			final String query = "DELETE FROM my_db.comment WHERE idComment=?";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			
+			ps.setInt(1, idComment);
+			
+			ps.execute();
+			
+			connection.close();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Impossible to delete in AdminDAO -> removeAdmin(username) the admin: " + idComment);
+		}
+	}
+	
 	@Override
 	public boolean removeAllCommentsUser(String user) {
 		// TODO Auto-generated method stub

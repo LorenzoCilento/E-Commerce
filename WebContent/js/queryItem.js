@@ -13,6 +13,7 @@ function getItem(param){
 				
                $("#description").text(item[0].description)
                $("#btnBuyNow").text("Compralo Subito a "+item[0].price+" €");
+				$("#btnBuyNow").val(item[0].price);
 		}
 	});
 }

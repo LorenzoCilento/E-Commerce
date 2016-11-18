@@ -13,7 +13,7 @@ function getAllItems(param) {
 					$("#myThumbnail").append(               
 							"<div class='col-sm-4 col-lg-4 col-md-4'>"
 							+"<div class='thumbnail' id='bigThumbnail'>"
-								+" <img src="+ item.path +" class='img-responsive' alt=''>"
+								+" <img id='bigImage'src="+ item.path +" alt=''>"
 	                          +" <div class='caption'>"
 	                          +" <h4 class='pull-right'>€ " +item.price +"</h4>"
 	                          +"  <h4><a href='item.jsp?id="+item.id+"'>"+item.name+"</a>"
@@ -48,7 +48,7 @@ function getAllItems(param) {
 					$("#myThumbnail").append(               
 							"<div class='col-sm-4 col-lg-4 col-md-4'>"
 							+"<div class='thumbnail' id='bigThumbnail'>"
-								+" <img src="+ item.path +">"
+								+" <img id='bigImage' src="+ item.path +">"
 	                          +" <div class='caption'>"
 	                          +" <h4 class='pull-right'>€ " +item.price +"</h4>"
 	                          +"  <h4><a href='item.jsp?id="+item.id+"'>"+item.name+"</a>"

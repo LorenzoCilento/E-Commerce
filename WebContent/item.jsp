@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css"
 	media="all">
-<link href="css/style.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all">
 <script src="js/jquery-3.1.1.js"></script>
 
 <title>BuyDream Homepage - You best E-Commerce</title>
@@ -64,11 +64,11 @@
 				%>
 				<h4 id="bidValue2"></h4>
 				<div>
-					<input type="text" id="bidText" placeholder="inserisci">
+					<input class="active"type="text" id="bidText" placeholder="inserisci">
 					<button class="btn btn-primary" value="placeBid" id="btnBid">Piazza
 						offerta</button>
 					<h4>Oppure</h4>
-					<button class="btn btn-success" id="btnBuyNow"></button>
+					<button class="btn btn-success" id="btnBuyNow" value=""></button>
 				</div>
 				<%
 					} else {
@@ -84,7 +84,7 @@
 
 
 
-		<div class="col-md-9">
+		<div class="col-md-12">
 			<!-- Section items -->
 			<div class="row" id="myThumbnail">
 				<hr>
@@ -137,6 +137,32 @@
 				}
 			});
 		});
+		</script>
+		<script type="text/javascript">
+		$("#btnBuyNow").click(function addBid() {
+			var price = document.getElementById("btnBuyNow").value;
+			$.ajax({
+				url : "AddBidServlet",
+				type : "GET",
+				data : {
+					itemId : itemId,
+					price : price
+				},
+				success : function(response) {
+
+					if(response == "success"){
+						alert("Complimenti hai acquistato l'oggetto");
+						getItem(itemId);
+						getBid(itemId);
+					} else {
+						alert("Mi dispiace c'è un offerta più alta");
+						getItem(itemId);
+						getBid(itemId);
+					}
+				}
+			});
+		});
+	
 	</script>
 
 </body>

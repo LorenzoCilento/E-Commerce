@@ -1,54 +1,44 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import connection.UserDAO;
-
+import connection.AdminDAO;
 
 /**
- * Servlet implementation class removeUserServlet
+ * Servlet implementation class DeleteCommentById
  */
-@WebServlet("/DeleteUserServlet")
-public class DeleteUserServlet extends HttpServlet {
+@WebServlet("/DeleteCommentById")
+public class DeleteCommentById extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteUserServlet() {
+    public DeleteCommentById() {
         super();
         // TODO Auto-generated constructor stub
     }
 
 	/**
-	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-		
+		doPost(request,response);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		response.setContentType("text/html");
-		
-		  
-        
-        String username=request.getParameter("username");          
-                System.out.println("useradsdfa:" + username);
-        new UserDAO().removeUser(username);
-        
-        response.getWriter().write("true");
-        response.getWriter().close();
+		int id= Integer.parseInt(request.getParameter("idComment"));
+		new AdminDAO().removeCommentById(id);
+		response.getWriter().write("true");
+			
 	}
+
 }

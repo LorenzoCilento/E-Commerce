@@ -41,13 +41,10 @@ public class LoginController extends HttpServlet {
 		
 		final User user = new UserDAO().getUser(username);
 		if(user.getPassword().equals(PasswordCript.encrypt(password))){
-			out.print("user valido");
 			request.getSession().setAttribute("user", user);
 			request.getSession().setAttribute("username", user.getName());
 			response.sendRedirect("home.jsp");
 		}
-		else
-			out.print("user NON valido");
 		
 		out.close();
 	}

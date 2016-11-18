@@ -121,7 +121,6 @@ public class UserDAO implements QueryUserInterface {
 			connection.close();
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			System.out.println("Impossible to delete the user: " + username);
 		}
 	}

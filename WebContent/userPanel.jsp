@@ -5,7 +5,6 @@
 <html lang="it">
 
 <head>
-
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -31,10 +30,10 @@
 
 <body>
 
-	<jsp:include page="navBar.jsp"></jsp:include>
 	<%
 		if (session.getAttribute("user") != null) {
 	%>
+	<jsp:include page="navBar.jsp"></jsp:include>
 	<!-- Sidebar -->
 	<div id="sidebar-wrapper">
 		<ul class="sidebar-nav">
@@ -52,10 +51,7 @@
 		} else {
 	%>
 
-	<div class="container">
-			<h2>Registrati o effettua l'accesso</h2>
-
-		<!-- content -->
+		<jsp:include page="errorPage.jsp"></jsp:include>
 	</div>
 	<%
 		}
