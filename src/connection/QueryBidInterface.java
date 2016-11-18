@@ -10,7 +10,8 @@ public interface QueryBidInterface {
 	public void addBid(Bid bid);
 	public void updateBid(Bid bid);
 	public JSONObject getBid();
-	public JSONObject getItemBid(int itemId);
 	public boolean getBid(int itemId,String username);
+	public double getMaxPrice(int itemId);
+	JSONObject getJsonMaxBid(int itemId);
 	
 }

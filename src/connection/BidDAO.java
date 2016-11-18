@@ -43,7 +43,7 @@ public class BidDAO implements QueryBidInterface {
 	}
 
 	@Override
-	public JSONObject getItemBid(int itemId) {
+	public JSONObject getJsonMaxBid(int itemId) {
 		JSONObject json = new JSONObject();
 		JSONArray bids = new JSONArray();
 		
@@ -69,6 +69,29 @@ public class BidDAO implements QueryBidInterface {
 		}
 		
 		return json;
+	}
+	
+	@Override
+	public double getMaxPrice(int itemId) {
+		double price = 0;
+		try {
+			final String query = "SELECT max(b.price) FROM my_db.bid as b WHERE b.itemId = ? GROUP BY b.itemId;";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, itemId);
+			
+			final ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()){
+				price = rs.getDouble("max(b.price)");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return price;
 	}
 
 	@Override
@@ -96,7 +119,7 @@ public class BidDAO implements QueryBidInterface {
 	@Override
 	public void updateBid(Bid bid) {
 		try {			
-			final String query = "UPDATE my_db.bid SET price=?,bidDate=? WHERE itemId=?,username=?;";
+			final String query = "UPDATE my_db.bid SET price=?,bidDate=? WHERE itemId=? and username=?;";
 			final Connection connection = ConnectionDAO.getInstance().createConnection();
 			final PreparedStatement ps = connection.prepareStatement(query);
 			
@@ -105,7 +128,6 @@ public class BidDAO implements QueryBidInterface {
 			ps.setInt(3, bid.getItemId());
 			ps.setString(4, bid.getUsername());
 			
-			System.out.println("UPDATE BID");
 			ps.executeUpdate();
 			
 			connection.close();

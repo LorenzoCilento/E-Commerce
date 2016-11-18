@@ -38,3 +38,4 @@ function getBid(param){
 		}
 	});
 }
+
