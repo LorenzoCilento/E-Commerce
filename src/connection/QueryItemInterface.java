@@ -10,7 +10,7 @@ interface QueryItemInterface {
 
 	public void addItem(Item item);
 	
-	public void removeItem(String id);
+	public void removeItem(int id);
 	
 	public JSONObject getAllItems();
 	
@@ -20,6 +20,8 @@ interface QueryItemInterface {
 	
 	public void updateBidItem(Item item, Bid bid);
 	
-	public void getLastItems();
+	public int getLastItemId();
+	
+	public JSONObject getAllUserItems(String username);
 	
 }

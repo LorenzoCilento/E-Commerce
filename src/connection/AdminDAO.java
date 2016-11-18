@@ -13,6 +13,7 @@ import model.bean.Admin;
 import model.bean.Comment;
 import model.bean.Item;
 import model.bean.User;
+import util.Factories;
 import util.PasswordCript;
 
 public class AdminDAO implements QueryAdminInterface {
@@ -461,6 +462,29 @@ public class AdminDAO implements QueryAdminInterface {
 	public void addBid(final Item item,final User user,final double price,final Date date) {
 		// TODO Auto-generated method stub
 		
+	}
+	@Override
+	public Admin getAdminInstance(final String username){
+		Admin admin = new Admin();
+		try {
+			final String query = "SELECT * FROM admin WHERE username=?";
+			final Connection connection = ConnectionDAO.getInstance().createConnection();
+			final PreparedStatement ps = connection.prepareStatement(query);
+			
+			ps.setString(1, username);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()){
+				admin.setUsername(rs.getString("username"));
+				admin.setPassword(rs.getString("password"));
+			}
+			
+			connection.close();
+		} catch (Exception e) {
+			System.out.println("User non presente nel DataBase!!!");
+		}
+		return admin;
 	}
 		
 }

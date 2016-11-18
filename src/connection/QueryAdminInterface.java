@@ -37,6 +37,7 @@ public interface QueryAdminInterface {
 	public boolean removeCommentsItem(String item);
 	public boolean removeCommentsUserItem(String username,String item);
 	public void removeCommentById(final int idComment);
+	public Admin getAdminInstance(final String username);
 	
 	
 /*

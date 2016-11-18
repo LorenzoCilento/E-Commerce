@@ -3,30 +3,29 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import java.sql.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import connection.AuctionDAO;
-import model.bean.Auction;
-import util.DateConverter;
-
+import connection.AdminDAO;
+import connection.UserDAO;
+import model.bean.Admin;
+import model.bean.User;
+import util.PasswordCript;
 
 /**
- * Servlet implementation class AuctionController
+ * Servlet implementation class LoginAdminController
  */
-@WebServlet("/AuctionController")
-public class AuctionController extends HttpServlet {
+@WebServlet("/LoginAdminController")
+public class LoginAdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AuctionController() {
+    public LoginAdminController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -35,32 +34,27 @@ public class AuctionController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String var = request.getParameter("paramAuction");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		
-		response.setContentType("text/html");
-
 		PrintWriter out = response.getWriter();
-
 		
-//		if(var.equals("addAuction")){
-			String itemId = request.getParameter("itemId");
-			String startDate =request.getParameter("startDate");
-			String endDate = request.getParameter("endDate");
-	
-			Date start_date = new DateConverter().convertStringInDateSql(startDate);
-			Date end_date = new DateConverter().convertStringInDateSql(endDate);
-			int item_id = Integer.parseInt(itemId);
-			
-			new AuctionDAO().addAuction(new Auction(item_id,start_date,end_date));
-			
-			out.close();
-//		}
+		final Admin admin = new AdminDAO().getAdminInstance(username);
+		
+		if(admin.getPassword().equals(PasswordCript.encrypt(password))){
+			request.getSession().setAttribute("admin", admin);
+			request.getSession().setAttribute("username", admin.getName());
+			response.sendRedirect("home.jsp");
+		}
+		
+		out.close();
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

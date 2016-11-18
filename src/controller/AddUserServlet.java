@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import connection.AdminDAO;
 import connection.UserDAO;
+import model.bean.Admin;
 import model.bean.User;
 import util.Factories;
 
@@ -47,6 +49,7 @@ public class AddUserServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		String surname = request.getParameter("surname");
 		String email = request.getParameter("email");
+		System.out.println("username " +username);
 		
 		User user = Factories.getInstance().makeUser();
 
@@ -57,8 +60,7 @@ public class AddUserServlet extends HttpServlet {
 		user.setEmail(email);
 
 		new UserDAO().addUser(user);
-		response.sendRedirect("home.jsp");
-		out.close();
+		response.sendRedirect("home.jsp");	
 
 	}
 	/**

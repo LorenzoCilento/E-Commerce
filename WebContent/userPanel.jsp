@@ -42,7 +42,7 @@
 			<li><a href="#">Aste a cui stai partecipando</a></li>
 			<li><a href="#">Acquistati</a></li>
 			<li><a href="addItem.jsp">Inserisci Prodotto</a></li>
-			<li><a href="#">Rimuovi Prodotto</a></li>
+			<li><a href="removeItem.jsp">Rimuovi Prodotto</a></li>
 			<li><a href="#">Contattaci</a></li>
 		</ul>
 	</div>

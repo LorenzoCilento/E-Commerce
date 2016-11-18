@@ -40,15 +40,15 @@
 			<li><a href="#">Account</a></li>
 			<li><a href="#">Aste a cui stai partecipando</a></li>
 			<li><a href="#">Acquistati</a></li>
-			<li><a href="" id="btnAddItem">Inserisci Prodotto</a></li>
-			<li><a href="#">Rimuovi Prodotto</a></li>
+			<li><a href="addItem.jsp">Inserisci Prodotto</a></li>
+			<li><a href="removeItem.jsp">Rimuovi Prodotto</a></li>
 			<li><a href="#">Contattaci</a></li>
 		</ul>
 	</div>
 	<!-- /#sidebar-wrapper -->
 
 	<div class="container well col-sm-8 col-sm-offset-3">
-		<form action="AddUserServlet" class="form horizontal" role="form"
+		<form action="AddItemController" class="form horizontal" role="form"
 			method="post">
 			<div class="well" id="registration" style="text-align: center;">
 				<h2>Inserisci Prodotto</h2>
@@ -58,56 +58,64 @@
 					id="name">Nome <span> (Required)</span>
 				</label>
 				<div class="col-sm-9 col-md-9 col-lg-9">
-					<input type="text" class="form-control" name="name" id="inputName"
-						placeholder="Name" required> <span id="glyphiconFormName">
+					<input type="text" class="form-control" name="inputName" id="inputName"
+						placeholder="Nome prodotto" required> <span id="glyphiconFormName">
 					</span> <span class="help-block">Es. Iphone 5s<small>[Minimum
 							3 and maximum 15 letter]</small></span>
 					<div id="errName"></div>
 				</div>
 			</div>
 			<div class="form group">
-				<label for="surname"
-					class="col-sm-3 col-md-3 col-lg-3 control-label" id="surname">Prezzo
+				<label for="price"
+					class="col-sm-3 col-md-3 col-lg-3 control-label" id="price">Prezzo comparlo subito
 					<span> (Required)</span>
 				</label>
 				<div class="col-sm-9 col-md-9 col-lg-9">
-					<input type="text" name="price" id="price" placeholder="Surname"
+					<input type="text" name="inputPrice" id="inputPrice" placeholder="Inserisci prezzo"
 						class="form-control" required> <span class="help-block">Es.
 						20 <small>[Minimum 3 and maximum 15 letter]</small>
 					</span>
 				</div>
 			</div>
-			<div class="form-group" id="emailForm">
+			<div class="form-group" id="description">
 				<label for="e-mail" class="col-sm-3 col-md-3 col-lg-3 control-label">Descrizione
 					<span> (Opzionale)</span>
 				</label>
 				<div class="col-sm-9 col-md-9 col-lg-9">
-					<textarea rows="3" placeholder="inserisci qui la tua descrizione"></textarea>
+					<textarea rows="3" name="textDescription" placeholder="inserisci qui la tua descrizione"></textarea>
 				</div>
 			</div>
-			
-			<div class="form-group" id="usernameForm">
+			<div class="form-group" id="duration">
+				<label for="duration"
+					class="col-sm-3 col-md-3 col-lg-3 control-label" id="duration">Data di fine			
+					<span> (Required)</span>
+				</label>
+				<div class="col-sm-9 col-md-9 col-lg-9">
+					<input type="text" name="endDate" placeholder="aaaa/mm/dd">
+				</div>
+			</div>
+			<div class="form-group" id="category">
 				<label for="username"
 					class="col-sm-3 col-md-3 col-lg-3 control-label" id="username">Categoria
 					<span> (Required)</span>
 				</label>
 				<div class="col-sm-9 col-md-9 col-lg-9">
-					<select>
+					<select name="inputCategory">
 						<option>Abbigliamento</option>
 						<option>Elettronica</option>
 						<option>Motori</option>
-
 					</select>
 				</div>
 			</div>
+			
+			
 			
 			<div class="form-group">
 				<label
 					class="col-sm-3 col-md-3 col-lg-3 control-label" >Foto			
 				</label>
 				<div class ="col-sm-9 col-md-9 col-lg-9">
-					<input type="text" class="form-control">
-					<input type="file" >
+					<input type="file" name="inputPath">
 				</div>
 			</div>
 			
