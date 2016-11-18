@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ page import="model.bean.User"%>
+ <%@ page import="model.bean.Admin"%>
 <!DOCTYPE html>
 <html lang="it">  
 <head>
@@ -41,7 +42,7 @@
                         </ul>
                     </li>
                 </ul>
-                	<%	if(session.getAttribute("user") == null) { %>
+                	<%	if(session.getAttribute("user") == null && session.getAttribute("admin") == null) { %>
 							<ul class="nav navbar-nav navbar-right">
 								<li>
 									<a href="userRegistration.jsp">
@@ -57,7 +58,7 @@
 									</a>
 								</li>
 							</ul>
-					<%} else { %>
+					<%} else if(session.getAttribute("user") != null && session.getAttribute("admin") == null) { %>
 							<ul class="nav navbar-nav navbar-right">
 								<li class="dropdown">
 									<a href="#" class="dropdown-toggle"	data-toggle="dropdown">
@@ -74,6 +75,26 @@
 								$("#logout").click(
 										function() {
 											window.location.href = "LogoutController";
+										}
+								);
+							</script>
+					<%} else if(session.getAttribute("admin") != null && session.getAttribute("user") == null) { %>
+							<ul class="nav navbar-nav navbar-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle"	data-toggle="dropdown">
+										<span class="glyphicon glyphicon-user"></span> 
+										<%=((Admin)session.getAttribute("admin")).getUsername() %><b class="caret"></b>
+									</a>
+									<ul class="dropdown-menu">
+										<li><a href="AdminPanel.jsp" >Profilo</a></li>
+										<li><a href="#" id="logout" >Logout</a></li>
+									</ul>
+								</li>
+							</ul>
+							<script> 
+								$("#logout").click(
+										function() {
+											window.location.href = "LogoutAdminController";
 										}
 								);
 							</script>

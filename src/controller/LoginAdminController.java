@@ -9,27 +9,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import connection.AdminDAO;
 import connection.UserDAO;
+import model.bean.Admin;
 import model.bean.User;
 import util.PasswordCript;
 
-
 /**
- * Servlet implementation class LoginController
+ * Servlet implementation class LoginAdminController
  */
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/LoginAdminController")
+public class LoginAdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginController() {
+    public LoginAdminController() {
         super();
         // TODO Auto-generated constructor stub
     }
 
-	/**
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -39,16 +39,17 @@ public class LoginController extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		final User user = new UserDAO().getUser(username);
-		if(user.getPassword().equals(PasswordCript.encrypt(password))){
-			System.out.println("sono dentro");
-			request.getSession().setAttribute("user", user);
-			request.getSession().setAttribute("username", user.getName());
+		final Admin admin = new AdminDAO().getAdminInstance(username);
+		
+		if(admin.getPassword().equals(PasswordCript.encrypt(password))){
+			request.getSession().setAttribute("admin", admin);
+			request.getSession().setAttribute("username", admin.getName());
 			response.sendRedirect("home.jsp");
 		}
 		
 		out.close();
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -56,4 +57,5 @@ public class LoginController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }

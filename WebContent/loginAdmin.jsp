@@ -13,8 +13,8 @@
 	
 	<div class="container">
 		<div class="row" id="content">
-			<form action="LoginController" method="get">
-				<h1>Accedi</h1>
+			<form action="LoginAdminController" method="get">
+				<h1>Admin</h1>
 				<div>
 					<input type="text" placeholder="Username" required name="username" id="username" />
 				</div>
@@ -24,7 +24,6 @@
 				</div>
 				<div>
 					<input type="submit" value="Log in" /> <a href="userRegistration.jsp">Registra</a>
-					<a href="loginAdmin.jsp">Admin</a>
 				</div>
 			</form>
 			<!-- form -->
